@@ -3,7 +3,7 @@
 编译LuceneServer项目，直接运行LuceneServer.exe即可，可以在LuceneServer.exe.config更改一些配置项。
 
 #### 全文检索相关
-引用LuceneLib项目的LuceneLib.dll和NetworkSocket.dll，所有操作方法都在LuceneLib.Lucene<T>类中，Lucene<T>可以使用单例模式或多个实例，每个方法都是线程安全，所有API都是异步的。
+引用LuceneLib项目的LuceneLib.dll和NetworkSocket.dll，所有操作方法都在LuceneLib.Lucene<T>类中，Lucene<T>可以使用单例模式或多个实例，每个方法都是线程安全，所有API都是异步的，一般情况下使用长连接的单例模式即可。
 
 
 #### 一些相关博文
