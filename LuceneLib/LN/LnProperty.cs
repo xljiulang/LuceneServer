@@ -59,7 +59,17 @@ namespace LuceneLib
         public string GetValue(object instance)
         {
             var value = this.geter(instance, null);
-            return value == null ? null : value.ToString();
+            if (value == null)
+            {
+                return null;
+            }
+
+            // 枚举转换为整型的字符串
+            if (this.PropertyType.IsEnum == true)
+            {
+                return value.GetHashCode().ToString();
+            }
+            return value.ToString();
         }
 
         /// <summary>
@@ -69,15 +79,15 @@ namespace LuceneLib
         /// <param name="value">属性值</param>
         public void SetValue(object instance, string value)
         {
-            this.seter(instance, new object[] { this.CastSetValue(value) });
+            this.seter(instance, new object[] { this.CastStringValue(value) });
         }
 
         /// <summary>
-        /// 转换设置的值
+        /// 将string类型值转换为属性类型的值
         /// </summary>
         /// <param name="value">值</param>
         /// <returns></returns>
-        private object CastSetValue(string value)
+        private object CastStringValue(string value)
         {
             if (value == null)
             {
@@ -89,7 +99,7 @@ namespace LuceneLib
                 return value;
             }
 
-            if (this.PropertyType.IsEnum)
+            if (this.PropertyType.IsEnum == true)
             {
                 return Enum.Parse(this.PropertyType, value, false);
             }
