@@ -47,44 +47,6 @@ namespace LuceneLib
         }
 
         /// <summary>
-        /// 排序字段类型转换
-        /// </summary>
-        /// <param name="type">字段类型</param>
-        /// <returns></returns>
-        private LnSortType GetLnSortType(Type type)
-        {
-            if (type == typeof(string) || type == typeof(Guid) || type == typeof(DateTime))
-            {
-                return LnSortType.STRING;
-            }
-            if (type == typeof(double))
-            {
-                return LnSortType.DOUBLE;
-            }
-            if (type == typeof(float) || type == typeof(decimal))
-            {
-                return LnSortType.FLOAT;
-            }
-            if (type == typeof(short) || type == typeof(ushort))
-            {
-                return LnSortType.SHORT;
-            }
-            if (type == typeof(Int32) || type == typeof(uint) || type.IsEnum)
-            {
-                return LnSortType.INT;
-            }
-            if (type == typeof(Int64) || type == typeof(ulong))
-            {
-                return LnSortType.LONG;
-            }
-            if (type == typeof(byte))
-            {
-                return LnSortType.BYTE;
-            }
-            return LnSortType.SCORE;
-        }
-
-        /// <summary>
         /// 跳过元素
         /// </summary>
         /// <param name="count">元素个数</param>
@@ -117,14 +79,14 @@ namespace LuceneLib
         }
 
         /// <summary>
-        /// 获取属性表示式的属性名称
+        /// 获取属性名
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="keySelector"></param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
-        private string GetMemberExpressionMemberName<TKey>(Expression<Func<T, TKey>> keySelector)
+        private string GetPropertyName<TKey>(Expression<Func<T, TKey>> keySelector)
         {
             if (keySelector == null)
             {
@@ -140,6 +102,25 @@ namespace LuceneLib
                 throw new ArgumentException(string.Format("类型{0}的属性{1}为含NoneIndex特性，不能进行相关检索", typeof(T).Name, body.Member.Name));
             }
             return body.Member.Name;
+        }
+
+        /// <summary>
+        /// 获取属性
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="keySelector"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns></returns>
+        private LnProperty GetLnProperty<TKey>(Expression<Func<T, TKey>> keySelector)
+        {
+            var name = this.GetPropertyName(keySelector);
+            var property = this.properties.FirstOrDefault(item => item.Name == name);
+            if (property == null)
+            {
+                throw new ArgumentException(string.Format("类型{0}的属性{1}为不支持的检索类型：{2}", typeof(T).Name, name, typeof(TKey).Name));
+            }
+            return property;
         }
 
         /// <summary>
@@ -232,7 +213,7 @@ namespace LuceneLib
         /// <returns></returns>
         public LnQuery<T> MatchField(Expression<Func<T, string>> keySelector, string keywordPrefix, string keywordSuffix, int fragmentSize)
         {
-            var name = this.GetMemberExpressionMemberName(keySelector);
+            var name = this.GetPropertyName(keySelector);
             var matchField = new LnMatchField
             {
                 Name = name,
@@ -254,12 +235,12 @@ namespace LuceneLib
         /// <returns></returns>
         public LnQuery<T> OrderBy<TKey>(Expression<Func<T, TKey>> keySelector)
         {
-            var name = this.GetMemberExpressionMemberName(keySelector);
+            var property = this.GetLnProperty(keySelector);
             var sortFile = new LnSortField
             {
-                Name = name,
                 Asc = true,
-                SortType = (int)GetLnSortType(typeof(TKey))
+                Name = property.Name,
+                SortType = (int)property.SortType
             };
             this.sortFields.Add(sortFile);
             return this;
@@ -275,12 +256,12 @@ namespace LuceneLib
         /// <returns></returns>
         public LnQuery<T> OrderByDescending<TKey>(Expression<Func<T, TKey>> keySelector)
         {
-            var name = this.GetMemberExpressionMemberName(keySelector);
+            var property = this.GetLnProperty(keySelector);
             var sortFile = new LnSortField
             {
-                Name = name,
                 Asc = false,
-                SortType = (int)GetLnSortType(typeof(TKey))
+                Name = property.Name,
+                SortType = (int)property.SortType
             };
             this.sortFields.Add(sortFile);
             return this;
@@ -305,7 +286,6 @@ namespace LuceneLib
             }
             return instance;
         }
-
 
         /// <summary>
         /// LN模型转换为业务Model

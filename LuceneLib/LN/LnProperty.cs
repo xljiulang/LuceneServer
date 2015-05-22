@@ -38,6 +38,11 @@ namespace LuceneLib
         public Type PropertyType { get; private set; }
 
         /// <summary>
+        /// 获取属性的排序类型
+        /// </summary>
+        public LnSortType SortType { get; private set; }
+
+        /// <summary>
         /// Get属性
         /// </summary>
         /// <param name="property">属性</param>
@@ -47,6 +52,7 @@ namespace LuceneLib
             this.PropertyType = property.PropertyType;
             this.IsString = property.PropertyType == typeof(string);
 
+            this.SortType = GetLnSortType(property.PropertyType);
             this.geter = CreateMethodInvoker(property.GetGetMethod());
             this.seter = CreateMethodInvoker(property.GetSetMethod());
         }
@@ -111,6 +117,45 @@ namespace LuceneLib
 
             return ((IConvertible)value).ToType(this.PropertyType, null);
         }
+
+        /// <summary>
+        /// 排序字段类型转换
+        /// </summary>
+        /// <param name="type">字段类型</param>
+        /// <returns></returns>
+        private static LnSortType GetLnSortType(Type type)
+        {
+            if (type == typeof(string) || type == typeof(Guid) || type == typeof(DateTime))
+            {
+                return LnSortType.STRING;
+            }
+            if (type == typeof(double))
+            {
+                return LnSortType.DOUBLE;
+            }
+            if (type == typeof(float) || type == typeof(decimal))
+            {
+                return LnSortType.FLOAT;
+            }
+            if (type == typeof(short) || type == typeof(ushort))
+            {
+                return LnSortType.SHORT;
+            }
+            if (type == typeof(Int32) || type == typeof(uint) || type.IsEnum)
+            {
+                return LnSortType.INT;
+            }
+            if (type == typeof(Int64) || type == typeof(ulong))
+            {
+                return LnSortType.LONG;
+            }
+            if (type == typeof(byte))
+            {
+                return LnSortType.BYTE;
+            }
+            return LnSortType.SCORE;
+        }
+
 
         /// <summary>
         /// 生成方法的委托
