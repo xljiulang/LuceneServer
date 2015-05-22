@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoneIndexAttribute.cs" />
     <Compile Include="ILnPage.cs" />
     <Compile Include="LnPage.cs" />
     <Compile Include="LN\LnPage.cs" />

@@ -97,7 +97,7 @@ namespace LuceneLib
             var supportTypes = new[] { typeof(string), typeof(DateTime), typeof(Guid), typeof(decimal) };
             var properties = typeof(T)
                 .GetProperties()
-                .Where(p => p.GetAccessors().Length == 2)
+                .Where(p => p.GetAccessors().Length == 2 && p.IsDefined(typeof(NoneIndexAttribute), true) == false)
                 .Where(p => p.PropertyType.IsPrimitive || p.PropertyType.IsEnum || supportTypes.Contains(p.PropertyType));
 
             if (properties.Any(p => string.Equals(p.Name, "Id", StringComparison.OrdinalIgnoreCase)) == false)

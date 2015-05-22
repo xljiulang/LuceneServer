@@ -135,6 +135,10 @@ namespace LuceneLib
             {
                 throw new ArgumentException("keySelector不是MemberExpression类型");
             }
+            if (body.Member.IsDefined(typeof(NoneIndexAttribute), true) == true)
+            {
+                throw new ArgumentException(string.Format("类型{0}的属性{1}为含NoneIndex特性，不能进行相关检索", typeof(T).Name, body.Member.Name));
+            }
             return body.Member.Name;
         }
 
