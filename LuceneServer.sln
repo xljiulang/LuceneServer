@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuceneServer", "LuceneServer\LuceneServer.csproj", "{49AC0B1A-E13F-4D68-9260-017F44A07DFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuceneLib", "LuceneLib\LuceneLib.csproj", "{9E56C978-EB8F-46D1-9A5B-90C1067E2C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuceneDemo", "LuceneDemo\LuceneDemo.csproj", "{F5F426D8-4A58-400F-B58A-D659333AA0A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49AC0B1A-E13F-4D68-9260-017F44A07DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AC0B1A-E13F-4D68-9260-017F44A07DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AC0B1A-E13F-4D68-9260-017F44A07DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AC0B1A-E13F-4D68-9260-017F44A07DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E56C978-EB8F-46D1-9A5B-90C1067E2C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E56C978-EB8F-46D1-9A5B-90C1067E2C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E56C978-EB8F-46D1-9A5B-90C1067E2C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E56C978-EB8F-46D1-9A5B-90C1067E2C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F426D8-4A58-400F-B58A-D659333AA0A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F426D8-4A58-400F-B58A-D659333AA0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F426D8-4A58-400F-B58A-D659333AA0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F426D8-4A58-400F-B58A-D659333AA0A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
