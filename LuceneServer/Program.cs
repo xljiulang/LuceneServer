@@ -15,8 +15,8 @@ namespace LuceneServer
         {
             Console.Title = "LuceneServer";
 
-            GlobalFilters.Add(new ExceptionFilter());
             var server = new LnServer();
+            server.GlobalFilter.Add(new ExceptionFilter());
             server.BindService<LnService>().BindService<SystemService>();
             server.StartListen(int.Parse(ConfigurationManager.AppSettings["Port"]));
 

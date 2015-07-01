@@ -121,6 +121,17 @@ namespace LuceneLib
         }
 
         /// <summary>
+        /// 连接到远程终端
+        /// </summary>
+        /// <param name="hostOrAddress">域名或ip地址</param>
+        /// <param name="port">远程端口</param>
+        /// <returns></returns>
+        public Task<Boolean> Connect(string hostOrAddress, int port)
+        {
+            return this.client.Connect(hostOrAddress, port);
+        }
+
+        /// <summary>
         /// 登录操作
         /// </summary>
         /// <param name="account">账号</param>

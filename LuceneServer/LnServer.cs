@@ -11,18 +11,18 @@ namespace LuceneServer
     /// </summary>
     internal class LnServer : FastTcpServer
     {
-        protected override void OnConnect(FastSession session)
+        /// <summary>
+        /// 关闭非法连接的用户
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="exception"></param>
+        protected override void OnException(object sender, Exception exception)
         {
-            base.OnConnect(session);
+            if (exception is ProtocolException)
+            {
+                var session = sender as FastSession;
+                session.Close();
+            }
         }
-        protected override void OnDisconnect(FastSession session)
-        {
-            base.OnDisconnect(session);
-        }
-
-        protected override void OnException(Exception exception)
-        {
-            base.OnException(exception);
-        }        
     }
 }
