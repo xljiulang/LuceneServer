@@ -503,7 +503,59 @@
         </member>
         <member name="M:NetworkSocket.Fast.ProtocolException.#ctor">
             <summary>
-            据包协议异常
+            数据包协议异常
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Fast.LoopWorker">
+            <summary>
+            由一个线程循环工作的对象
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Fast.LoopWorker.thread">
+            <summary>
+            工作线程
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Fast.LoopWorker.syncRoot">
+            <summary>
+            同步对象
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Fast.LoopWorker.workList">
+            <summary>
+            工作内容队列
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.LoopWorker.#cctor">
+            <summary>
+            表示构造器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.LoopWorker.LoopWork">
+            <summary>
+            循环工作
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.LoopWorker.WorkOnce">
+            <summary>
+            一轮工作
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.LoopWorker.AddWork(System.Action)">
+            <summary>
+            添加工作
+            </summary>
+            <param name="work">工作</param>
+        </member>
+        <member name="M:NetworkSocket.Fast.LoopWorker.RemoveWork(System.Action)">
+            <summary>
+            删除工作
+            </summary>
+            <param name="work">工作</param>
+        </member>
+        <member name="P:NetworkSocket.Fast.LoopWorker.Count">
+            <summary>
+            获取当前的工作数量
             </summary>
         </member>
         <member name="T:NetworkSocket.SessionAcceptExcetion">
@@ -541,6 +593,11 @@
         <member name="F:NetworkSocket.Fast.ApiAction.methodInvoker">
             <summary>
             Api行为的方法成员调用委托
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Fast.ApiAction.parameters">
+            <summary>
+            参数值
             </summary>
         </member>
         <member name="M:NetworkSocket.Fast.ApiAction.#ctor(System.Reflection.MethodInfo)">
@@ -607,9 +664,19 @@
             Api行为的方法成员返回类型
             </summary>
         </member>
+        <member name="P:NetworkSocket.Fast.ApiAction.ParameterInfos">
+            <summary>
+            获取Api行为的参数信息
+            </summary>
+        </member>
         <member name="P:NetworkSocket.Fast.ApiAction.ParameterTypes">
             <summary>
             获取Api行为的方法成员参数类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.ApiAction.ParameterValues">
+            <summary>
+            获取Api行为的参数值
             </summary>
         </member>
         <member name="P:NetworkSocket.Fast.ApiAction.DeclaringService">
@@ -733,27 +800,6 @@
             获取或设置异常是否已处理
             </summary>
         </member>
-        <member name="T:NetworkSocket.Fast.DependencyResolver">
-            <summary>
-            为实现IDependencyResolver接口的依赖关系解析程序提供一个注册点
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.DependencyResolver.#cctor">
-            <summary>
-            静态构造器
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.DependencyResolver.SetResolver(NetworkSocket.Fast.IDependencyResolver)">
-            <summary>
-            使用指定的依赖关系解析程序接口，为依赖关系解析程序提供一个注册点
-            </summary>
-            <param name="resolver">依赖关系解析程序</param>
-        </member>
-        <member name="P:NetworkSocket.Fast.DependencyResolver.Current">
-            <summary>
-            获取依赖关系解析程序的实现
-            </summary>
-        </member>
         <member name="T:NetworkSocket.Fast.ApiExecuteException">
             <summary>
             表示Api执行异常
@@ -830,7 +876,7 @@
         </member>
         <member name="T:NetworkSocket.Fast.FastApiService">
             <summary>
-            Fast的Api服务
+            Fast的Api服务抽象类
             </summary>
         </member>
         <member name="T:NetworkSocket.Fast.IFastApiService">
@@ -1020,6 +1066,11 @@
         <member name="P:NetworkSocket.Fast.FastApiService.CurrentContext">
             <summary>
             获取当前Api行为上下文
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.FastApiService.Server">
+            <summary>
+            获取关联的服务器实例
             </summary>
         </member>
         <member name="P:NetworkSocket.Fast.FastApiService.NetworkSocket#Fast#IFilter#Order">
@@ -1291,24 +1342,11 @@
             <param name="parameters">参数</param>        
             <returns>远程数据任务</returns>         
         </member>
-        <member name="F:NetworkSocket.Fast.FastSession.packetIdProvider">
-            <summary>
-            数据包id提供者
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FastSession.taskSetActionTable">
-            <summary>
-            任务行为表
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.FastSession.#ctor(NetworkSocket.Fast.PacketIdProvider,NetworkSocket.Fast.TaskSetActionTable,NetworkSocket.Fast.ISerializer,NetworkSocket.Fast.IFilterAttributeProvider)">
+        <member name="M:NetworkSocket.Fast.FastSession.#ctor(NetworkSocket.Fast.FastTcpServer)">
             <summary>
             服务器的客户端对象
             </summary>
-            <param name="serializer">序列化工具</param>
-            <param name="packetIdProvider">数据包id提供者</param>
-            <param name="taskSetActionTable">任务行为表</param>
-            <param name="filterAttributeProvider">特性过滤器提供者</param>
+            <param name="server">服务器实例</param>
         </member>
         <member name="M:NetworkSocket.Fast.FastSession.InvokeApi(System.String,System.Object[])">
             <summary>
@@ -1317,7 +1355,8 @@
             <param name="api">数据包Api名</param>
             <param name="parameters">参数列表</param>      
             <exception cref="T:System.Net.Sockets.SocketException"></exception>     
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>          
+            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>   
+            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
         </member>
         <member name="M:NetworkSocket.Fast.FastSession.InvokeApi``1(System.String,System.Object[])">
             <summary>
@@ -1329,16 +1368,12 @@
             <param name="parameters">参数</param>       
             <exception cref="T:System.Net.Sockets.SocketException"></exception>      
             <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
             <returns>远程数据任务</returns>         
         </member>
-        <member name="P:NetworkSocket.Fast.FastSession.Serializer">
+        <member name="P:NetworkSocket.Fast.FastSession.Server">
             <summary>
-            获取序列化工具      
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.FastSession.FilterAttributeProvider">
-            <summary>
-            Api行为特性过滤器提供者
+            获取服务器实例
             </summary>
         </member>
         <member name="T:NetworkSocket.Fast.FastPacket">
@@ -1362,6 +1397,14 @@
             <param name="parameters">参数</param>
             <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
         </member>
+        <member name="M:NetworkSocket.Fast.FastPacket.GetBodyParameters(NetworkSocket.Fast.ISerializer,System.Type[])">
+            <summary>
+            获取Body的参数值
+            </summary>
+            <param name="serializer">序列化工具</param>
+            <param name="parameterTypes">参数类型</param>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.Fast.FastPacket.GetBodyParameters">
             <summary>
             将Body的数据解析为参数
@@ -1372,6 +1415,7 @@
             <summary>
             转换为ByteRange
             </summary>
+            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Fast.FastPacket.From(NetworkSocket.ReceiveBuffer)">
@@ -1460,6 +1504,18 @@
             Tcp客户端抽象类
             </summary>
         </member>
+        <member name="M:NetworkSocket.TcpClientBase.Connect(System.String,System.Int32)">
+            <summary>
+            连接到远程端
+            </summary>
+            <param name="hostNameOrAddress">域名或ip地址</param>
+            <param name="port">远程端口</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.TcpClientBase.Connect(System.Net.IPAddress,System.Int32)">
             <summary>
             连接到远程终端       
@@ -1542,13 +1598,6 @@
             </summary>
             <param name="buffer">接收到的历史数据</param>        
         </member>
-        <member name="M:NetworkSocket.Fast.FastTcpClient.GetPacketsFromBuffer(NetworkSocket.ReceiveBuffer)">
-            <summary>
-            获取数据包
-            </summary>
-            <param name="buffer">接收到的历史数据</param>
-            <returns></returns>
-        </member>
         <member name="M:NetworkSocket.Fast.FastTcpClient.OnRecvPacket(NetworkSocket.Fast.FastPacket)">
             <summary>
             接收到服务发来的数据包
@@ -1611,7 +1660,8 @@
             <param name="api">Api行为的api</param>
             <param name="parameters">参数列表</param>          
             <exception cref="T:System.Net.Sockets.SocketException"></exception> 
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>     
+            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception> 
+            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
         </member>
         <member name="M:NetworkSocket.Fast.FastTcpClient.InvokeApi``1(System.String,System.Object[])">
             <summary>
@@ -1623,6 +1673,7 @@
             <param name="parameters">参数</param>
             <exception cref="T:System.Net.Sockets.SocketException"></exception>        
             <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
             <returns>远程数据任务</returns>    
         </member>
         <member name="M:NetworkSocket.Fast.FastTcpClient.OnDisconnect">
@@ -1771,10 +1822,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnException(System.Exception)">
+        <member name="M:NetworkSocket.TcpServerBase`1.OnException(System.Object,System.Exception)">
             <summary>
-            接收或创建会话时产生的异常
+            创建会话或解析请求数据产生异常触发
             </summary>
+            <param name="sender">异常产生者</param>
             <param name="exception">异常</param>
         </member>
         <member name="M:NetworkSocket.TcpServerBase`1.OnReceive(`0,NetworkSocket.ReceiveBuffer)">
@@ -1848,6 +1900,16 @@
             获取或设置序列化工具       
             </summary>
         </member>
+        <member name="P:NetworkSocket.Fast.IFastTcpServer.GlobalFilter">
+            <summary>
+            获取全局过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.IFastTcpServer.DependencyResolver">
+            <summary>
+            获取或设置依赖关系解析提供者
+            </summary>
+        </member>
         <member name="P:NetworkSocket.Fast.IFastTcpServer.FilterAttributeProvider">
             <summary>
             获取或设置Api行为特性过滤器提供者
@@ -1856,16 +1918,6 @@
         <member name="F:NetworkSocket.Fast.FastTcpServer.apiActionList">
             <summary>
             所有Api行为
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FastTcpServer.packetIdProvider">
-            <summary>
-            数据包id提供者
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FastTcpServer.taskSetActionTable">
-            <summary>
-            任务行为表
             </summary>
         </member>
         <member name="M:NetworkSocket.Fast.FastTcpServer.#ctor">
@@ -1925,13 +1977,6 @@
             <param name="buffer">接收到的历史数据</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Fast.FastTcpServer.GetPacketsFromBuffer(NetworkSocket.ReceiveBuffer)">
-            <summary>
-            获取数据包
-            </summary>
-            <param name="buffer">接收到的历史数据</param>
-            <returns></returns>
-        </member>
         <member name="M:NetworkSocket.Fast.FastTcpServer.OnRecvPacket(NetworkSocket.Fast.FastSession,NetworkSocket.Fast.FastPacket)">
             <summary>
             接收到会话对象的数据包
@@ -1977,6 +2022,16 @@
             </summary>
             <param name="disposing">是否也释放托管资源</param>
         </member>
+        <member name="P:NetworkSocket.Fast.FastTcpServer.PacketIdProvider">
+            <summary>
+            获取数据包id提供者
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.FastTcpServer.TaskSetActionTable">
+            <summary>
+            获取任务行为记录表
+            </summary>
+        </member>
         <member name="P:NetworkSocket.Fast.FastTcpServer.TimeOut">
             <summary>
             获取或设置请求等待超时时间(毫秒)    
@@ -1988,6 +2043,16 @@
             <summary>
             获取或设置序列化工具
             默认是Json序列化
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.FastTcpServer.GlobalFilter">
+            <summary>
+            获取全局过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.FastTcpServer.DependencyResolver">
+            <summary>
+            获取或设置依赖关系解析提供者
             </summary>
         </member>
         <member name="P:NetworkSocket.Fast.FastTcpServer.FilterAttributeProvider">
@@ -2105,26 +2170,27 @@
         </member>
         <member name="T:NetworkSocket.Fast.GlobalFilters">
             <summary>
-            全局过滤器
+            表示全局过滤器
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.GlobalFilters.#cctor">
+        <member name="M:NetworkSocket.Fast.GlobalFilters.#ctor">
             <summary>
             全局过滤器
             </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.GlobalFilters.Remove``1">
+            <summary>
+            移除过滤器类型
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:NetworkSocket.Fast.GlobalFilters.Add(NetworkSocket.Fast.IFilter)">
             <summary>
-            添加过滤器
+            添加过滤器并按Order字段排序
             </summary>
             <param name="filter">过滤器</param>
             <exception cref="T:System.ArgumentNullException"></exception>
             <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.Fast.GlobalFilters.AuthorizationFilters">
-            <summary>
-            获取IAuthorization过滤器
-            </summary>
         </member>
         <member name="P:NetworkSocket.Fast.GlobalFilters.ActionFilters">
             <summary>
@@ -2134,6 +2200,11 @@
         <member name="P:NetworkSocket.Fast.GlobalFilters.ExceptionFilters">
             <summary>
             获取IExceptionFilter过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.GlobalFilters.AuthorizationFilters">
+            <summary>
+            获取IAuthorization过滤器
             </summary>
         </member>
         <member name="T:NetworkSocket.Fast.IDependencyResolver">
@@ -2328,7 +2399,7 @@
             <param name="exceptionContext">上下文</param>  
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Fast.FastTcpCommon.InvokeApi``1(NetworkSocket.ISession,NetworkSocket.Fast.TaskSetActionTable,NetworkSocket.Fast.ISerializer,System.String,System.Int64,System.Boolean,System.Object[])">
+        <member name="M:NetworkSocket.Fast.FastTcpCommon.InvokeApi``1(NetworkSocket.ISession,NetworkSocket.Fast.TaskSetActionTable,NetworkSocket.Fast.ISerializer,NetworkSocket.Fast.FastPacket)">
             <summary>
             调用远程端的Api     
             并返回结果数据任务
@@ -2336,49 +2407,21 @@
             <typeparam name="T">返回值类型</typeparam>
             <param name="session">会话对象</param>
             <param name="taskSetActionTable">任务行为表</param>
-            <param name="serializer">序列化工具</param>   
-            <param name="api">api</param>
-            <param name="id">标识符</param>
-            <param name="fromClient">是否为客户端封包</param>
-            <param name="parameters">参数</param>      
-            <exception cref="T:System.Net.Sockets.SocketException"></exception>   
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.FastTcpCommon.NewSetAction``1(System.Threading.Tasks.TaskCompletionSource{``0},NetworkSocket.Fast.ISerializer)">
-            <summary>
-            创建新的SetAction
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="taskSource">任务源</param>       
             <param name="serializer">序列化工具</param>      
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.FastTcpCommon.GetApiActionParameters(NetworkSocket.Fast.ISerializer,NetworkSocket.Fast.ActionContext)">
-            <summary>
-            生成Api行为的调用参数
-            </summary>        
-            <param name="serializer">序列化工具</param>
-            <param name="context">上下文</param> 
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
-            <returns></returns>
+            <param name="packet">封包</param>      
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>   
         </member>
         <member name="T:NetworkSocket.Fast.PacketIdProvider">
             <summary>
             数据包id提供者
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.PacketIdProvider.baseValue">
+        <member name="F:NetworkSocket.Fast.PacketIdProvider.id">
             <summary>
             基准值
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.PacketIdProvider.syncRoot">
-            <summary>
-            同步锁
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.PacketIdProvider.GetId">
+        <member name="M:NetworkSocket.Fast.PacketIdProvider.NewId">
             <summary>
             获取标识符
             每获取一次自增1
@@ -2410,25 +2453,61 @@
             设置远程端关闭连接异常
             </summary>
         </member>
-        <member name="T:NetworkSocket.Fast.TaskSetAction">
+        <member name="T:NetworkSocket.Fast.ITaskSetAction">
+            <summary>
+            任务设置行为接口
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.ITaskSetAction.SetAction(NetworkSocket.Fast.SetTypes,System.Byte[])">
+            <summary>
+            设置行为
+            </summary>
+            <param name="setType">行为类型</param>
+            <param name="bytes">数据值</param>
+        </member>
+        <member name="P:NetworkSocket.Fast.ITaskSetAction.CreateTime">
+            <summary>
+            获取创建时间
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Fast.TaskSetAction`1">
             <summary>
             任务设置行为信息
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.TaskSetAction.#ctor(System.Action{NetworkSocket.Fast.SetTypes,System.Byte[]})">
+        <member name="F:NetworkSocket.Fast.TaskSetAction`1.serializer">
+            <summary>
+            序列化工具
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Fast.TaskSetAction`1.taskSource">
+            <summary>
+            任务源
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.TaskSetAction`1.#ctor(NetworkSocket.Fast.ISerializer,System.Threading.Tasks.TaskCompletionSource{`0})">
             <summary>
             任务设置行为
-            </summary>
-            <param name="setAction">设置行为</param>
+            </summary>       
+            <param name="serializer">序列化工具</param>
+            <param name="taskSource">任务源</param>
         </member>
-        <member name="P:NetworkSocket.Fast.TaskSetAction.InitTime">
+        <member name="M:NetworkSocket.Fast.TaskSetAction`1.SetAction(NetworkSocket.Fast.SetTypes,System.Byte[])">
             <summary>
-            获取初始化时系统时间
+            设置行为
             </summary>
+            <param name="setType">行为类型</param>
+            <param name="bytes">数据值</param>
         </member>
-        <member name="P:NetworkSocket.Fast.TaskSetAction.SetAction">
+        <member name="M:NetworkSocket.Fast.TaskSetAction`1.SetResult(System.Byte[])">
             <summary>
-            获取设置行为
+            设置结果
+            </summary>
+            <param name="bytes">数据</param>
+        </member>
+        <member name="P:NetworkSocket.Fast.TaskSetAction`1.CreateTime">
+            <summary>
+            获取创建时间
             </summary>
         </member>
         <member name="T:NetworkSocket.Fast.TaskSetActionTable">
@@ -2437,15 +2516,15 @@
             自带超时检测功能
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.TaskSetActionTable.table">
-            <summary>
-            任务行为字典
-            </summary>
-        </member>
         <member name="F:NetworkSocket.Fast.TaskSetActionTable.timeOut">
             <summary>
             超时时间
             </summary>       
+        </member>
+        <member name="F:NetworkSocket.Fast.TaskSetActionTable.table">
+            <summary>
+            任务行为字典
+            </summary>
         </member>
         <member name="M:NetworkSocket.Fast.TaskSetActionTable.#ctor">
             <summary>
@@ -2457,7 +2536,14 @@
             检测任务行为的超时
             </summary>       
         </member>
-        <member name="M:NetworkSocket.Fast.TaskSetActionTable.Add(System.Int64,NetworkSocket.Fast.TaskSetAction)">
+        <member name="M:NetworkSocket.Fast.TaskSetActionTable.ProcessIfTimeout(System.Int64)">
+            <summary>
+            如果超时了就处理超时并返回true
+            否则返回false
+            </summary>
+            <param name="key">值</param>
+        </member>
+        <member name="M:NetworkSocket.Fast.TaskSetActionTable.Add(System.Int64,NetworkSocket.Fast.ITaskSetAction)">
             <summary>
             添加回调信息记录       
             </summary>
@@ -2482,6 +2568,11 @@
         <member name="M:NetworkSocket.Fast.TaskSetActionTable.Clear">
             <summary>
             清除所有数据
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.TaskSetActionTable.Dispose">
+            <summary>
+            释放资源
             </summary>
         </member>
         <member name="P:NetworkSocket.Fast.TaskSetActionTable.TimeOut">
@@ -3161,8 +3252,15 @@
         </member>
         <member name="M:NetworkSocket.TcpSnapshot.Snapshot">
             <summary>
+            获取一次IPv4的Tcp端口快照信息
+            </summary>     
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.TcpSnapshot.Snapshot(System.Net.Sockets.AddressFamily)">
+            <summary>
             获取一次Tcp端口快照信息
             </summary>
+            <param name="ipVersion">ip版本</param>
             <returns></returns>
         </member>
         <member name="T:NetworkSocket.TcpSnapshot.PortOwnerPid">
@@ -3191,6 +3289,11 @@
         <member name="P:NetworkSocket.TcpSnapshot.PortOwnerPid.OwerPid">
             <summary>
             获取占用端口的进程id
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.TcpSnapshot.PortOwnerPid.OwerProcess">
+            <summary>
+             获取占用端口的进程信息
             </summary>
         </member>
         <member name="T:NetworkSocket.TcpSnapshot.MIB_TCPROW_OWNER_PID">
