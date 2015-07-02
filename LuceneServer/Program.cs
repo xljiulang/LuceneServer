@@ -17,7 +17,7 @@ namespace LuceneServer
             HostFactory.Run(c =>
             {
                 c.Service<LnServer>();
-                c.RunAsNetworkService();
+                c.RunAsLocalSystem();
                 c.SetServiceName("LuceneServer");
                 c.SetDisplayName("Lucene.net服务");
                 c.SetDescription("提供全文搜索功能服务");
