@@ -6,6 +6,7 @@ using NetworkSocket.Fast;
 using System.Configuration;
 using LuceneServer.Filters;
 using LuceneServer.Services;
+using Topshelf;
 
 namespace LuceneServer
 {
@@ -13,18 +14,14 @@ namespace LuceneServer
     {
         static void Main(string[] args)
         {
-            Console.Title = "LuceneServer";
-
-            var server = new LnServer();
-            server.GlobalFilter.Add(new ExceptionFilter());
-            server.BindService<LnService>().BindService<SystemService>();
-            server.StartListen(int.Parse(ConfigurationManager.AppSettings["Port"]));
-
-            Console.WriteLine("服务监听中：端口" + server.LocalEndPoint.Port);
-            while (true)
+            HostFactory.Run(c =>
             {
-                Console.ReadLine();
-            }
+                c.Service<LnServer>();
+                c.RunAsNetworkService();
+                c.SetServiceName("LuceneServer");
+                c.SetDisplayName("Lucene.net服务");
+                c.SetDescription("提供全文搜索功能服务");
+            });
         }
     }
 }
