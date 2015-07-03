@@ -506,6 +506,12 @@
             数据包协议异常
             </summary>
         </member>
+        <member name="M:NetworkSocket.Fast.ProtocolException.#ctor(System.String)">
+            <summary>
+            数据包协议异常
+            </summary>
+            <param name="message"></param>
+        </member>
         <member name="T:NetworkSocket.Fast.LoopWorker">
             <summary>
             由一个线程循环工作的对象
