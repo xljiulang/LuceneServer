@@ -6,6 +6,7 @@ using NetworkSocket;
 using NetworkSocket.Fast;
 using Lucene.Net.Search;
 using LuceneServer.Filters;
+using NetworkSocket.Core;
 
 namespace LuceneServer.Services
 {

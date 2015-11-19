@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NetworkSocket.Fast;
 using System.Configuration;
+using NetworkSocket.Core;
 
 namespace LuceneServer.Services
 {

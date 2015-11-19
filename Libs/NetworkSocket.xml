@@ -481,6 +481,221 @@
             <param name="endian">高低位</param>
             <returns></returns>
         </member>
+        <member name="T:NetworkSocket.Core.FilterAttribute">
+            <summary>
+            表示服务或Api行为过滤器基础特性
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Core.IFilter">
+            <summary>
+            滤过器接口
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.IFilter.Order">
+            <summary>
+            获取执行顺序
+            越小最优先
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.IFilter.AllowMultiple">
+            <summary>
+            获取是否允许多个实例存在
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.FilterAttribute.order">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.FilterAttribute.multiuseAttributeCache">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.FilterAttribute.#ctor">
+            <summary>
+            表示服务或Api行为过滤器基础特性
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.FilterAttribute.#ctor(System.Int32)">
+            <summary>
+            表示服务或Api行为过滤器基础特性
+            </summary>
+            <param name="order">执行顺序 越小最优先</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Core.FilterAttribute.IsAllowMultiple(System.Type)">
+            <summary>
+            获取特性是否允许多个实例
+            </summary>
+            <param name="attributeType">特性类型</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Core.FilterAttribute.Order">
+            <summary>
+            获取执行顺序
+            越小最优先
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="P:NetworkSocket.Core.FilterAttribute.AllowMultiple">
+            <summary>
+            获取是否允许多个实例存在
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Core.IDependencyResolverSupportable">
+            <summary>
+            定义支持依赖注入接口
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.IDependencyResolverSupportable.DependencyResolver">
+            <summary>
+            获取或设置依赖注入提供者
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Core.Internal.ApiActionList">
+            <summary>
+            表示Api行为列表
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.Internal.ApiActionList.dictionary">
+            <summary>
+            Api行为字典
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.#ctor">
+            <summary>
+            Api行为列表
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.#ctor(System.Collections.Generic.IEnumerable{NetworkSocket.Core.ApiAction})">
+            <summary>
+            Api行为列表
+            </summary>
+            <param name="apiActions">Api行为</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.Add(NetworkSocket.Core.ApiAction)">
+            <summary>
+            添加Api行为
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.AddRange(System.Collections.Generic.IEnumerable{NetworkSocket.Core.ApiAction})">
+            <summary>
+            添加Api行为
+            </summary>
+            <param name="apiActions">Api行为</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.CheckSelfParameterType(NetworkSocket.Core.ApiAction)">
+            <summary>
+            检测参数类型
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.TryGet(System.String)">
+            <summary>
+            获取Api行为
+            如果获取不到则返回null
+            </summary>
+            <param name="name">行为名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.ApiActionList.IsExist(System.String)">
+            <summary>
+            获取是否存在
+            </summary>
+            <param name="name">行为名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Core.Internal.LoopWorker">
+            <summary>
+            由一个线程循环工作的对象
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.Internal.LoopWorker.thread">
+            <summary>
+            工作线程
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.Internal.LoopWorker.syncRoot">
+            <summary>
+            同步对象
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.Internal.LoopWorker.workList">
+            <summary>
+            工作内容队列
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.LoopWorker.#cctor">
+            <summary>
+            表示构造器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.LoopWorker.LoopWork">
+            <summary>
+            循环工作
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.LoopWorker.WorkOnce">
+            <summary>
+            一轮工作
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.LoopWorker.AddWork(System.Action)">
+            <summary>
+            添加工作
+            </summary>
+            <param name="work">工作</param>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.LoopWorker.RemoveWork(System.Action)">
+            <summary>
+            删除工作
+            </summary>
+            <param name="work">工作</param>
+        </member>
+        <member name="P:NetworkSocket.Core.Internal.LoopWorker.Count">
+            <summary>
+            获取当前的工作数量
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Core.Internal.MethodReflection">
+            <summary>
+            方法反射调用
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.Internal.MethodReflection.CreateInvoker(System.Reflection.MethodInfo)">
+            <summary>
+            生成方法的委托
+            </summary>
+            <param name="method">方法成员信息</param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Fast.PacketIdProvider">
+            <summary>
+            数据包id提供者
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Fast.PacketIdProvider.id">
+            <summary>
+            基准值
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.PacketIdProvider.NewId">
+            <summary>
+            获取标识符
+            每获取一次自增1
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:NetworkSocket.Endians">
             <summary>
             表示字节存储次序枚举
@@ -494,6 +709,30 @@
         <member name="F:NetworkSocket.Endians.Little">
             <summary>
             低位在前
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Core.ApiAttribute">
+            <summary>
+            表示Api标记特性
+            提供给远程端来调用
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAttribute.#ctor">
+            <summary>
+            Api标记特性
+            提供给远程端来调用
+            </summary> 
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAttribute.#ctor(System.String)">
+            <summary>
+            Api标记特性
+            提供给远程端来调用
+            </summary>       
+            <param name="name">Api名称</param>       
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAttribute.Name">
+            <summary>
+            Api名称
             </summary>
         </member>
         <member name="T:NetworkSocket.Fast.ProtocolException">
@@ -512,57 +751,1535 @@
             </summary>
             <param name="message"></param>
         </member>
-        <member name="T:NetworkSocket.Fast.LoopWorker">
+        <member name="T:NetworkSocket.Fast.FilterAttributeProvider">
             <summary>
-            由一个线程循环工作的对象
+            Api行为特性过滤器提供者
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.LoopWorker.thread">
+        <member name="T:NetworkSocket.Fast.IFilterAttributeProvider">
             <summary>
-            工作线程
+            特性过滤器提供者
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.LoopWorker.syncRoot">
+        <member name="M:NetworkSocket.Fast.IFilterAttributeProvider.GetActionFilters(NetworkSocket.Core.ApiAction)">
             <summary>
-            同步对象
+            获取Api行为的过滤器
+            不包括全局过滤器
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.filterCached">
+            <summary>
+            服务方法过滤器缓存
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.LoopWorker.workList">
+        <member name="M:NetworkSocket.Fast.FilterAttributeProvider.#ctor">
             <summary>
-            工作内容队列
+            Api行为特性过滤器提供者
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.LoopWorker.#cctor">
+        <member name="M:NetworkSocket.Fast.FilterAttributeProvider.GetActionFilters(NetworkSocket.Core.ApiAction)">
             <summary>
-            表示构造器
+            获取Api行为的特性过滤器     
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Fast.FilterAttributeProvider.GetActionFiltersNoCached(NetworkSocket.Core.ApiAction)">
+            <summary>
+            获取Api行为的特性过滤器     
+            </summary>
+            <param name="action">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels">
+            <summary>
+            过滤器级别
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.LoopWorker.LoopWork">
+        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels.Authorization">
             <summary>
-            循环工作
+            权限级过滤
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.LoopWorker.WorkOnce">
+        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels.Class">
             <summary>
-            一轮工作
+            类级过滤
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.LoopWorker.AddWork(System.Action)">
+        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels.Method">
             <summary>
-            添加工作
+            方法级过滤
             </summary>
-            <param name="work">工作</param>
         </member>
-        <member name="M:NetworkSocket.Fast.LoopWorker.RemoveWork(System.Action)">
+        <member name="T:NetworkSocket.Fast.GlobalFilters">
             <summary>
-            删除工作
+            表示全局过滤器
             </summary>
-            <param name="work">工作</param>
         </member>
-        <member name="P:NetworkSocket.Fast.LoopWorker.Count">
+        <member name="M:NetworkSocket.Fast.GlobalFilters.#ctor">
             <summary>
-            获取当前的工作数量
+            全局过滤器
             </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.GlobalFilters.Remove``1">
+            <summary>
+            移除过滤器类型
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NetworkSocket.Fast.GlobalFilters.Add(NetworkSocket.Core.IFilter)">
+            <summary>
+            添加过滤器并按Order字段排序
+            </summary>
+            <param name="filter">过滤器</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Fast.GlobalFilters.ActionFilters">
+            <summary>
+            获取IAction过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.GlobalFilters.ExceptionFilters">
+            <summary>
+            获取IExceptionFilter过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Fast.GlobalFilters.AuthorizationFilters">
+            <summary>
+            获取IAuthorization过滤器
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Fast.IActionFilter">
+            <summary>
+            Api行为过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.IActionFilter.OnExecuting(NetworkSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Fast.IActionFilter.OnExecuted(NetworkSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>      
+        </member>
+        <member name="T:NetworkSocket.Fast.IAuthorizationFilter">
+            <summary>
+            权限过虑器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.IAuthorizationFilter.OnAuthorization(NetworkSocket.Fast.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Fast.IExceptionFilter">
+            <summary>
+            异常过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Fast.IExceptionFilter.OnException(NetworkSocket.Fast.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>
+        </member>
+        <member name="T:NetworkSocket.Http.FilterAttributeProvider">
+            <summary>
+            Api行为特性过滤器提供者
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.IFilterAttributeProvider">
+            <summary>
+            特性过滤器提供者
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.IFilterAttributeProvider.GetActionFilters(NetworkSocket.Http.HttpAction)">
+            <summary>
+            获取Api行为的过滤器
+            不包括全局过滤器
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.Http.FilterAttributeProvider.filterCached">
+            <summary>
+            服务方法过滤器缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.FilterAttributeProvider.#ctor">
+            <summary>
+            Api行为特性过滤器提供者
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.FilterAttributeProvider.GetActionFilters(NetworkSocket.Http.HttpAction)">
+            <summary>
+            获取Api行为的特性过滤器     
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.FilterAttributeProvider.GetActionFiltersNoCached(NetworkSocket.Http.HttpAction)">
+            <summary>
+            获取Api行为的特性过滤器     
+            </summary>
+            <param name="action">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Http.FilterAttributeProvider.FilterLevels">
+            <summary>
+            过滤器级别
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.FilterAttributeProvider.FilterLevels.Authorization">
+            <summary>
+            权限级过滤
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.FilterAttributeProvider.FilterLevels.Class">
+            <summary>
+            类级过滤
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.FilterAttributeProvider.FilterLevels.Method">
+            <summary>
+            方法级过滤
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.GlobalFilters">
+            <summary>
+            表示全局过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.GlobalFilters.#ctor">
+            <summary>
+            全局过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.GlobalFilters.Remove``1">
+            <summary>
+            移除过滤器类型
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NetworkSocket.Http.GlobalFilters.Add(NetworkSocket.Core.IFilter)">
+            <summary>
+            添加过滤器并按Order字段排序
+            </summary>
+            <param name="filter">过滤器</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.GlobalFilters.ActionFilters">
+            <summary>
+            获取IAction过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.GlobalFilters.ExceptionFilters">
+            <summary>
+            获取IExceptionFilter过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.GlobalFilters.AuthorizationFilters">
+            <summary>
+            获取IAuthorization过滤器
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.IActionFilter">
+            <summary>
+            Api行为过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.IActionFilter.OnExecuting(NetworkSocket.Http.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.IActionFilter.OnExecuted(NetworkSocket.Http.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>      
+        </member>
+        <member name="T:NetworkSocket.Http.IAuthorizationFilter">
+            <summary>
+            权限过虑器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.IAuthorizationFilter.OnAuthorization(NetworkSocket.Http.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Http.IExceptionFilter">
+            <summary>
+            异常过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.IExceptionFilter.OnException(NetworkSocket.Http.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpPostAttribute">
+            <summary>
+            表示只允许Post请求或优先Post请求到的http方法
+            不可继承
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.EmptyResult">
+            <summary>
+            表示空内容的结果
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ContentResult">
+            <summary>
+            表示text/html内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ActionResult">
+            <summary>
+            表示行为结果
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.ActionResult.ExecuteResult(NetworkSocket.Http.RequestContext)">
+            <summary>
+            执行结果
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.ContentResult.#ctor(System.String)">
+            <summary>
+            text/html内容
+            </summary>
+            <param name="content">内容</param>
+        </member>
+        <member name="M:NetworkSocket.Http.ContentResult.ExecuteResult(NetworkSocket.Http.RequestContext)">
+            <summary>
+            执行结果
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.EmptyResult.#ctor">
+            <summary>
+            空内容的结果
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ErrorResult">
+            <summary>
+            表示异常结果
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.ErrorResult.ExecuteResult(NetworkSocket.Http.RequestContext)">
+            <summary>
+            执行结果
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="P:NetworkSocket.Http.ErrorResult.Status">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.ErrorResult.Errors">
+            <summary>
+            错误内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.RouteAttribute">
+            <summary>
+            表示路由规则
+            不可继承
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.RouteAttribute.#ctor(System.String)">
+            <summary>
+            表示路由规则
+            以/开始
+            </summary>
+            <param name="route">路由规则</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:NetworkSocket.Http.RouteAttribute.Route">
+            <summary>
+            获取路由规则
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpAction">
+            <summary>
+            Http行为    
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Core.ApiAction">
+            <summary>
+            Api行为    
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.ApiAction.method">
+            <summary>
+            Api行为的方法成员信息
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.ApiAction.methodInvoker">
+            <summary>
+            Api行为的方法成员调用委托
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Core.ApiAction.parameters">
+            <summary>
+            参数值
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAction.#ctor(System.Reflection.MethodInfo)">
+            <summary>
+            Api行为
+            </summary>
+            <param name="method">方法信息</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAction.IsDefined(System.Type,System.Boolean)">
+            <summary>
+            获取Api行为或Api行为的声明类型是否声明了特性
+            </summary>
+            <param name="type">特性类型</param>
+            <param name="inherit">是否继承</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAction.GetMethodFilterAttributes">
+            <summary>
+            获取方法级过滤器特性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAction.GetClassFilterAttributes">
+            <summary>
+            获取类级过滤器特性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAction.Execute(System.Object,System.Object[])">
+            <summary>
+            执行Api行为
+            </summary>
+            <param name="service">服务实例</param>
+            <param name="parameters">参数实例</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Core.ApiAction.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.ApiName">
+            <summary>
+            获取Api行为的Api名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.IsVoidReturn">
+            <summary>
+            获取Api行为的方法成员返回类型是否为void
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.ReturnType">
+            <summary>
+            Api行为的方法成员返回类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.ParameterInfos">
+            <summary>
+            获取Api行为的参数信息
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.ParameterTypes">
+            <summary>
+            获取Api行为的方法成员参数类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.ParameterValues">
+            <summary>
+            获取Api行为的参数值
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Core.ApiAction.DeclaringService">
+            <summary>
+            获取声明该成员的服务类型
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpAction.#ctor(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Api行为
+            </summary>
+            <param name="method">方法信息</param>
+            <param name="declaringType">声明的类型</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpAction.GetRoute(System.Type)">
+            <summary>
+            获取路由地址
+            </summary>
+            <param name="declaringType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpAction.GetAllowMethod(System.Reflection.MethodInfo)">
+            <summary>
+            获取支持的http请求方式
+            </summary>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpAction.GetHashCode">
+            <summary>
+            获取哈希码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpAction.Equals(System.Object)">
+            <summary>
+            比较是否相等
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpAction.Route">
+            <summary>
+            获取路由规则
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpAction.AllowMethod">
+            <summary>
+            获取是允许的请求方式
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ActionContext">
+            <summary>
+            Api行为上下文
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.RequestContext">
+            <summary>
+            请求上下文
+            </summary>   
+        </member>
+        <member name="M:NetworkSocket.Http.RequestContext.#ctor(NetworkSocket.Http.HttpRequest,NetworkSocket.Http.HttpResponse)">
+            <summary>
+            请求上下文
+            </summary>
+            <param name="request">请求上下文对象</param>
+            <param name="response">回复上下文对象</param>        
+        </member>
+        <member name="P:NetworkSocket.Http.RequestContext.Request">
+            <summary>
+            获取请求上下文对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.RequestContext.Response">
+            <summary>
+            获取回复上下文对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.RequestContext.Result">
+            <summary>
+            获取或设置结果
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.ActionContext.#ctor(NetworkSocket.Http.RequestContext,NetworkSocket.Http.HttpAction)">
+            <summary>
+            Api行为上下文
+            </summary>
+            <param name="context">请求上下文</param>
+            <param name="action">Api行为</param>
+        </member>
+        <member name="M:NetworkSocket.Http.ActionContext.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.ActionContext.Action">
+            <summary>
+            获取http行为对象
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ExceptionContext">
+            <summary>
+            异常上下文
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.ExceptionContext.#ctor(NetworkSocket.Http.ActionContext,System.Exception)">
+            <summary>
+            异常上下文
+            </summary>
+            <param name="context">请求上下文</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:NetworkSocket.Http.ExceptionContext.#ctor(NetworkSocket.Http.RequestContext,System.Exception)">
+            <summary>
+            异常上下文
+            </summary>
+            <param name="context">请求上下文</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:NetworkSocket.Http.ExceptionContext.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.ExceptionContext.Exception">
+            <summary>
+            获取异常对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.ExceptionContext.ExceptionHandled">
+            <summary>
+            获取或设置异常是否已处理
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ApiExecuteException">
+            <summary>
+            表示Api执行异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.ApiExecuteException.#ctor(NetworkSocket.Http.ActionContext,System.Exception)">
+            <summary>
+            Api执行异常
+            </summary>
+            <param name="actionContext">Api行为上下文</param>
+            <param name="innerException">内部异常</param>
+        </member>
+        <member name="M:NetworkSocket.Http.ApiExecuteException.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.ApiExecuteException.ActionContext">
+            <summary>
+            获取Api行为上下文
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.ApiNotExistException">
+            <summary>
+            表示Api不存在引发的异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.ApiNotExistException.#ctor(System.String)">
+            <summary>
+            Api不存在引发的异常
+            </summary>
+            <param name="name">Api名称</param>
+        </member>
+        <member name="P:NetworkSocket.Http.ApiNotExistException.Name">
+            <summary>
+            获取Api名称
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpController">
+            <summary>
+            表示Http控制器
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.IHttpController">
+            <summary>
+            定义Http控制的执行
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.IHttpController.Execute(NetworkSocket.Http.ActionContext)">
+            <summary>
+            执行Api行为
+            </summary>              
+            <param name="actionContext">Api行为上下文</param>      
+        </member>
+        <member name="F:NetworkSocket.Http.HttpController.currentContext">
+            <summary>
+            线程唯一上下文
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.NetworkSocket#Http#IHttpController#Execute(NetworkSocket.Http.ActionContext)">
+            <summary>
+            执行Api行为
+            </summary>   
+            <param name="actionContext">上下文</param>      
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.ProcessExecutingException(NetworkSocket.Http.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},System.Exception)">
+            <summary>
+            处理Api行为执行过程中产生的异常
+            </summary>
+            <param name="actionContext">上下文</param>
+            <param name="actionfilters">过滤器</param>
+            <param name="exception">异常项</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.ExecuteAction(NetworkSocket.Http.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter})">
+            <summary>
+            调用自身实现的Api行为
+            将返回值发送给客户端        
+            </summary>       
+            <param name="actionContext">上下文</param>       
+            <param name="filters">过滤器</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.Content(System.String)">
+            <summary>
+            生成Content结果
+            </summary>
+            <param name="content">内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.Json(System.Object)">
+            <summary>
+            生成json结果
+            </summary>
+            <param name="data">内容</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.OnAuthorization(NetworkSocket.Http.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.OnExecuting(NetworkSocket.Http.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.OnExecuted(NetworkSocket.Http.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>      
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.OnException(NetworkSocket.Http.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.ExecFiltersBeforeAction(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.Http.ActionContext)">
+            <summary>
+            在Api行为前 执行过滤器
+            </summary>       
+            <param name="actionFilters">Api行为过滤器</param>
+            <param name="actionContext">上下文</param>   
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.ExecFiltersAfterAction(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.Http.ActionContext)">
+            <summary>
+            在Api行为后执行过滤器
+            </summary>       
+            <param name="actionFilters">Api行为过滤器</param>
+            <param name="actionContext">上下文</param>       
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.ExecExceptionFilters(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.Http.ExceptionContext)">
+            <summary>
+            执行异常过滤器
+            </summary>       
+            <param name="actionFilters">Api行为过滤器</param>
+            <param name="exceptionContext">上下文</param>       
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.NetworkSocket#Http#IAuthorizationFilter#OnAuthorization(NetworkSocket.Http.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.NetworkSocket#Http#IActionFilter#OnExecuting(NetworkSocket.Http.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.NetworkSocket#Http#IActionFilter#OnExecuted(NetworkSocket.Http.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>   
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.NetworkSocket#Http#IExceptionFilter#OnException(NetworkSocket.Http.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>  
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.Dispose">
+            <summary>
+            关闭和释放所有相关资源
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.Finalize">
+            <summary>
+            析构函数
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.Dispose(System.Boolean)">
+            <summary>
+            释放资源
+            </summary>
+            <param name="disposing">是否也释放托管资源</param>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.CurrentContext">
+            <summary>
+            获取当前Api行为上下文
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.Request">
+            <summary>
+            获取请求上下文对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.Response">
+            <summary>
+            获取回复上下文对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.Server">
+            <summary>
+            获取http服务实例
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.NetworkSocket#Core#IFilter#Order">
+            <summary>
+            获取或设置排序
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.NetworkSocket#Core#IFilter#AllowMultiple">
+            <summary>
+            是否允许多个实例
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpController.IsDisposed">
+            <summary>
+            获取对象是否已释放
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpHeader">
+            <summary>
+            http头
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpNameValueCollection">
+            <summary>
+            表示可通过键或索引访问的集合
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpNameValueCollection.parameters">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpNameValueCollection.#ctor">
+            <summary>
+            表示可通过键或索引访问的集合
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpNameValueCollection.#ctor(System.String)">
+            <summary>
+            表示可通过键或索引访问的集合
+            </summary>
+            <param name="parameters">参数</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpNameValueCollection.AddAsKeyValue(System.String)">
+            <summary>
+            填充集合
+            </summary>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpNameValueCollection.ToString">
+            <summary>
+            转换为字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpNameValueCollection.HttpNameValueCollectionView">
+            <summary>
+            调试视图
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpNameValueCollection.HttpNameValueCollectionView.view">
+            <summary>
+            查看的对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpNameValueCollection.HttpNameValueCollectionView.#ctor(NetworkSocket.Http.HttpNameValueCollection)">
+            <summary>
+            调试视图
+            </summary>
+            <param name="view">查看的对象</param>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpNameValueCollection.HttpNameValueCollectionView.Values">
+            <summary>
+            查看的内容
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpHeader.#ctor(System.Text.RegularExpressions.CaptureCollection,System.Text.RegularExpressions.CaptureCollection)">
+            <summary>
+            http头
+            </summary>       
+        </member>
+        <member name="M:NetworkSocket.Http.HttpHeader.TryGet``1(System.String)">
+            <summary>
+            获取指定键的值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpHeader.TryGet``1(System.String,``0)">
+            <summary>
+            获取指定键的值
+            失败则返回defaultValue
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpHeader.ContentLength">
+            <summary>
+            获取内容长度
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpHeader.UserAgent">
+            <summary>
+            获取用户代理字符串
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpServer">
+            <summary>
+            表示Http服务
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpServerBase">
+            <summary>
+            Http监听服务
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.TcpServerBase`1">
+            <summary>
+            Tcp服务端抽象类
+            提供对客户端池的初始化、自动回收重用、在线客户端列表维护功能
+            提供客户端连接、断开通知功能
+            所有Tcp服务端都派生于此类
+            </summary>
+            <typeparam name="T">会话类型</typeparam>   
+        </member>
+        <member name="T:NetworkSocket.ITcpServer`1">
+            <summary>
+            Tcp服务接口
+            </summary>    
+            <typeparam name="T">会话类型</typeparam>
+        </member>
+        <member name="M:NetworkSocket.ITcpServer`1.StartListen(System.Int32)">
+            <summary>
+            开始启动监听       
+            </summary>
+            <param name="port">端口</param>
+        </member>
+        <member name="M:NetworkSocket.ITcpServer`1.StartListen(System.Net.IPEndPoint)">
+            <summary>
+            开始启动监听
+            </summary>
+            <param name="localEndPoint">要监听的本地IP和端口</param>
+        </member>
+        <member name="P:NetworkSocket.ITcpServer`1.AllSessions">
+            <summary>
+            获取当前所有会话对象   
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.TcpServerBase`1.totalSessionCount">
+            <summary>
+            所有会话的数量
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.TcpServerBase`1.acceptFailureTimes">
+            <summary>
+            接受会话失败的次数
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.TcpServerBase`1.listenSocket">
+            <summary>
+            服务socket
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.TcpServerBase`1.acceptArg">
+            <summary>
+            请求参数
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.TcpServerBase`1.freeSessionQueue">
+            <summary>
+            空闲客户端池
+            </summary>        
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.#ctor">
+            <summary>
+            Tcp服务端抽象类
+            </summary> 
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.StartListen(System.Int32)">
+            <summary>
+            开始启动监听
+            如果IsListening为true，将不产生任何作用
+            </summary>
+            <param name="port">端口</param>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.StartListen(System.Net.IPEndPoint)">
+            <summary>
+            开始启动监听
+            如果IsListening为true，将不产生任何作用
+            </summary>
+            <param name="localEndPoint">要监听的本地IP和端口</param>    
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.AcceptSession(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            开始一次接受连接请求操作
+            </summary>
+            <param name="arg">连接参数</param>     
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.AcceptArgCompleted(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            连接请求IO完成
+            </summary>
+            <param name="arg">连接参数</param>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.TakeOrCreateSession">
+            <summary>
+            从空闲池中取出或创建Session会话对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.InitSession(`0,System.Net.Sockets.Socket)">
+            <summary>
+            初始化Session会话
+            </summary>
+            <param name="session">会话</param>
+            <param name="socket">要绑定的socket</param>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.RecyceSession(`0)">
+            <summary>
+            回收复用会话对象
+            关闭会话并通知连接断开
+            </summary>
+            <param name="session">会话对象</param>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.OnCreateSession">
+            <summary>
+            创建新的会话对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.OnException(System.Object,System.Exception)">
+            <summary>
+            创建会话或解析请求数据产生异常触发
+            </summary>
+            <param name="sender">异常产生者</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.OnReceive(`0,NetworkSocket.ReceiveBuffer)">
+            <summary>
+            当接收到会话对象的数据时，将触发此方法             
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="buffer">接收到的历史数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.OnDisconnect(`0)">
+            <summary>
+            当会话断开连接时，将触发此方法
+            </summary>
+            <param name="session">会话对象</param>     
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.OnConnect(`0)">
+            <summary>
+            当会话连接时，将触发此方法
+            </summary>
+            <param name="session">会话对象</param>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.Dispose">
+            <summary>
+            关闭和释放所有相关资源
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.Finalize">
+            <summary>
+            析构函数
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.TcpServerBase`1.Dispose(System.Boolean)">
+            <summary>
+            释放资源
+            </summary>
+            <param name="disposing">是否也释放托管资源</param>
+        </member>
+        <member name="P:NetworkSocket.TcpServerBase`1.AllSessions">
+            <summary>
+            获取当前所有会话对象   
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.TcpServerBase`1.LocalEndPoint">
+            <summary>
+            获取所监听的本地IP和端口
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.TcpServerBase`1.IsListening">
+            <summary>
+            获取服务是否已处在监听中
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.TcpServerBase`1.ExtraState">
+            <summary>
+            获取额外信息
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.TcpServerBase`1.IsDisposed">
+            <summary>
+            获取对象是否已释放
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServerBase.OnCreateSession">
+            <summary>
+            创建新会话
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServerBase.OnReceive(NetworkSocket.SessionBase,NetworkSocket.ReceiveBuffer)">
+            <summary>
+            收到tcp请求
+            </summary>
+            <param name="session">会话</param>
+            <param name="buffer">数据</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServerBase.OnHttpRequest(NetworkSocket.Http.HttpRequest,NetworkSocket.Http.HttpResponse)">
+            <summary>
+            收到Http请求
+            </summary>       
+            <param name="request">请求对象</param>
+            <param name="response">回复对象</param>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpServer.httpActionList">
+            <summary>
+            所有Http行为
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.#ctor">
+            <summary>
+            Http服务
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.RegisterControllers(System.Reflection.Assembly)">
+            <summary>
+            注册所有控制器         
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.GetControllerHttpActions(System.Type)">
+            <summary>
+            获取服务类型的Api行为
+            </summary>
+            <param name="controller">服务类型</param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.OnHttpRequest(NetworkSocket.Http.HttpRequest,NetworkSocket.Http.HttpResponse)">
+            <summary>
+            收到Http请求
+            </summary>       
+            <param name="request">请求对象</param>
+            <param name="response">回复对象</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.ProcessRequest(NetworkSocket.Http.RequestContext)">
+            <summary>
+            处理http请求
+            </summary>
+            <param name="requestContext">请求上下文</param>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpServer.ModelBinder">
+            <summary>
+            获取模型生成器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpServer.GlobalFilter">
+            <summary>
+            获取全局过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpServer.FilterAttributeProvider">
+            <summary>
+            获取或设置特性过滤器提供者
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpServer.DependencyResolver">
+            <summary>
+            获取或设置依赖关系解析提供者
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpMethod">
+            <summary>
+            请求方式
+            目前只支持Get和Post两种
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpMethod.GET">
+            <summary>
+            Get
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpMethod.POST">
+            <summary>
+            Post
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpRequest">
+            <summary>
+            表示Http请求信息
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.#ctor">
+            <summary>
+            Http请求信息
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.GetValues(System.String)">
+            <summary>
+            从Query和Form获取请求参数的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.IsWebsocketRequest">
+            <summary>
+            获取是否为Websocket请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.IsAjaxRequest">
+            <summary>
+            是否为ajax请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.StringEquals(System.String,System.String)">
+            <summary>
+            获取是否相等
+            不区分大小写
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.Parse(NetworkSocket.ReceiveBuffer,System.Net.IPEndPoint,System.Net.IPEndPoint)">
+            <summary>
+            解析连接请求信息
+            如果数据未完整则返回null
+            </summary>
+            <param name="buffer">接收到的原始数量</param>
+            <param name="localEndpoint">服务器的本地终结点</param>
+            <param name="remoteEndpoint">远程端的IP和端口</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.Parse(System.Byte[],System.Net.IPEndPoint,System.Net.IPEndPoint)">
+            <summary>
+            解析连接请求信息
+            </summary>
+            <param name="bytes">原始数量</param>
+            <param name="localEndpoint">服务器终结点</param>
+            <param name="remoteEndpoint">远程端的IP和端口</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.GetHttpMethod(System.String)">
+            <summary>
+            获取http方法
+            </summary>
+            <param name="method">方法字符串</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Headers">
+            <summary>
+            获取Form
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Query">
+            <summary>
+            获取Query
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Form">
+            <summary>
+            获取请求的头信息
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.InputStrem">
+            <summary>
+            获取请求的流
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.HttpMethod">
+            <summary>
+            获取请求方法
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Path">
+            <summary>
+            获取请求路径
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Url">
+            <summary>
+            获取请求的Uri
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.LocalEndPoint">
+            <summary>
+            获取监听的本地IP和端口
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.RemoteEndPoint">
+            <summary>
+            获取远程端的IP和端口
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Item(System.String)">
+            <summary>
+            从Query和Form获取请求参数的值
+            多个值会以逗号分隔
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpResponse">
+            <summary>
+            Http回复
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.#ctor(NetworkSocket.SessionBase)">
+            <summary>
+            表示http回复
+            </summary>
+            <param name="session">会话</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.Write(System.String)">
+            <summary>
+            输出文本内容
+            </summary>      
+            <param name="content">内容</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.TrySend(System.Byte[])">
+            <summary>
+            尝试发送数据到客户端
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.Session">
+            <summary>
+            获取会话对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.Status">
+            <summary>
+            获取或设置Http状态
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.Charset">
+            <summary>
+            获取或设置编码
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.ContentType">
+            <summary>
+            获取或设置内容类型
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpActionList">
+            <summary>
+            表示Api行为列表
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpActionList.HttpMethod_ALL">
+            <summary>
+            全部http方法
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpActionList.dictionary">
+            <summary>
+            Api行为字典
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpActionList.Add(NetworkSocket.Http.HttpAction)">
+            <summary>
+            添加Api行为
+            </summary>
+            <param name="httpAction">Api行为</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpActionList.AddRange(System.Collections.Generic.IEnumerable{NetworkSocket.Http.HttpAction})">
+            <summary>
+            添加Api行为
+            </summary>
+            <param name="apiActions">Api行为</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpActionList.TryGet(NetworkSocket.Http.HttpRequest)">
+            <summary>
+            获取http行为
+            如果获取不到则返回null
+            </summary>
+            <param name="request">请求上下文</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Http.DefaultModelBinder">
+            <summary>
+            默认的模型生成器
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.IModelBinder">
+            <summary>
+            模型生成器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.IModelBinder.BindModel(NetworkSocket.Http.HttpRequest,System.Reflection.ParameterInfo)">
+            <summary>
+            生成模型
+            </summary>
+            <param name="request">请求数据</param>
+            <param name="parameter">参数</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.DefaultModelBinder.BindModel(NetworkSocket.Http.HttpRequest,System.Reflection.ParameterInfo)">
+            <summary>
+            生成模型
+            </summary>
+            <param name="request">请求数据</param>
+            <param name="parameter">参数</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.DefaultModelBinder.ConvertToClass(NetworkSocket.Http.HttpRequest,System.Reflection.ParameterInfo)">
+            <summary>
+            转换为类
+            </summary>
+            <param name="parameter">参数</param>
+            <param name="request">请求数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.DefaultModelBinder.ConvertToArray(System.Type,System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            转换为数组
+            </summary>
+            <param name="type">数组类型</param>
+            <param name="name">名称</param>
+            <param name="values">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.DefaultModelBinder.ConvertToSimple(System.Type,System.String,System.String,System.Object)">
+            <summary>
+            转换为简单类型
+            </summary>       
+            <param name="type">目标类型</param>
+            <param name="name">名称</param>
+            <param name="value">值</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Http.PropertySetter">
+            <summary>
+            表示属性的Setter
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.PropertySetter.methodInvoker">
+            <summary>
+            Api行为的方法成员调用委托
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.PropertySetter.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            属性的Setter
+            </summary>       
+            <param name="property">属性</param>        
+        </member>
+        <member name="M:NetworkSocket.Http.PropertySetter.SetValue(System.Object,System.Object)">
+            <summary>
+            设置属性的值
+            </summary>
+            <param name="instance">实例</param>
+            <param name="value">属性的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.PropertySetter.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.Http.PropertySetter.cached">
+            <summary>
+            类型属性的Setter缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.PropertySetter.FromPropertiesOf(System.Type)">
+            <summary>
+            从类型的属性获取Setter
+            </summary>
+            <param name="type">类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.PropertySetter.IsSimpleType(System.Type)">
+            <summary>
+            类型是否为所支持的简单类型
+            </summary>
+            <param name="type">类型</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.PropertySetter.Name">
+            <summary>
+            获取属性的名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.PropertySetter.Type">
+            <summary>
+            获取属性的类型
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.JsonResult">
+            <summary>
+            表示application/json内容
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.JsonResult.#ctor(System.Object)">
+            <summary>
+            application/json内容
+            </summary>
+            <param name="data">内容</param>
+        </member>
+        <member name="M:NetworkSocket.Http.JsonResult.ExecuteResult(NetworkSocket.Http.RequestContext)">
+            <summary>
+            执行结果
+            </summary>
+            <param name="context">上下文</param>
         </member>
         <member name="T:NetworkSocket.SessionAcceptExcetion">
             <summary>
@@ -585,134 +2302,6 @@
             创建会话异常
             </summary>
             <param name="innerException">内部异常</param>
-        </member>
-        <member name="T:NetworkSocket.Fast.ApiAction">
-            <summary>
-            Api行为    
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.ApiAction.method">
-            <summary>
-            Api行为的方法成员信息
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.ApiAction.methodInvoker">
-            <summary>
-            Api行为的方法成员调用委托
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.ApiAction.parameters">
-            <summary>
-            参数值
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.#ctor(System.Reflection.MethodInfo)">
-            <summary>
-            Api行为
-            </summary>
-            <param name="method">方法信息</param>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.CreateMethodInvoker(System.Reflection.MethodInfo)">
-            <summary>
-            生成方法的委托
-            </summary>
-            <param name="method">方法成员信息</param>
-            <exception cref="T:System.ArgumentException"></exception>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.IsDefined(System.Type,System.Boolean)">
-            <summary>
-            获取Api行为或Api行为的声明类型是否声明了特性
-            </summary>
-            <param name="type">特性类型</param>
-            <param name="inherit">是否继承</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.GetMethodFilterAttributes">
-            <summary>
-            获取方法级过滤器特性
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.GetClassFilterAttributes">
-            <summary>
-            获取类级过滤器特性
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.Execute(System.Object,System.Object[])">
-            <summary>
-            执行Api行为
-            </summary>
-            <param name="service">服务实例</param>
-            <param name="parameters">参数实例</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAction.ToString">
-            <summary>
-            字符串显示
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.ApiName">
-            <summary>
-            获取Api行为的Api名称
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.IsVoidReturn">
-            <summary>
-            获取Api行为的方法成员返回类型是否为void
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.ReturnType">
-            <summary>
-            Api行为的方法成员返回类型
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.ParameterInfos">
-            <summary>
-            获取Api行为的参数信息
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.ParameterTypes">
-            <summary>
-            获取Api行为的方法成员参数类型
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.ParameterValues">
-            <summary>
-            获取Api行为的参数值
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAction.DeclaringService">
-            <summary>
-            获取声明该成员的服务类型
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.ApiAttribute">
-            <summary>
-            表示Api标记特性
-            提供给远程端来调用
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAttribute.#ctor">
-            <summary>
-            Api标记特性
-            提供给远程端来调用
-            </summary> 
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiAttribute.#ctor(System.String)">
-            <summary>
-            Api标记特性
-            提供给远程端来调用
-            </summary>       
-            <param name="name">Api名称</param>       
-        </member>
-        <member name="P:NetworkSocket.Fast.ApiAttribute.Name">
-            <summary>
-            Api名称
-            </summary>
         </member>
         <member name="T:NetworkSocket.Fast.ActionContext">
             <summary>
@@ -753,7 +2342,7 @@
             获取所有会话对象
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.ActionContext.#ctor(NetworkSocket.Fast.RequestContext,NetworkSocket.Fast.ApiAction)">
+        <member name="M:NetworkSocket.Fast.ActionContext.#ctor(NetworkSocket.Fast.RequestContext,NetworkSocket.Core.ApiAction)">
             <summary>
             Api行为上下文
             </summary>
@@ -896,63 +2485,6 @@
             </summary>              
             <param name="actionContext">Api行为上下文</param>      
         </member>
-        <member name="T:NetworkSocket.Fast.IAuthorizationFilter">
-            <summary>
-            权限过虑器
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.IFilter">
-            <summary>
-            滤过器接口
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.IFilter.Order">
-            <summary>
-            获取执行顺序
-            越小最优先
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.IFilter.AllowMultiple">
-            <summary>
-            获取是否允许多个实例存在
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.IAuthorizationFilter.OnAuthorization(NetworkSocket.Fast.ActionContext)">
-            <summary>
-            授权时触发       
-            </summary>
-            <param name="filterContext">上下文</param>       
-            <returns></returns>
-        </member>
-        <member name="T:NetworkSocket.Fast.IActionFilter">
-            <summary>
-            Api行为过滤器
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.IActionFilter.OnExecuting(NetworkSocket.Fast.ActionContext)">
-            <summary>
-            在执行Api行为前触发       
-            </summary>
-            <param name="filterContext">上下文</param>       
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.IActionFilter.OnExecuted(NetworkSocket.Fast.ActionContext)">
-            <summary>
-            在执行Api行为后触发
-            </summary>
-            <param name="filterContext">上下文</param>      
-        </member>
-        <member name="T:NetworkSocket.Fast.IExceptionFilter">
-            <summary>
-            异常过滤器
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.IExceptionFilter.OnException(NetworkSocket.Fast.ExceptionContext)">
-            <summary>
-            异常触发
-            </summary>
-            <param name="filterContext">上下文</param>
-        </member>
         <member name="F:NetworkSocket.Fast.FastApiService.currentContext">
             <summary>
             线程唯一上下文
@@ -964,7 +2496,7 @@
             </summary>   
             <param name="actionContext">上下文</param>      
         </member>
-        <member name="M:NetworkSocket.Fast.FastApiService.ProcessExecutingException(NetworkSocket.Fast.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Fast.IFilter},System.Exception)">
+        <member name="M:NetworkSocket.Fast.FastApiService.ProcessExecutingException(NetworkSocket.Fast.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},System.Exception)">
             <summary>
             处理Api行为执行过程中产生的异常
             </summary>
@@ -972,7 +2504,7 @@
             <param name="actionfilters">过滤器</param>
             <param name="exception">异常项</param>
         </member>
-        <member name="M:NetworkSocket.Fast.FastApiService.ExecuteAction(NetworkSocket.Fast.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Fast.IFilter})">
+        <member name="M:NetworkSocket.Fast.FastApiService.ExecuteAction(NetworkSocket.Fast.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter})">
             <summary>
             调用自身实现的Api行为
             将返回值发送给客户端        
@@ -1006,21 +2538,21 @@
             </summary>
             <param name="filterContext">上下文</param>
         </member>
-        <member name="M:NetworkSocket.Fast.FastApiService.ExecFiltersBeforeAction(System.Collections.Generic.IEnumerable{NetworkSocket.Fast.IFilter},NetworkSocket.Fast.ActionContext)">
+        <member name="M:NetworkSocket.Fast.FastApiService.ExecFiltersBeforeAction(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.Fast.ActionContext)">
             <summary>
             在Api行为前 执行过滤器
             </summary>       
             <param name="actionFilters">Api行为过滤器</param>
             <param name="actionContext">上下文</param>   
         </member>
-        <member name="M:NetworkSocket.Fast.FastApiService.ExecFiltersAfterAction(System.Collections.Generic.IEnumerable{NetworkSocket.Fast.IFilter},NetworkSocket.Fast.ActionContext)">
+        <member name="M:NetworkSocket.Fast.FastApiService.ExecFiltersAfterAction(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.Fast.ActionContext)">
             <summary>
             在Api行为后执行过滤器
             </summary>       
             <param name="actionFilters">Api行为过滤器</param>
             <param name="actionContext">上下文</param>       
         </member>
-        <member name="M:NetworkSocket.Fast.FastApiService.ExecExceptionFilters(System.Collections.Generic.IEnumerable{NetworkSocket.Fast.IFilter},NetworkSocket.Fast.ExceptionContext)">
+        <member name="M:NetworkSocket.Fast.FastApiService.ExecExceptionFilters(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.Fast.ExceptionContext)">
             <summary>
             执行异常过滤器
             </summary>       
@@ -1079,12 +2611,12 @@
             获取关联的服务器实例
             </summary>
         </member>
-        <member name="P:NetworkSocket.Fast.FastApiService.NetworkSocket#Fast#IFilter#Order">
+        <member name="P:NetworkSocket.Fast.FastApiService.NetworkSocket#Core#IFilter#Order">
             <summary>
             获取或设置排序
             </summary>
         </member>
-        <member name="P:NetworkSocket.Fast.FastApiService.NetworkSocket#Fast#IFilter#AllowMultiple">
+        <member name="P:NetworkSocket.Fast.FastApiService.NetworkSocket#Core#IFilter#AllowMultiple">
             <summary>
             是否允许多个实例
             </summary>
@@ -1267,9 +2799,22 @@
             <param name="arg">关联的SocketAsyncEventArgs</param>
         </member>
         <member name="M:NetworkSocket.SessionBase.Close">
+            <summary>     
+            等待缓冲区数据发送完成
+            然后断开和远程端的连接   
+            </summary>     
+        </member>
+        <member name="M:NetworkSocket.SessionBase.Close(System.Boolean)">
             <summary>
-            断开和远程端的连接             
+            断开和远程端的连接           
             </summary>
+            <param name="waitForSendComplete">是否等待缓冲区数据发送完成再关闭</param>       
+        </member>
+        <member name="M:NetworkSocket.SessionBase.CloseInternal(System.Boolean)">
+            <summary>
+            主动断开和远程端的连接  
+            </summary>
+            <param name="waitForSendComplete">是否等待数据发送完成</param>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.SessionBase.ToString">
@@ -1712,190 +3257,6 @@
             快速构建Tcp服务端
             </summary>
         </member>
-        <member name="T:NetworkSocket.TcpServerBase`1">
-            <summary>
-            Tcp服务端抽象类
-            提供对客户端池的初始化、自动回收重用、在线客户端列表维护功能
-            提供客户端连接、断开通知功能
-            所有Tcp服务端都派生于此类
-            </summary>
-            <typeparam name="T">会话类型</typeparam>   
-        </member>
-        <member name="T:NetworkSocket.ITcpServer`1">
-            <summary>
-            Tcp服务接口
-            </summary>    
-            <typeparam name="T">会话类型</typeparam>
-        </member>
-        <member name="M:NetworkSocket.ITcpServer`1.StartListen(System.Int32)">
-            <summary>
-            开始启动监听       
-            </summary>
-            <param name="port">端口</param>
-        </member>
-        <member name="M:NetworkSocket.ITcpServer`1.StartListen(System.Net.IPEndPoint)">
-            <summary>
-            开始启动监听
-            </summary>
-            <param name="localEndPoint">要监听的本地IP和端口</param>
-        </member>
-        <member name="P:NetworkSocket.ITcpServer`1.AllSessions">
-            <summary>
-            获取当前所有会话对象   
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.TcpServerBase`1.totalSessionCount">
-            <summary>
-            所有会话的数量
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.TcpServerBase`1.acceptFailureTimes">
-            <summary>
-            接受会话失败的次数
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.TcpServerBase`1.listenSocket">
-            <summary>
-            服务socket
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.TcpServerBase`1.acceptArg">
-            <summary>
-            请求参数
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.TcpServerBase`1.freeSessionStack">
-            <summary>
-            空闲客户端池
-            </summary>        
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.#ctor">
-            <summary>
-            Tcp服务端抽象类
-            </summary> 
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.StartListen(System.Int32)">
-            <summary>
-            开始启动监听
-            如果IsListening为true，将不产生任何作用
-            </summary>
-            <param name="port">端口</param>
-            <exception cref="T:System.Net.Sockets.SocketException"></exception>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.StartListen(System.Net.IPEndPoint)">
-            <summary>
-            开始启动监听
-            如果IsListening为true，将不产生任何作用
-            </summary>
-            <param name="localEndPoint">要监听的本地IP和端口</param>    
-            <exception cref="T:System.Net.Sockets.SocketException"></exception>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.AcceptSession(System.Net.Sockets.SocketAsyncEventArgs)">
-            <summary>
-            开始一次接受连接请求操作
-            </summary>
-            <param name="arg">连接参数</param>     
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.AcceptArgCompleted(System.Net.Sockets.SocketAsyncEventArgs)">
-            <summary>
-            连接请求IO完成
-            </summary>
-            <param name="arg">连接参数</param>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.TakeOrCreateSession">
-            <summary>
-            从空闲池中取出或创建Session会话对象
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.InitSession(`0,System.Net.Sockets.Socket)">
-            <summary>
-            初始化Session会话
-            </summary>
-            <param name="session">会话</param>
-            <param name="socket">要绑定的socket</param>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.RecyceSession(`0)">
-            <summary>
-            回收复用会话对象
-            关闭会话并通知连接断开
-            </summary>
-            <param name="session">会话对象</param>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnCreateSession">
-            <summary>
-            创建新的会话对象
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnException(System.Object,System.Exception)">
-            <summary>
-            创建会话或解析请求数据产生异常触发
-            </summary>
-            <param name="sender">异常产生者</param>
-            <param name="exception">异常</param>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnReceive(`0,NetworkSocket.ReceiveBuffer)">
-            <summary>
-            当接收到会话对象的数据时，将触发此方法             
-            </summary>
-            <param name="session">会话对象</param>
-            <param name="buffer">接收到的历史数据</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnDisconnect(`0)">
-            <summary>
-            当会话断开连接时，将触发此方法
-            </summary>
-            <param name="session">会话对象</param>     
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnConnect(`0)">
-            <summary>
-            当会话连接时，将触发此方法
-            </summary>
-            <param name="session">会话对象</param>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.Dispose">
-            <summary>
-            关闭和释放所有相关资源
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.Finalize">
-            <summary>
-            析构函数
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.Dispose(System.Boolean)">
-            <summary>
-            释放资源
-            </summary>
-            <param name="disposing">是否也释放托管资源</param>
-        </member>
-        <member name="P:NetworkSocket.TcpServerBase`1.AllSessions">
-            <summary>
-            获取当前所有会话对象   
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.TcpServerBase`1.LocalEndPoint">
-            <summary>
-            获取所监听的本地IP和端口
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.TcpServerBase`1.IsListening">
-            <summary>
-            获取服务是否已处在监听中
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.TcpServerBase`1.ExtraState">
-            <summary>
-            获取额外信息
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.TcpServerBase`1.IsDisposed">
-            <summary>
-            获取对象是否已释放
-            </summary>
-        </member>
         <member name="T:NetworkSocket.Fast.IFastTcpServer">
             <summary>
             快速构建Tcp服务端接口
@@ -1909,11 +3270,6 @@
         <member name="P:NetworkSocket.Fast.IFastTcpServer.GlobalFilter">
             <summary>
             获取全局过滤器
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.IFastTcpServer.DependencyResolver">
-            <summary>
-            获取或设置依赖关系解析提供者
             </summary>
         </member>
         <member name="P:NetworkSocket.Fast.IFastTcpServer.FilterAttributeProvider">
@@ -2066,250 +3422,42 @@
             获取或设置Api行为特性过滤器提供者
             </summary>
         </member>
-        <member name="T:NetworkSocket.Fast.FilterAttribute">
-            <summary>
-            表示服务或Api行为过滤器基础特性
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FilterAttribute.order">
-            <summary>
-            排序
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FilterAttribute.multiuseAttributeCache">
-            <summary>
-            缓存
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.FilterAttribute.#ctor">
-            <summary>
-            表示服务或Api行为过滤器基础特性
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.FilterAttribute.#ctor(System.Int32)">
-            <summary>
-            表示服务或Api行为过滤器基础特性
-            </summary>
-            <param name="order">执行顺序 越小最优先</param>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Fast.FilterAttribute.IsAllowMultiple(System.Type)">
-            <summary>
-            获取特性是否允许多个实例
-            </summary>
-            <param name="attributeType">特性类型</param>
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.Fast.FilterAttribute.Order">
-            <summary>
-            获取执行顺序
-            越小最优先
-            </summary>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-        </member>
-        <member name="P:NetworkSocket.Fast.FilterAttribute.AllowMultiple">
-            <summary>
-            获取是否允许多个实例存在
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.FilterAttributeProvider">
-            <summary>
-            Api行为特性过滤器提供者
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.IFilterAttributeProvider">
-            <summary>
-            特性过滤器提供者
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.IFilterAttributeProvider.GetActionFilters(NetworkSocket.Fast.ApiAction)">
-            <summary>
-            获取Api行为的过滤器
-            不包括全局过滤器
-            </summary>
-            <param name="apiAction">Api行为</param>
-            <returns></returns>
-        </member>
-        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.filterCached">
-            <summary>
-            服务方法过滤器缓存
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.FilterAttributeProvider.#ctor">
-            <summary>
-            Api行为特性过滤器提供者
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.FilterAttributeProvider.GetActionFilters(NetworkSocket.Fast.ApiAction)">
-            <summary>
-            获取Api行为的特性过滤器     
-            </summary>
-            <param name="apiAction">Api行为</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.FilterAttributeProvider.GetActionFiltersNoCached(NetworkSocket.Fast.ApiAction)">
-            <summary>
-            获取Api行为的特性过滤器     
-            </summary>
-            <param name="action">Api行为</param>
-            <returns></returns>
-        </member>
-        <member name="T:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels">
-            <summary>
-            过滤器级别
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels.Authorization">
-            <summary>
-            权限级过滤
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels.Class">
-            <summary>
-            类级过滤
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.FilterAttributeProvider.FilterLevels.Method">
-            <summary>
-            方法级过滤
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.GlobalFilters">
-            <summary>
-            表示全局过滤器
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.GlobalFilters.#ctor">
-            <summary>
-            全局过滤器
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.GlobalFilters.Remove``1">
-            <summary>
-            移除过滤器类型
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="M:NetworkSocket.Fast.GlobalFilters.Add(NetworkSocket.Fast.IFilter)">
-            <summary>
-            添加过滤器并按Order字段排序
-            </summary>
-            <param name="filter">过滤器</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.Fast.GlobalFilters.ActionFilters">
-            <summary>
-            获取IAction过滤器
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.GlobalFilters.ExceptionFilters">
-            <summary>
-            获取IExceptionFilter过滤器
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Fast.GlobalFilters.AuthorizationFilters">
-            <summary>
-            获取IAuthorization过滤器
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.IDependencyResolver">
+        <member name="T:NetworkSocket.Core.IDependencyResolver">
             <summary>
             定义可简化服务位置和依赖关系解析的方法
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.IDependencyResolver.GetService(System.Type)">
+        <member name="M:NetworkSocket.Core.IDependencyResolver.GetService(System.Type)">
             <summary>
             解析支持任意对象创建的一次注册的服务
             </summary>
             <param name="serviceType">所请求的服务或对象的类型</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Fast.IDependencyResolver.TerminateService(System.IDisposable)">
+        <member name="M:NetworkSocket.Core.IDependencyResolver.TerminateService(System.IDisposable)">
             <summary>
             结束服务实例的生命
             </summary>
             <param name="service">服务实例</param>
         </member>
-        <member name="T:NetworkSocket.Fast.ApiActionList">
-            <summary>
-            表示Api行为列表
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.ApiActionList.dictionary">
-            <summary>
-            Api行为字典
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.#ctor">
-            <summary>
-            Api行为列表
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.#ctor(System.Collections.Generic.IEnumerable{NetworkSocket.Fast.ApiAction})">
-            <summary>
-            Api行为列表
-            </summary>
-            <param name="apiActions">Api行为</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.Add(NetworkSocket.Fast.ApiAction)">
-            <summary>
-            添加Api行为
-            </summary>
-            <param name="apiAction">Api行为</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.CheckSelfParameterType(NetworkSocket.Fast.ApiAction)">
-            <summary>
-            检测参数类型
-            </summary>
-            <param name="apiAction">Api行为</param>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.AddRange(System.Collections.Generic.IEnumerable{NetworkSocket.Fast.ApiAction})">
-            <summary>
-            添加Api行为
-            </summary>
-            <param name="apiActions">Api行为</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.TryGet(System.String)">
-            <summary>
-            获取Api行为
-            如果获取不到则返回null
-            </summary>
-            <param name="name">行为名称</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Fast.ApiActionList.IsExist(System.String)">
-            <summary>
-            获取是否存在
-            </summary>
-            <param name="name">行为名称</param>
-            <returns></returns>
-        </member>
-        <member name="T:NetworkSocket.Fast.DefaultDependencyResolver">
+        <member name="T:NetworkSocket.Core.Internal.DefaultDependencyResolver">
             <summary>
             默认的依赖关系解析程序的实现
             </summary>
         </member>
-        <member name="F:NetworkSocket.Fast.DefaultDependencyResolver.serviceResolver">
+        <member name="F:NetworkSocket.Core.Internal.DefaultDependencyResolver.serviceResolver">
             <summary>
             服务实例反转缓存
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.DefaultDependencyResolver.GetService(System.Type)">
+        <member name="M:NetworkSocket.Core.Internal.DefaultDependencyResolver.GetService(System.Type)">
             <summary>
             解析支持任意对象创建的一次注册的服务
             </summary>
             <param name="serviceType">所请求的服务或对象的类型</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Fast.DefaultDependencyResolver.TerminateService(System.IDisposable)">
+        <member name="M:NetworkSocket.Core.Internal.DefaultDependencyResolver.TerminateService(System.IDisposable)">
             <summary>
             结束服务实例的生命
             </summary>
@@ -2416,23 +3564,6 @@
             <param name="serializer">序列化工具</param>      
             <param name="packet">封包</param>      
             <exception cref="T:System.Net.Sockets.SocketException"></exception>   
-        </member>
-        <member name="T:NetworkSocket.Fast.PacketIdProvider">
-            <summary>
-            数据包id提供者
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.Fast.PacketIdProvider.id">
-            <summary>
-            基准值
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Fast.PacketIdProvider.NewId">
-            <summary>
-            获取标识符
-            每获取一次自增1
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:NetworkSocket.Fast.SetTypes">
             <summary>
@@ -3401,37 +4532,37 @@
             查看的内容
             </summary>
         </member>
-        <member name="T:NetworkSocket.FreeSessionStack`1">
+        <member name="T:NetworkSocket.FreeSessionQueue`1">
             <summary>
             空闲的会话对象集合
             线程安全类型
             </summary>
             <typeparam name="T">会话</typeparam>   
         </member>
-        <member name="F:NetworkSocket.FreeSessionStack`1.stack">
+        <member name="F:NetworkSocket.FreeSessionQueue`1.queue">
             <summary>
             集合
             </summary>
         </member>
-        <member name="M:NetworkSocket.FreeSessionStack`1.Add(`0)">
+        <member name="M:NetworkSocket.FreeSessionQueue`1.Add(`0)">
             <summary>
             添加会话对象
             </summary>
             <param name="session">会话对象</param>
         </member>
-        <member name="M:NetworkSocket.FreeSessionStack`1.Take">
+        <member name="M:NetworkSocket.FreeSessionQueue`1.Take">
             <summary>
             取出会话对象
             如果取出失败则返回null
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.FreeSessionStack`1.Dispose">
+        <member name="M:NetworkSocket.FreeSessionQueue`1.Dispose">
             <summary>
             释放资源
             </summary>
         </member>
-        <member name="P:NetworkSocket.FreeSessionStack`1.Count">
+        <member name="P:NetworkSocket.FreeSessionQueue`1.Count">
             <summary>
             获取会话对象数量
             </summary>
@@ -3488,6 +4619,1494 @@
         <member name="P:NetworkSocket.TagBag.DebugView.Values">
             <summary>
             查看的内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.ActionContext">
+            <summary>
+            Api行为上下文
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.RequestContext">
+            <summary>
+            请求上下文
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.RequestContext.#ctor(NetworkSocket.WebSocket.Fast.FastWebSocketSession,NetworkSocket.WebSocket.Fast.FastPacket,System.Collections.Generic.IEnumerable{NetworkSocket.WebSocket.Fast.FastWebSocketSession})">
+            <summary>
+            请求上下文
+            </summary>
+            <param name="session">当前会话对象</param>
+            <param name="packet">数据包对象</param>
+            <param name="allSessions">所有会话对象</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.RequestContext.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.RequestContext.Session">
+            <summary>
+            获取当前会话对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.RequestContext.Packet">
+            <summary>
+            获取数据包对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.RequestContext.AllSessions">
+            <summary>
+            获取所有会话对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ActionContext.#ctor(NetworkSocket.WebSocket.Fast.RequestContext,NetworkSocket.Core.ApiAction)">
+            <summary>
+            Api行为上下文
+            </summary>
+            <param name="context">请求上下文</param>
+            <param name="action">Api行为</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ActionContext.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.ActionContext.Action">
+            <summary>
+            获取Api行为对象
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.ExceptionContext">
+            <summary>
+            异常上下文
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ExceptionContext.#ctor(NetworkSocket.WebSocket.Fast.ActionContext,System.Exception)">
+            <summary>
+            异常上下文
+            </summary>
+            <param name="context">请求上下文</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ExceptionContext.#ctor(NetworkSocket.WebSocket.Fast.RequestContext,System.Exception)">
+            <summary>
+            异常上下文
+            </summary>
+            <param name="context">请求上下文</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ExceptionContext.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.ExceptionContext.Exception">
+            <summary>
+            获取异常对象
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.ExceptionContext.ExceptionHandled">
+            <summary>
+            获取或设置异常是否已处理
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.ApiExecuteException">
+            <summary>
+            表示Api执行异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ApiExecuteException.#ctor(NetworkSocket.WebSocket.Fast.ActionContext,System.Exception)">
+            <summary>
+            Api执行异常
+            </summary>
+            <param name="actionContext">Api行为上下文</param>
+            <param name="innerException">内部异常</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ApiExecuteException.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.ApiExecuteException.ActionContext">
+            <summary>
+            获取Api行为上下文
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.ApiNotExistException">
+            <summary>
+            表示Api不存在引发的异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ApiNotExistException.#ctor(System.String)">
+            <summary>
+            Api不存在引发的异常
+            </summary>
+            <param name="name">Api名称</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.ApiNotExistException.Name">
+            <summary>
+            获取Api名称
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.RemoteException">
+            <summary>
+            表示远程端Api行为异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.RemoteException.#ctor(System.String)">
+            <summary>
+            远程端Api行为异常
+            </summary>       
+            <param name="message">异常信息</param>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.ResolveException">
+            <summary>
+            表示依赖反转异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ResolveException.#ctor(System.Type,System.Exception)">
+            <summary>
+            依赖反转异常
+            </summary>
+            <param name="type">要反转的类型</param>
+            <param name="innerException">内部异常</param>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.SerializerException">
+            <summary>
+            表示序列化或反序列化过程中产生的异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.SerializerException.#ctor(System.Exception)">
+            <summary>
+            表示序列化或反序列化过程中产生的异常
+            </summary>
+            <param name="inner">异常内部</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FastApiService">
+            <summary>
+            JsonWebSocket的Api服务
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IFastApiService">
+            <summary>
+            定义Api服务的执行
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IFastApiService.Execute(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            执行Api行为
+            </summary>              
+            <param name="actionContext">Api行为上下文</param>      
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IAuthorizationFilter">
+            <summary>
+            权限过虑器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IAuthorizationFilter.OnAuthorization(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IActionFilter">
+            <summary>
+            Api行为过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IActionFilter.OnExecuting(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IActionFilter.OnExecuted(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>      
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IExceptionFilter">
+            <summary>
+            异常过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IExceptionFilter.OnException(NetworkSocket.WebSocket.Fast.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.FastApiService.currentContext">
+            <summary>
+            线程唯一上下文
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#WebSocket#Fast#IFastApiService#Execute(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            执行Api行为
+            </summary>   
+            <param name="actionContext">上下文</param>      
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.ProcessExecutingException(NetworkSocket.WebSocket.Fast.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},System.Exception)">
+            <summary>
+            处理Api行为执行过程中产生的异常
+            </summary>
+            <param name="actionContext">上下文</param>
+            <param name="actionfilters">过滤器</param>
+            <param name="exception">异常项</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.ExecuteAction(NetworkSocket.WebSocket.Fast.ActionContext,System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter})">
+            <summary>
+            调用自身实现的Api行为
+            将返回值发送给客户端        
+            </summary>       
+            <param name="actionContext">上下文</param>       
+            <param name="filters">过滤器</param>
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.OnAuthorization(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.OnExecuting(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.OnExecuted(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>      
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.OnException(NetworkSocket.WebSocket.Fast.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.ExecFiltersBeforeAction(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在Api行为前 执行过滤器
+            </summary>       
+            <param name="actionFilters">Api行为过滤器</param>
+            <param name="actionContext">上下文</param>   
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.ExecFiltersAfterAction(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在Api行为后执行过滤器
+            </summary>       
+            <param name="actionFilters">Api行为过滤器</param>
+            <param name="actionContext">上下文</param>       
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.ExecExceptionFilters(System.Collections.Generic.IEnumerable{NetworkSocket.Core.IFilter},NetworkSocket.WebSocket.Fast.ExceptionContext)">
+            <summary>
+            执行异常过滤器
+            </summary>       
+            <param name="actionFilters">Api行为过滤器</param>
+            <param name="exceptionContext">上下文</param>       
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#WebSocket#Fast#IAuthorizationFilter#OnAuthorization(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            授权时触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#WebSocket#Fast#IActionFilter#OnExecuting(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为前触发       
+            </summary>
+            <param name="filterContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#WebSocket#Fast#IActionFilter#OnExecuted(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            在执行Api行为后触发
+            </summary>
+            <param name="filterContext">上下文</param>   
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#WebSocket#Fast#IExceptionFilter#OnException(NetworkSocket.WebSocket.Fast.ExceptionContext)">
+            <summary>
+            异常触发
+            </summary>
+            <param name="filterContext">上下文</param>  
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.Dispose">
+            <summary>
+            关闭和释放所有相关资源
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.Finalize">
+            <summary>
+            析构函数
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.Dispose(System.Boolean)">
+            <summary>
+            释放资源
+            </summary>
+            <param name="disposing">是否也释放托管资源</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastApiService.CurrentContext">
+            <summary>
+            获取当前Api行为上下文
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastApiService.Server">
+            <summary>
+            获取关联的服务器实例
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#Core#IFilter#Order">
+            <summary>
+            获取或设置排序
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastApiService.NetworkSocket#Core#IFilter#AllowMultiple">
+            <summary>
+            是否允许多个实例
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastApiService.IsDisposed">
+            <summary>
+            获取对象是否已释放
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FastPacket">
+            <summary>
+            Json格式数据包
+            </summary>    
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastPacket.api">
+            <summary>
+            获取或设置请求的Api名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastPacket.fromClient">
+            <summary>
+            获取或设置是否来自客户端
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastPacket.id">
+            <summary>
+            获取或设置数据包的唯一标识符
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastPacket.state">
+            <summary>
+            获取或设置返回的数据是否正常   
+            如果返回false，body是异常内容
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastPacket.body">
+            <summary>
+            获取或设置发送或返回的内容体
+            发送时为api的参数值数组
+            接收时为远程api的返回内容    
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FastWebSocketServer">
+            <summary>
+            表示基于Json文本协议通讯的WebSocket服务
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.WebSocketServerBase`1">
+            <summary>
+            WebSocket服务抽象类
+            只支持 RFC 6455 协议
+            </summary>
+            <typeparam name="T">会话类型</typeparam>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnReceive(`0,NetworkSocket.ReceiveBuffer)">
+            <summary>
+            当接收到会话对象的数据时，将触发此方法  
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="buffer">接收到的历史数据</param>   
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.ProcessHandshake(`0,NetworkSocket.ReceiveBuffer)">
+            <summary>
+            处理握手        
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="buffer">接收到的数据</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.ProcessRequest(`0,NetworkSocket.ReceiveBuffer)">
+            <summary>
+            处理请求
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="buffer">接收到的历史数据</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.GetFrameRequestsFromBuffer(NetworkSocket.ReceiveBuffer)">
+            <summary>
+            解析请求帧
+            </summary>
+            <param name="buffer">接收到的历史数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnRecvRequest(`0,NetworkSocket.WebSocket.FrameRequest)">
+            <summary>
+            收到到数据帧请求
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="request">数据帧</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnHandshake(`0,NetworkSocket.Http.HttpRequest)">
+            <summary>
+            当收到握手请求时，将触发此方法
+            返回true说明握手通过
+            否则基础服务将自动安全关闭客户端对象
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="request">握手请求</param>     
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnText(`0,System.String)">
+            <summary>
+            收到文本请求类型时触发此方法
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="content">文本内容</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnBinary(`0,System.Byte[])">
+            <summary>
+            收到二进制类型请求时触发此方法
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="content">二进制内容</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnPing(`0,System.Byte[])">
+            <summary>
+            收到Ping请求时触发此方法
+            在触发此方法之前，基础服务已自动将Pong回复此会话
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="content">二进制内容</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnPong(`0,System.Byte[])">
+            <summary>
+            Ping后会话对象将回复Pong触发此方法
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="content">二进制内容</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnClose(`0,NetworkSocket.WebSocket.StatusCodes)">
+            <summary>
+            收到会话的关闭信息
+            在触发此方法后，基础服务将自动安全回收此会话对象
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="code">关闭码</param>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IFastWebSocketServer">
+            <summary>
+            定义基于Json文本协议通讯的WebSocket服务
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.IFastWebSocketServer.JsonSerializer">
+            <summary>
+            获取或设置Json序列化工具       
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.IFastWebSocketServer.GlobalFilter">
+            <summary>
+            获取全局过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.IFastWebSocketServer.FilterAttributeProvider">
+            <summary>
+            获取或设置Api行为特性过滤器提供者
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.FastWebSocketServer.apiActionList">
+            <summary>
+            所有Api行为
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.#ctor">
+            <summary>
+            快速构建WebSocket服务端
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.BindService(System.Reflection.Assembly)">
+            <summary>
+            绑定程序集下所有实现IFastApiService的服务
+            </summary>
+            <param name="assembly">程序集</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.BindService``1">
+            <summary>
+            绑定服务
+            </summary>
+            <typeparam name="T">Api服务类型</typeparam>             
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>  
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.BindService(System.Type[])">
+            <summary>
+            绑定服务
+            </summary>
+            <param name="apiServiceType">Api服务类型</param>       
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.BindService(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            绑定服务
+            </summary>
+            <param name="apiServiceType">Api服务类型</param>       
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.GetFastPacket(NetworkSocket.WebSocket.Fast.FastWebSocketSession,System.String)">
+            <summary>
+            获取数据包
+            </summary>
+            <param name="client">客户端</param>
+            <param name="content">内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.OnCreateSession">
+            <summary>
+            创建新的会话对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.OnText(NetworkSocket.WebSocket.Fast.FastWebSocketSession,System.String)">
+            <summary>
+            接收到文本信息时
+            </summary>
+            <param name="session">会话对象</param>
+            <param name="content">内容</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.ProcessRemoteException(NetworkSocket.WebSocket.Fast.RequestContext)">
+            <summary>
+            处理远返回的程异常
+            </summary>
+            <param name="requestContext">请求上下文</param>     
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.ProcessRequest(NetworkSocket.WebSocket.Fast.RequestContext)">
+            <summary>
+            处理正常的数据请求
+            </summary>
+            <param name="requestContext">请求上下文</param>       
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.GetApiAction(NetworkSocket.WebSocket.Fast.RequestContext)">
+            <summary>
+            获取Api行为
+            </summary>
+            <param name="requestContext">请求上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.GetFastApiService(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            获取ApiService实例
+            </summary>
+            <param name="actionContext">Api行为上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.ExecGlobalExceptionFilters(NetworkSocket.WebSocket.Fast.ExceptionContext)">
+            <summary>
+            执行异常过滤器
+            </summary>         
+            <param name="exceptionContext">上下文</param>       
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketServer.Dispose(System.Boolean)">
+            <summary>
+            释放资源
+            </summary>
+            <param name="disposing">是否也释放托管资源</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.PacketIdProvider">
+            <summary>
+            获取数据包ID生成提供者
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.TaskSetActionTable">
+            <summary>
+            获取任务行为记录表
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.TimeOut">
+            <summary>
+            获取或设置请求等待超时时间(毫秒)    
+            默认30秒
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.JsonSerializer">
+            <summary>
+            获取或设置序列化工具
+            默认是Json序列化
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.GlobalFilter">
+            <summary>
+            获取全局过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.DependencyResolver">
+            <summary>
+            获取或设置依赖关系解析提供者
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketServer.FilterAttributeProvider">
+            <summary>
+            获取或设置Api行为特性过滤器提供者
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FastWebSocketSession">
+            <summary>
+            FastWebSocket的会话对象
+            不可继承
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.WebSocketSession">
+            <summary>
+            WebSocket会话对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketSession.SendResponse(NetworkSocket.WebSocket.Response)">
+            <summary>
+            发送回复数据
+            </summary>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>   
+            <param name="response">回复内容</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketSession.SendText(System.String)">
+            <summary>
+            发送文本消息
+            </summary>     
+            <param name="content">文本内容</param>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketSession.SendBinary(System.Byte[])">
+            <summary>
+            发送二进制数据
+            </summary>       
+            <param name="content">二进制数据</param>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketSession.Close(NetworkSocket.WebSocket.StatusCodes)">
+            <summary>
+            正常关闭客户端
+            </summary>       
+            <param name="code">关闭码</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketSession.Close(NetworkSocket.WebSocket.StatusCodes,System.String)">
+            <summary>
+            正常关闭客户端
+            </summary>      
+            <param name="code">关闭码</param>
+            <param name="reason">原因</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.WebSocketSession.Ping(System.Byte[])">
+            <summary>
+            ping指令
+            远程将回复pong
+            </summary>
+            <param name="contents">内容</param>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IFastWebSocketSession">
+            <summary>
+            FastWebSocket的会话接口
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IFastWebSocketSession.InvokeApi(System.String,System.Object[])">
+            <summary>
+            调用远程端实现的服务方法        
+            </summary>       
+            <param name="api">api</param>
+            <param name="parameters">参数列表</param> 
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IFastWebSocketSession.InvokeApi``1(System.String,System.Object[])">
+            <summary>
+            调用客户端实现的服务方法     
+            并返回结果数据任务
+            </summary>
+            <typeparam name="T">返回值类型</typeparam>        
+            <param name="api">api</param>
+            <param name="parameters">参数</param>
+            <returns>远程数据任务</returns>  
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketSession.#ctor(NetworkSocket.WebSocket.Fast.FastWebSocketServer)">
+            <summary>
+            FastWebSocket的客户端对象
+            </summary>
+            <param name="server">服务器实例</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketSession.InvokeApi(System.String,System.Object[])">
+            <summary>
+            调用远程端实现的服务方法        
+            </summary>       
+            <param name="api">api</param>
+            <param name="parameters">参数列表</param>  
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>      
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>       
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketSession.InvokeApi``1(System.String,System.Object[])">
+            <summary>
+            调用客户端实现的服务方法     
+            并返回结果数据任务
+            </summary>
+            <typeparam name="T">返回值类型</typeparam>        
+            <param name="api">api</param>
+            <param name="parameters">参数</param> 
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>         
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <returns>远程数据任务</returns>  
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketSession.Server">
+            <summary>
+            获取服务器实例
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FilterAttributeProvider">
+            <summary>
+            Api行为特性过滤器提供者
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IFilterAttributeProvider">
+            <summary>
+            特性过滤器提供者
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IFilterAttributeProvider.GetActionFilters(NetworkSocket.Core.ApiAction)">
+            <summary>
+            获取Api行为的过滤器
+            不包括全局过滤器
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.filterCached">
+            <summary>
+            服务方法过滤器缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.#ctor">
+            <summary>
+            Api行为特性过滤器提供者
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.GetActionFilters(NetworkSocket.Core.ApiAction)">
+            <summary>
+            获取Api行为的特性过滤器     
+            </summary>
+            <param name="apiAction">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.GetActionFiltersNoCached(NetworkSocket.Core.ApiAction)">
+            <summary>
+            获取Api行为的特性过滤器     
+            </summary>
+            <param name="action">Api行为</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.FilterLevels">
+            <summary>
+            过滤器级别
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.FilterLevels.Authorization">
+            <summary>
+            权限级过滤
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.FilterLevels.Class">
+            <summary>
+            类级过滤
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.FilterAttributeProvider.FilterLevels.Method">
+            <summary>
+            方法级过滤
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.GlobalFilters">
+            <summary>
+            表示全局过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.GlobalFilters.#ctor">
+            <summary>
+            全局过滤器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.GlobalFilters.Remove``1">
+            <summary>
+            移除过滤器类型
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.GlobalFilters.Add(NetworkSocket.Core.IFilter)">
+            <summary>
+            添加过滤器并按Order字段排序
+            </summary>
+            <param name="filter">过滤器</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.GlobalFilters.ActionFilters">
+            <summary>
+            获取IAction过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.GlobalFilters.ExceptionFilters">
+            <summary>
+            获取IExceptionFilter过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.GlobalFilters.AuthorizationFilters">
+            <summary>
+            获取IAuthorization过滤器
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.IJsonSerializer">
+            <summary>
+            定义对象的序列化与反序列化的接口
+            异常时抛出SerializerException
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IJsonSerializer.Serialize(System.Object)">
+            <summary>
+            序列化为Json
+            异常时抛出SerializerException
+            </summary>
+            <param name="model">实体</param>
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer">
+            <summary>
+            默认提供的Json序列化工具
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.Serialize(System.Object)">
+            <summary>
+            序列化为Json
+            </summary>
+            <param name="model">实体</param>
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.FastWebSocketCommon">
+            <summary>
+            JsonWebSocket公共类
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketCommon.GetServiceApiActions(System.Type)">
+            <summary>
+            获取服务类型的Api行为
+            </summary>
+            <param name="seviceType">服务类型</param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketCommon.SetApiActionTaskResult(NetworkSocket.WebSocket.Fast.RequestContext,NetworkSocket.WebSocket.Fast.TaskSetActionTable)">
+            <summary>
+            设置Api行为返回的任务结果
+            </summary>
+            <param name="requestContext">上下文</param>
+            <param name="taskSetActionTable">任务行为表</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketCommon.SetApiActionTaskException(NetworkSocket.WebSocket.Fast.TaskSetActionTable,NetworkSocket.WebSocket.Fast.RequestContext)">
+            <summary>
+            设置Api行为返回的任务异常 
+            设置失败则返远程异常对象
+            </summary>   
+            <param name="taskSetActionTable">任务行为表</param>
+            <param name="requestContext">请求上下文</param>     
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketCommon.SetRemoteException(NetworkSocket.WebSocket.Fast.IJsonSerializer,NetworkSocket.WebSocket.Fast.ExceptionContext)">
+            <summary>       
+            设置远程异常
+            </summary>
+            <param name="serializer">序列化工具</param>
+            <param name="exceptionContext">上下文</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketCommon.GetApiActionParameters(NetworkSocket.WebSocket.Fast.ActionContext)">
+            <summary>
+            生成Api行为的调用参数
+            </summary> 
+            <param name="context">上下文</param>        
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.JObject">
+            <summary>
+            表示动态Json对象
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.JObject.dataArray">
+            <summary>
+            数据数组
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.JObject.dataDic">
+            <summary>
+            数据字典
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.#ctor(System.Object[])">
+            <summary>
+            创建动态Json数组对象
+            </summary>
+            <param name="dataArray">Object对象或JObject对象</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            表示动态Json对象
+            </summary>
+            <param name="dataDic">内容字典</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.ToArray">
+            <summary>
+            转换为数组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            迭代自身的元素
+            而不是字典的元素
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            转换为目标类型
+            </summary>
+            <param name="binder"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            获取成员的值
+            </summary>
+            <param name="binder"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.CastResult(System.Object)">
+            <summary>
+            转换结果为JObject结构或JArray结构
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.Parse(System.String)">
+            <summary>
+            解析Json
+            </summary>
+            <param name="json">json</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.TryCast``1(System.Object)">
+            <summary>
+            尝试将解析出来的动态值转换为目标类型
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.Cast``1(System.Object)">
+            <summary>
+            将解析出来的动态值转换为目标类型
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">动态值</param>
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.Cast(System.Object,System.Type)">
+            <summary>
+            将解析出来的动态值转换为目标类型
+            </summary>
+            <param name="value">动态值</param>
+            <param name="targetType">目标类型</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.CastByJavaScriptSerializer(System.Object,System.Type)">
+            <summary>
+            调用JavaScriptSerializer进行类型转换
+            </summary>
+            <param name="value">动态值</param>
+            <param name="targetType">目标类型</param>     
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.JObject.IsArray">
+            <summary>
+            获取是否为数组
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.JObject.Length">
+            <summary>
+            获取数组长度
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.JObject.Item(System.Int32)">
+            <summary>
+            获取指定索引内容
+            </summary>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter">
+            <summary>
+            Json转换器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter.Serialize(System.Object,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            不作序列化
+            </summary>
+            <param name="obj"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter.Deserialize(System.Collections.Generic.IDictionary{System.String,System.Object},System.Type,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="dictionary"></param>
+            <param name="type"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter.SupportedTypes">
+            <summary>
+            获取支持的类型
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.JObject.DebugView">
+            <summary>
+            调试视图
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.JObject.DebugView.view">
+            <summary>
+            查看的对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.JObject.DebugView.#ctor(NetworkSocket.WebSocket.Fast.JObject)">
+            <summary>
+            调试视图
+            </summary>
+            <param name="view">查看的对象</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.JObject.DebugView.Values">
+            <summary>
+            查看的内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.SetTypes">
+            <summary>
+            任务设置行为
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.SetTypes.SetReturnReult">
+            <summary>
+            设置远程返回结果
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.SetTypes.SetReturnException">
+            <summary>
+            设置远程返回的异常
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.SetTypes.SetTimeoutException">
+            <summary>
+            设置超时引起异常
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.SetTypes.SetShutdownException">
+            <summary>
+            设置远程端关闭连接异常
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.ITaskSetAction">
+            <summary>
+            任务设置行为接口
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.ITaskSetAction.SetAction(NetworkSocket.WebSocket.Fast.SetTypes,System.Object)">
+            <summary>
+            设置行为
+            </summary>
+            <param name="setType">行为类型</param>
+            <param name="value">数据值</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.ITaskSetAction.CreateTime">
+            <summary>
+            获取创建时间
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.TaskSetAction`1">
+            <summary>
+            任务设置行为信息
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.TaskSetAction`1.taskSource">
+            <summary>
+            任务源
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.#ctor(System.Threading.Tasks.TaskCompletionSource{`0})">
+            <summary>
+            任务设置行为
+            </summary>               
+            <param name="taskSource">任务源</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.SetAction(NetworkSocket.WebSocket.Fast.SetTypes,System.Object)">
+            <summary>
+            设置行为
+            </summary>
+            <param name="setType">行为类型</param>
+            <param name="value">数据值</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.SetResult(System.Object)">
+            <summary>
+            设置结果
+            </summary>
+            <param name="value">数据</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.TaskSetAction`1.CreateTime">
+            <summary>
+            获取创建时间
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.TaskSetActionTable">
+            <summary>
+            任务行为表
+            自带超时检测功能
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.TaskSetActionTable.timeOut">
+            <summary>
+            超时时间
+            </summary>       
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.TaskSetActionTable.table">
+            <summary>
+            任务行为字典
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.#ctor">
+            <summary>
+            任务行为表
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.CheckTaskActionTimeout">
+            <summary>
+            检测任务行为的超时
+            </summary>       
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.ProcessIfTimeout(System.Int64)">
+            <summary>
+            如果超时了就处理超时并返回true
+            否则返回false
+            </summary>
+            <param name="key">值</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.Add(System.Int64,NetworkSocket.WebSocket.Fast.ITaskSetAction)">
+            <summary>
+            添加回调信息记录       
+            </summary>
+            <param name="key">键值</param>
+            <param name="taskSetAction">设置行为</param>       
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.Take(System.Int64)">
+            <summary>      
+            获取并移除与key匹配值
+            如果没有匹配项，返回null
+            </summary>
+            <param name="key">键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.Clear">
+            <summary>
+            清除所有数据
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetActionTable.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.TaskSetActionTable.TimeOut">
+            <summary>
+            获取或设置超时时间(毫秒)
+            默认30秒
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.FrameCodes">
+            <summary>
+            帧类型
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.FrameCodes.Continuation">
+            <summary>
+            后续帧
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.FrameCodes.Text">
+            <summary>
+            文本帧
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.FrameCodes.Binary">
+            <summary>
+            二进制帧
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.FrameCodes.Close">
+            <summary>
+            连接关闭
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.FrameCodes.Ping">
+            <summary>
+            ping
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.FrameCodes.Pong">
+            <summary>
+            pong
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.FrameRequest">
+            <summary>
+            表示请求帧
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.FrameRequest.From(NetworkSocket.ReceiveBuffer)">
+            <summary>
+            解析请求的数据
+            返回请求数据包
+            </summary>
+            <param name="buffer">所有收到的数据</param>  
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.Fin">
+            <summary>
+            获取是否已完成
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.Rsv">
+            <summary>
+            获取保存位
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.Frame">
+            <summary>
+            获取帧类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.Mask">
+            <summary>
+            获取是否有掩码
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.ContentLength">
+            <summary>
+            获取内容长度
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.MaskingKey">
+            <summary>
+            获取掩码
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameRequest.Content">
+            <summary>
+            获取请求帧的内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.FrameResponse">
+            <summary>
+            表示帧类型回复对象
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Response">
+            <summary>
+            表示回复对象抽象类
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Response.ToByteRange">
+            <summary>
+            转换ByteArray类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.FrameResponse.#ctor(NetworkSocket.WebSocket.FrameCodes,System.Byte[])">
+            <summary>
+            回复对象
+            </summary>
+            <param name="frame">帧类型</param>
+            <param name="content">内容</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.FrameResponse.ToByteRange">
+            <summary>
+            转换为ByteRange
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameResponse.Frame">
+            <summary>
+            获取帧类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.FrameResponse.Content">
+            <summary>
+            获取回复内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.HandshakeResponse">
+            <summary>
+            表示握手回复
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.HandshakeResponse.request">
+            <summary>
+            握手请求
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.HandshakeResponse.#ctor(NetworkSocket.Http.HttpRequest)">
+            <summary>
+            表示握手回复
+            </summary>
+            <param name="request">握手请求</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.HandshakeResponse.CreateResponseKey">
+            <summary>
+            生成回复的key
+            </summary>      
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.HandshakeResponse.ToByteRange">
+            <summary>
+            转换为二进制数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.StatusCodes">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.NormalClosure">
+            <summary>
+            正常关闭
+            1000
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.GoingAway">
+            <summary>
+            终端已离开
+            1001
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.ProtocolError">
+            <summary>
+            协议错误
+            1002
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.UnsupportedDataType">
+            <summary>
+            不支持的数据类型
+            1003
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.NoStatusReceived">
+            <summary>
+            预留
+            1005
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.AbnormalClosure">
+            <summary>
+            异常关闭
+            1006
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.InvalidFramePayloadData">
+            <summary>
+            无效数据
+            1007
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.PolicyViolation">
+            <summary>
+            策略错误
+            1008
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.MessageTooBig">
+            <summary>
+            消息内容过长
+            1009
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.MandatoryExt">
+            <summary>
+            委托扩展
+            1010
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.InternalServerError">
+            <summary>
+            服务器内部错误
+            1011
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.StatusCodes.TLSHandshake">
+            <summary>
+            安全握手
+            1015
             </summary>
         </member>
     </members>
