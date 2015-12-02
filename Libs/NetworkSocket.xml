@@ -553,22 +553,22 @@
             获取或设置依赖注入提供者
             </summary>
         </member>
-        <member name="T:NetworkSocket.Core.Internal.ApiActionList">
+        <member name="T:NetworkSocket.Core.ApiActionList">
             <summary>
             表示Api行为列表
             </summary>
         </member>
-        <member name="F:NetworkSocket.Core.Internal.ApiActionList.dictionary">
+        <member name="F:NetworkSocket.Core.ApiActionList.dictionary">
             <summary>
             Api行为字典
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.#ctor">
+        <member name="M:NetworkSocket.Core.ApiActionList.#ctor">
             <summary>
             Api行为列表
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.#ctor(System.Collections.Generic.IEnumerable{NetworkSocket.Core.ApiAction})">
+        <member name="M:NetworkSocket.Core.ApiActionList.#ctor(System.Collections.Generic.IEnumerable{NetworkSocket.Core.ApiAction})">
             <summary>
             Api行为列表
             </summary>
@@ -576,7 +576,7 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.Add(NetworkSocket.Core.ApiAction)">
+        <member name="M:NetworkSocket.Core.ApiActionList.Add(NetworkSocket.Core.ApiAction)">
             <summary>
             添加Api行为
             </summary>
@@ -584,7 +584,7 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.AddRange(System.Collections.Generic.IEnumerable{NetworkSocket.Core.ApiAction})">
+        <member name="M:NetworkSocket.Core.ApiActionList.AddRange(System.Collections.Generic.IEnumerable{NetworkSocket.Core.ApiAction})">
             <summary>
             添加Api行为
             </summary>
@@ -592,14 +592,14 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.CheckSelfParameterType(NetworkSocket.Core.ApiAction)">
+        <member name="M:NetworkSocket.Core.ApiActionList.CheckSelfParameterType(NetworkSocket.Core.ApiAction)">
             <summary>
             检测参数类型
             </summary>
             <param name="apiAction">Api行为</param>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.TryGet(System.String)">
+        <member name="M:NetworkSocket.Core.ApiActionList.TryGet(System.String)">
             <summary>
             获取Api行为
             如果获取不到则返回null
@@ -607,71 +607,71 @@
             <param name="name">行为名称</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.ApiActionList.IsExist(System.String)">
+        <member name="M:NetworkSocket.Core.ApiActionList.IsExist(System.String)">
             <summary>
             获取是否存在
             </summary>
             <param name="name">行为名称</param>
             <returns></returns>
         </member>
-        <member name="T:NetworkSocket.Core.Internal.LoopWorker">
+        <member name="T:NetworkSocket.Core.LoopWorker">
             <summary>
             由一个线程循环工作的对象
             </summary>
         </member>
-        <member name="F:NetworkSocket.Core.Internal.LoopWorker.thread">
+        <member name="F:NetworkSocket.Core.LoopWorker.thread">
             <summary>
             工作线程
             </summary>
         </member>
-        <member name="F:NetworkSocket.Core.Internal.LoopWorker.syncRoot">
+        <member name="F:NetworkSocket.Core.LoopWorker.syncRoot">
             <summary>
             同步对象
             </summary>
         </member>
-        <member name="F:NetworkSocket.Core.Internal.LoopWorker.workList">
+        <member name="F:NetworkSocket.Core.LoopWorker.workList">
             <summary>
             工作内容队列
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.LoopWorker.#cctor">
+        <member name="M:NetworkSocket.Core.LoopWorker.#cctor">
             <summary>
             表示构造器
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.LoopWorker.LoopWork">
+        <member name="M:NetworkSocket.Core.LoopWorker.LoopWork">
             <summary>
             循环工作
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.LoopWorker.WorkOnce">
+        <member name="M:NetworkSocket.Core.LoopWorker.WorkOnce">
             <summary>
             一轮工作
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.LoopWorker.AddWork(System.Action)">
+        <member name="M:NetworkSocket.Core.LoopWorker.AddWork(System.Action)">
             <summary>
             添加工作
             </summary>
             <param name="work">工作</param>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.LoopWorker.RemoveWork(System.Action)">
+        <member name="M:NetworkSocket.Core.LoopWorker.RemoveWork(System.Action)">
             <summary>
             删除工作
             </summary>
             <param name="work">工作</param>
         </member>
-        <member name="P:NetworkSocket.Core.Internal.LoopWorker.Count">
+        <member name="P:NetworkSocket.Core.LoopWorker.Count">
             <summary>
             获取当前的工作数量
             </summary>
         </member>
-        <member name="T:NetworkSocket.Core.Internal.MethodReflection">
+        <member name="T:NetworkSocket.Core.MethodReflection">
             <summary>
             方法反射调用
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.MethodReflection.CreateInvoker(System.Reflection.MethodInfo)">
+        <member name="M:NetworkSocket.Core.MethodReflection.CreateInvoker(System.Reflection.MethodInfo)">
             <summary>
             生成方法的委托
             </summary>
@@ -1035,10 +1035,251 @@
             </summary>
             <param name="filterContext">上下文</param>
         </member>
+        <member name="T:NetworkSocket.Http.HttpException">
+            <summary>
+            表示http异常
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpException.#ctor(System.Int32,System.String)">
+            <summary>
+            http异常
+            </summary>
+            <param name="status">状态码</param>
+            <param name="message">提示消息</param>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpException.Status">
+            <summary>
+            获取状态码
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpFile">
+            <summary>
+            表示http文件
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpFile.#ctor(NetworkSocket.Http.MultipartHead,System.Byte[])">
+            <summary>
+            http文件
+            </summary>
+            <param name="head">头内容</param>
+            <param name="stream">数据流</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpFile.SaveAs(System.String)">
+            <summary>
+            保存到本地文件
+            </summary>
+            <param name="path">文件路径</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpFile.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpFile.Name">
+            <summary>
+            获取名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpFile.FileName">
+            <summary>
+            获取文件名
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpFile.Stream">
+            <summary>
+            获取文件数据
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpMIME">
+            <summary>
+            表示文件扩展类型
+            </summary>    
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIME.#ctor(System.String,System.String)">
+            <summary>
+            文件扩展类型
+            </summary>
+            <param name="extension">扩展名</param>
+            <param name="contentType">类型</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIME.ToString">
+            <summary>
+            转换为字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpMIME.Extension">
+            <summary>
+            获取扩展名
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpMIME.ContentType">
+            <summary>
+            获取类型
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpMIMECollection">
+            <summary>
+            表示文件扩展类型集合
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpMIMECollection.syncRoot">
+            <summary>
+            同步锁
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpMIMECollection.mimes">
+            <summary>
+            保存MIME的字典
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.FillBasicMIME">
+            <summary>
+            填充一些常用的扩展类型
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.Add(NetworkSocket.Http.HttpMIME)">
+            <summary>
+            添加扩展类型
+            </summary>
+            <param name="item">扩展类型</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.Add(System.String,System.String)">
+            <summary>
+            添加扩展类型
+            </summary>
+            <param name="extension">扩展名</param>
+            <param name="contentType">内容类型</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.System#Collections#Generic#ICollection{NetworkSocket#Http#HttpMIME}#Remove(NetworkSocket.Http.HttpMIME)">
+            <summary>
+            删除
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.Clear">
+            <summary>
+            清除集合
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.GetContentType(System.String)">
+            <summary>
+            获取扩展的类型
+            </summary>
+            <param name="extension">扩展名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.System#Collections#Generic#ICollection{NetworkSocket#Http#HttpMIME}#Contains(NetworkSocket.Http.HttpMIME)">
+            <summary>
+            是否包含
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.System#Collections#Generic#ICollection{NetworkSocket#Http#HttpMIME}#CopyTo(NetworkSocket.Http.HttpMIME[],System.Int32)">
+            <summary>
+            控制到数组
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpMIMECollection.Count">
+            <summary>
+            获取元素数量
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpMIMECollection.System#Collections#Generic#ICollection{NetworkSocket#Http#HttpMIME}#IsReadOnly">
+            <summary>
+            是否为只读
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.HttpMIMECollection.DebugView">
+            <summary>
+            调试视图
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpMIMECollection.DebugView.view">
+            <summary>
+            查看的对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpMIMECollection.DebugView.#ctor(NetworkSocket.Http.HttpMIMECollection)">
+            <summary>
+            调试视图
+            </summary>
+            <param name="view">查看的对象</param>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpMIMECollection.DebugView.Values">
+            <summary>
+            查看的内容
+            </summary>
+        </member>
         <member name="T:NetworkSocket.Http.HttpPostAttribute">
             <summary>
             表示只允许Post请求或优先Post请求到的http方法
             不可继承
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.MultipartHead">
+            <summary>
+            表单头
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.MultipartHead.head">
+            <summary>
+            头数据
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.MultipartHead.#ctor(System.String)">
+            <summary>
+            表单头
+            </summary>
+            <param name="head"></param>
+        </member>
+        <member name="M:NetworkSocket.Http.MultipartHead.GetValue(System.String)">
+            <summary>
+            获取值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.MultipartHead.ToString">
+            <summary>
+            转换为字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Http.MultipartHead.Name">
+            <summary>
+            获取名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.MultipartHead.FileName">
+            <summary>
+            获取文件名
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.MultipartHead.IsFile">
+            <summary>
+            获取是否为文件
             </summary>
         </member>
         <member name="T:NetworkSocket.Http.EmptyResult">
@@ -1098,6 +1339,38 @@
         <member name="P:NetworkSocket.Http.ErrorResult.Errors">
             <summary>
             错误内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Http.FileResult">
+            <summary>
+            表示文件结果
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.FileResult.ExecuteResult(NetworkSocket.Http.RequestContext)">
+            <summary>
+            执行结果
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.FileResult.ExecuteFileResult(NetworkSocket.Http.RequestContext)">
+            <summary>
+            输出文件
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="P:NetworkSocket.Http.FileResult.FileName">
+            <summary>
+            获取或设置文件路径
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.FileResult.ContentType">
+            <summary>
+            获取或设置内容类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.FileResult.ContentDisposition">
+            <summary>
+            获取或设置内容描述
             </summary>
         </member>
         <member name="T:NetworkSocket.Http.RouteAttribute">
@@ -1446,6 +1719,30 @@
             </summary>
             <param name="data">内容</param>
         </member>
+        <member name="M:NetworkSocket.Http.HttpController.File(System.String)">
+            <summary>
+            生成文件结果
+            </summary>
+            <param name="fileName">文件名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.File(System.String,System.String)">
+            <summary>
+            生成文件结果
+            </summary>
+            <param name="fileName">文件名</param>
+            <param name="contenType">内容类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpController.File(System.String,System.String,System.String)">
+            <summary>
+            生成文件结果
+            </summary>
+            <param name="fileName">文件名</param>
+            <param name="contenType">内容类型</param>
+            <param name="contentDisposition">内容描述</param>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.Http.HttpController.OnAuthorization(NetworkSocket.Http.ActionContext)">
             <summary>
             授权时触发       
@@ -1629,6 +1926,11 @@
             查看的内容
             </summary>
         </member>
+        <member name="M:NetworkSocket.Http.HttpHeader.#ctor">
+            <summary>
+            http头
+            </summary>
+        </member>
         <member name="M:NetworkSocket.Http.HttpHeader.#ctor(System.Text.RegularExpressions.CaptureCollection,System.Text.RegularExpressions.CaptureCollection)">
             <summary>
             http头
@@ -1651,16 +1953,6 @@
             <param name="key">键</param>
             <param name="defaultValue">默认值</param>
             <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.Http.HttpHeader.ContentLength">
-            <summary>
-            获取内容长度
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.Http.HttpHeader.UserAgent">
-            <summary>
-            获取用户代理字符串
-            </summary>
         </member>
         <member name="T:NetworkSocket.Http.HttpServer">
             <summary>
@@ -1886,11 +2178,39 @@
             Http服务
             </summary>
         </member>
-        <member name="M:NetworkSocket.Http.HttpServer.RegisterControllers(System.Reflection.Assembly)">
+        <member name="M:NetworkSocket.Http.HttpServer.BindController(System.Reflection.Assembly)">
             <summary>
-            注册所有控制器         
+            绑定程序集下的所有控制器         
             </summary>
+            <param name="assembly">程序集</param>
             <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.BindController``1">
+            <summary>
+            绑定控制器
+            </summary>
+            <typeparam name="TController">控制器类型</typeparam>        
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.BindController(System.Type[])">
+            <summary>
+            注册控制器
+            </summary>
+            <param name="controllers">控制器</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.BindController(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            注册控制器
+            </summary>
+            <param name="controllers">控制器</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns></returns>
         </member>
         <member name="M:NetworkSocket.Http.HttpServer.GetControllerHttpActions(System.Type)">
             <summary>
@@ -1913,6 +2233,34 @@
             </summary>
             <param name="requestContext">请求上下文</param>
         </member>
+        <member name="M:NetworkSocket.Http.HttpServer.ProcessStaticFileRequest(System.String,NetworkSocket.Http.RequestContext)">
+            <summary>
+            处理静态资源请求
+            </summary>
+            <param name="extension">扩展名</param>
+            <param name="requestContext">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.ProcessNormalRequest(System.String,NetworkSocket.Http.RequestContext)">
+            <summary>
+            处理一般的请求
+            </summary>
+            <param name="route">路由</param>
+            <param name="requestContext">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.ProcessActionNotFound(System.String,NetworkSocket.Http.RequestContext)">
+            <summary>
+            处理找不到Action
+            </summary>
+            <param name="route">路由</param>
+            <param name="requestContext">上下文</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpServer.ExecuteHttpAction(NetworkSocket.Http.HttpAction,NetworkSocket.Http.RequestContext)">
+            <summary>
+            执行httpAction
+            </summary>
+            <param name="action">httpAction</param>
+            <param name="requestContext">上下文</param>      
+        </member>
         <member name="P:NetworkSocket.Http.HttpServer.ModelBinder">
             <summary>
             获取模型生成器
@@ -1921,6 +2269,11 @@
         <member name="P:NetworkSocket.Http.HttpServer.GlobalFilter">
             <summary>
             获取全局过滤器
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpServer.MIMECollection">
+            <summary>
+            获取MIME集合
             </summary>
         </member>
         <member name="P:NetworkSocket.Http.HttpServer.FilterAttributeProvider">
@@ -1978,6 +2331,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.IsApplicationFormRequest">
+            <summary>
+            Content-Type是否为
+            application/x-www-form-urlencoded
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.IsMultipartFormRequest(System.String@)">
+            <summary>
+            Content-Type是否为
+            multipart/form-data
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.Http.HttpRequest.StringEquals(System.String,System.String)">
             <summary>
             获取是否相等
@@ -1995,17 +2362,7 @@
             <param name="buffer">接收到的原始数量</param>
             <param name="localEndpoint">服务器的本地终结点</param>
             <param name="remoteEndpoint">远程端的IP和端口</param>
-            <exception cref="T:System.NotSupportedException"></exception>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Http.HttpRequest.Parse(System.Byte[],System.Net.IPEndPoint,System.Net.IPEndPoint)">
-            <summary>
-            解析连接请求信息
-            </summary>
-            <param name="bytes">原始数量</param>
-            <param name="localEndpoint">服务器终结点</param>
-            <param name="remoteEndpoint">远程端的IP和端口</param>
-            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:NetworkSocket.Http.HttpException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Http.HttpRequest.GetHttpMethod(System.String)">
@@ -2013,12 +2370,33 @@
             获取http方法
             </summary>
             <param name="method">方法字符串</param>
-            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:NetworkSocket.Http.HttpException"></exception>
             <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.GeneratePostFormAndFiles(NetworkSocket.Http.HttpRequest,NetworkSocket.ReceiveBuffer)">
+            <summary>
+            生成Post得到的表单和文件
+            </summary>
+            <param name="request"></param>
+            <param name="buffer"></param>      
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.GenerateApplicationForm(NetworkSocket.Http.HttpRequest)">
+            <summary>
+            生成一般表单的Form
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpRequest.GenerateMultipartFormAndFiles(NetworkSocket.Http.HttpRequest,NetworkSocket.ReceiveBuffer,System.String)">
+            <summary>
+            生成表单和文件
+            </summary>
+            <param name="request"></param>
+            <param name="buffer"></param>   
+            <param name="boundary">边界</param>
         </member>
         <member name="P:NetworkSocket.Http.HttpRequest.Headers">
             <summary>
-            获取Form
+            获取请求的头信息
             </summary>
         </member>
         <member name="P:NetworkSocket.Http.HttpRequest.Query">
@@ -2028,7 +2406,12 @@
         </member>
         <member name="P:NetworkSocket.Http.HttpRequest.Form">
             <summary>
-            获取请求的头信息
+            获取Form 
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpRequest.Files">
+            <summary>
+            获取请求的文件
             </summary>
         </member>
         <member name="P:NetworkSocket.Http.HttpRequest.InputStrem">
@@ -2074,11 +2457,55 @@
             Http回复
             </summary>
         </member>
+        <member name="F:NetworkSocket.Http.HttpResponse.session">
+            <summary>
+            会话对象
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.HttpResponse.wroteHeader">
+            <summary>
+            是否已写头信息
+            </summary>
+        </member>
         <member name="M:NetworkSocket.Http.HttpResponse.#ctor(NetworkSocket.SessionBase)">
             <summary>
             表示http回复
             </summary>
             <param name="session">会话</param>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.IsIgnoreKey(System.String)">
+            <summary>
+            忽略的key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.GenerateContentType">
+            <summary>
+            获取内容类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.GetHeaderBytes(System.Int32)">
+            <summary>
+            生成头部数据
+            </summary>
+            <param name="contentLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.WriteHeader(System.Int32)">
+            <summary>
+            输出头数据
+            </summary>
+            <param name="contentLength">内容长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Http.HttpResponse.WriteContent(NetworkSocket.ByteRange)">
+            <summary>
+            输出内容
+            </summary>
+            <param name="range"></param>
+            <returns></returns>
         </member>
         <member name="M:NetworkSocket.Http.HttpResponse.Write(System.String)">
             <summary>
@@ -2086,16 +2513,26 @@
             </summary>      
             <param name="content">内容</param>
         </member>
-        <member name="M:NetworkSocket.Http.HttpResponse.TrySend(System.Byte[])">
+        <member name="M:NetworkSocket.Http.HttpResponse.TrySend(NetworkSocket.ByteRange)">
             <summary>
             尝试发送数据到客户端
             </summary>
-            <param name="bytes"></param>
+            <param name="range"></param>
             <returns></returns>
         </member>
-        <member name="P:NetworkSocket.Http.HttpResponse.Session">
+        <member name="M:NetworkSocket.Http.HttpResponse.End">
             <summary>
-            获取会话对象
+            主动关闭连接
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.IsConnected">
+            <summary>
+            获取是否已连接到远程端
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.RemoteEndPoint">
+            <summary>
+            获取远程终结点
             </summary>
         </member>
         <member name="P:NetworkSocket.Http.HttpResponse.Status">
@@ -2103,14 +2540,29 @@
             获取或设置Http状态
             </summary>
         </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.StatusDescription">
+            <summary>
+            获取或设置输出的 HTTP 状态字符串
+            </summary>
+        </member>
         <member name="P:NetworkSocket.Http.HttpResponse.Charset">
             <summary>
-            获取或设置编码
+            获取或设置内容体的编码
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.Headers">
+            <summary>
+            获取回复头信息
             </summary>
         </member>
         <member name="P:NetworkSocket.Http.HttpResponse.ContentType">
             <summary>
-            获取或设置内容类型
+            获取或设置Header的内容类型
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Http.HttpResponse.ContentDisposition">
+            <summary>
+            获取或设置Header的内容描述
             </summary>
         </member>
         <member name="T:NetworkSocket.Http.HttpActionList">
@@ -2267,6 +2719,11 @@
         <member name="T:NetworkSocket.Http.JsonResult">
             <summary>
             表示application/json内容
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.JsonResult.data">
+            <summary>
+            内容
             </summary>
         </member>
         <member name="M:NetworkSocket.Http.JsonResult.#ctor(System.Object)">
@@ -3440,24 +3897,24 @@
             </summary>
             <param name="service">服务实例</param>
         </member>
-        <member name="T:NetworkSocket.Core.Internal.DefaultDependencyResolver">
+        <member name="T:NetworkSocket.Core.DefaultDependencyResolver">
             <summary>
             默认的依赖关系解析程序的实现
             </summary>
         </member>
-        <member name="F:NetworkSocket.Core.Internal.DefaultDependencyResolver.serviceResolver">
+        <member name="F:NetworkSocket.Core.DefaultDependencyResolver.serviceResolver">
             <summary>
             服务实例反转缓存
             </summary>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.DefaultDependencyResolver.GetService(System.Type)">
+        <member name="M:NetworkSocket.Core.DefaultDependencyResolver.GetService(System.Type)">
             <summary>
             解析支持任意对象创建的一次注册的服务
             </summary>
             <param name="serviceType">所请求的服务或对象的类型</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Core.Internal.DefaultDependencyResolver.TerminateService(System.IDisposable)">
+        <member name="M:NetworkSocket.Core.DefaultDependencyResolver.TerminateService(System.IDisposable)">
             <summary>
             结束服务实例的生命
             </summary>
@@ -4132,6 +4589,16 @@
             <returns></returns>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
+        <member name="M:NetworkSocket.ReceiveBuffer.ReadString(System.Int32,System.Text.Encoding)">
+            <summary>
+            从Position偏移位置读取为字符串
+            </summary>        
+            <param name="count">字节数</param>
+            <param name="encode">编码</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.ReceiveBuffer.CopyTo(System.Byte[],System.Int32)">
             <summary>
             将指定长度的数据复制到目标数组
@@ -4174,6 +4641,21 @@
             </summary>
             <param name="count">清除的字节数</param>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:NetworkSocket.ReceiveBuffer.IndexOf(System.Byte[])">
+            <summary>
+            从Position位置查找第一个匹配的相对Position的偏移量
+            </summary>
+            <param name="binary">要匹配的数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.ReceiveBuffer.EqualsBinary(System.Int32,System.Byte[])">
+            <summary>
+            是否和目标binary相等
+            </summary>
+            <param name="index">索引</param>
+            <param name="binary"></param>
+            <returns></returns>
         </member>
         <member name="P:NetworkSocket.ReceiveBuffer.Length">
             <summary>
@@ -4620,6 +5102,468 @@
             <summary>
             查看的内容
             </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.IValidRule">
+            <summary>
+            定义属性的验证规则的行为
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.IValidRule.IsValid(System.Object,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.IValidRule.FormatErrorMessage(System.String)">
+            <summary>
+            格式化错误信息
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.IValidRule.OrderIndex">
+            <summary>
+            获取或设置排序索引
+            越小越优先
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Model">
+            <summary>
+            实体验证  
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Model.ValidFor``1(``0)">
+            <summary>
+            验证模型
+            </summary>
+            <typeparam name="T">模型类型</typeparam>
+            <param name="model">模型实例</param>        
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Validation.Property">
+            <summary>
+            表示反射优化过的属性    
+            </summary>   
+        </member>
+        <member name="F:NetworkSocket.Validation.Property.propertyCached">
+            <summary>
+            类型的属性缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.GetTypeValidPropertys(System.Type)">
+            <summary>
+            获取有类型带有验证规则特性的属性
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.From(System.Type)">
+            <summary>
+            获取类型的所有属性的get方法
+            </summary>
+            <param name="type">类型</param>       
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.Validation.Property.getter">
+            <summary>
+            属性的Get方法
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Validation.Property.setter">
+            <summary>
+            属性的Set方法
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            属性
+            </summary>
+            <param name="property">属性</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.GetValidRules(System.Reflection.PropertyInfo)">
+            <summary>
+            获取属性的验证规则
+            </summary>
+            <param name="property">属性</param>        
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.GetValue(System.Object)">
+            <summary>
+            获取属性的值
+            </summary>
+            <param name="instance">实例</param>  
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.SetValue(System.Object,System.Object)">
+            <summary>
+            设置属性的值
+            </summary>
+            <param name="instance">实例</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Property.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.Property.Name">
+            <summary>
+            获取属性名
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.Property.Source">
+            <summary>
+            获取原始的属性
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.Property.ValidRules">
+            <summary>
+            获取属性的验证规则
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.ValidContext">
+            <summary>
+            表示验证上下文
+            不可继承
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.ValidContext.Instance">
+            <summary>
+            获取或设置模型的实例
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.ValidContext.Properties">
+            <summary>
+            获取或设置实例类型的属性
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.ValidResult">
+            <summary>
+            表示验证结果
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.ValidResult.State">
+            <summary>
+            获取验证状态
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.ValidResult.ProperyName">
+            <summary>
+            获取验证不通过属性名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.ValidResult.ErrorMessage">
+            <summary>
+            获取验证不通过提示语
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.ValidRuleBase">
+            <summary>
+            验证规则特性基础类
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.ValidRuleBase.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            根据当前的验证特性来验证指定的值
+            </summary>
+            <param name="value">值</param>
+            <param name="validationContext">上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.ValidRuleBase.NetworkSocket#Validation#IValidRule#IsValid(System.Object,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.ValidRuleBase.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.ValidRuleBase.FormatErrorMessage(System.String)">
+            <summary>
+            格式化错误提示信息
+            </summary>
+            <param name="name">字段名字</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.ValidRuleBase.OrderIndex">
+            <summary>
+            获取或设置排序索引
+            越小越优先
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.EmailAttribute">
+            <summary>
+            表示验证是邮箱格式
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.EmailAttribute.#ctor">
+            <summary>
+            验证是邮箱格式
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.EmailAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.EqualToAttribute">
+            <summary>
+            表示验证是否和目标ID的值一致
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Validation.Rules.EqualToAttribute.propertyName">
+            <summary>
+            目标属性的名称
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.EqualToAttribute.#ctor(System.String)">
+            <summary>
+            验证是否和目标ID的值一致
+            </summary>        
+            <param name="propertyName">目标id</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.EqualToAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.LengthAttribute">
+            <summary>
+            表示验证输入的长度范围
+            maxLength参数会影响EF-CodeFirst生成的数据库字段最大长度
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.LengthAttribute.#ctor(System.Int32)">
+            <summary>
+            验证输入的长度范围
+            </summary>
+            <param name="maxLength">最大长度</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.LengthAttribute.NetworkSocket#Validation#IValidRule#IsValid(System.Object,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.LengthAttribute.FormatErrorMessage(System.String)">
+            <summary>
+            获取错误提示信息
+            </summary>       
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.LengthAttribute.OrderIndex">
+            <summary>
+            排序索引
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.MatchAttribute">
+            <summary>
+            表示验证是否和正则表达式匹配
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.MatchAttribute.#ctor(System.String)">
+            <summary>
+            验证是否和正则表达式匹配
+            </summary>
+            <param name="pattern">正则表达式</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.MatchAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.MatchAttribute.RegexPattern">
+            <summary>
+            获取或设置正则表达式
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.NotEqualToAttribute">
+            <summary>
+            表示验证不要和目标ID的值一致
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.NotEqualToAttribute.#ctor(System.String)">
+            <summary>
+            验证不要和目标ID的值一致
+            </summary>       
+            <param name="targetId">目标id</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.NotEqualToAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.NotMatchAttribute">
+            <summary>
+            表示验证不要和正则表达式匹配
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.NotMatchAttribute.#ctor(System.String)">
+            <summary>
+            验证不要和正则表达式匹配
+            </summary>
+            <param name="pattern">正则表达式</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.NotMatchAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.PrecisionAttribute">
+            <summary>
+            表示精度验证
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.PrecisionAttribute.#ctor(System.Int32,System.Int32)">
+            <summary>
+            表示精度验证
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.PrecisionAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.PrecisionAttribute.FormatErrorMessage(System.String)">
+            <summary>
+            获取错误提示信息
+            </summary>     
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.PrecisionAttribute.Min">
+            <summary>
+            获取或设置最小精度
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.PrecisionAttribute.Max">
+            <summary>
+            获取或设置最大精度
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.RangeAttribute">
+            <summary>
+            表示验值要在一定的区间中
+            支持整型和双精度型验证
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Validation.Rules.RangeAttribute.isInteger">
+            <summary>
+            是否为整数
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.RangeAttribute.#ctor(System.Int32,System.Int32)">
+            <summary>
+            验值要在一定的区间中
+            </summary>
+            <param name="minValue">最小值</param>
+            <param name="maxValue">最大值</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.RangeAttribute.#ctor(System.Double,System.Double)">
+            <summary>
+            验值要在一定的区间中
+            </summary>
+            <param name="minValue">最小值</param>
+            <param name="maxValue">最大值</param>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.RangeAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.RangeAttribute.FormatErrorMessage(System.String)">
+            <summary>
+            获取错误提示信息
+            </summary>     
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.RangeAttribute.MinValue">
+            <summary>
+            获取或设置最小值
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.RangeAttribute.MaxValue">
+            <summary>
+            获取或设置最大值
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.RequiredAttribute">
+            <summary>
+            表示要求必须输入
+            此特性影响EF-CodeFirst生成的数据库字段为非空约束
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.RequiredAttribute.#ctor">
+            <summary>
+            要求必须输入
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.RequiredAttribute.NetworkSocket#Validation#IValidRule#IsValid(System.Object,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Validation.Rules.RequiredAttribute.OrderIndex">
+            <summary>
+            获取或设置排序索引
+            越小越优先
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Validation.Rules.UrlAttribute">
+            <summary>
+            表示验证是网络地址
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.UrlAttribute.#ctor">
+            <summary>
+            验证是网络地址
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Validation.Rules.UrlAttribute.IsValid(System.String,NetworkSocket.Validation.ValidContext)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <param name="validContext">验证上下文</param>
+            <returns></returns>
         </member>
         <member name="T:NetworkSocket.WebSocket.Fast.ActionContext">
             <summary>
