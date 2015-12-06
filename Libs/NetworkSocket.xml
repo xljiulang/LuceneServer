@@ -34,6 +34,13 @@
             <param name="size">新的ByteRange大小</param>
             <returns></returns>
         </member>
+        <member name="M:NetworkSocket.ByteRange.op_Implicit(System.Byte[])~NetworkSocket.ByteRange">
+            <summary>
+            从byte[]隐式转换
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
         <member name="P:NetworkSocket.ByteRange.Offset">
             <summary>
             获取偏移量
@@ -481,6 +488,125 @@
             <param name="endian">高低位</param>
             <returns></returns>
         </member>
+        <member name="T:NetworkSocket.Converter">
+            <summary>
+            提供类型转换
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Converter.Instance">
+            <summary>
+            转换器静态实例
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converter.TryCast``1(System.Object)">
+            <summary>       
+            支持基础类型、decimal、guid和枚举相互转换以及这些类型的可空类型和数组类型相互转换
+            支持字典和DynamicObject转换为对象以及字典和DynamicObject的数组转换为对象数组
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.Cast``1(System.Object)">
+            <summary>       
+            支持基础类型、decimal、guid和枚举相互转换以及这些类型的可空类型和数组类型相互转换
+            支持字典和DynamicObject转换为对象以及字典和DynamicObject的数组转换为对象数组
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="value">值</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.Cast(System.Object,System.Type)">
+            <summary>
+            支持基础类型、decimal、guid和枚举相互转换以及这些类型的可空类型和数组类型相互转换
+            支持字典和DynamicObject转换为对象以及字典和DynamicObject的数组转换为对象数组
+            </summary>
+            <param name="value">值</param>
+            <param name="targetType">目标类型</param>       
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.Converter.converts">
+            <summary>
+            转换执行者
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converter.#ctor">
+            <summary>
+            类型转换
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converter.#ctor(NetworkSocket.IConvert[])">
+            <summary>
+            类型转换
+            </summary>
+            <param name="customConverts">自定义的转换执行者</param>
+        </member>
+        <member name="M:NetworkSocket.Converter.Convert``1(System.Object)">
+            <summary>
+            转换为目标类型
+            </summary>
+            <typeparam name="T">要转换的目标类型</typeparam>
+            <param name="value">要转换的值</param>
+            <returns>转换后的值</returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.Convert(System.Object,System.Type)">
+            <summary>
+            转换为目标类型
+            </summary>
+            <param name="value">要转换的值</param>
+            <param name="targetType">要转换的目标类型</param>
+            <returns>转换后的值</returns>
+        </member>
+        <member name="T:NetworkSocket.Converter.NullConvert">
+            <summary>
+            null值转换单元
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.IConvert">
+            <summary>
+            定义类型转换单元
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.IConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
+            <summary>
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converter.SippleConvert">
+            <summary>
+            简单类型转换单元
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Converter.NullableConvert">
+            <summary>
+            可空类型转换单元
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Converter.ArrayConvert">
+            <summary>
+            数组转换单元
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Converter.DictionaryConvert">
+            <summary>
+            字典转换单元
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Converter.DynamicObjectConvert">
+            <summary>
+            动态类型转换单元
+            </summary>
+        </member>
         <member name="T:NetworkSocket.Core.FilterAttribute">
             <summary>
             表示服务或Api行为过滤器基础特性
@@ -735,17 +861,17 @@
             Api名称
             </summary>
         </member>
-        <member name="T:NetworkSocket.Fast.ProtocolException">
+        <member name="T:NetworkSocket.Exceptions.ProtocolException">
             <summary>
             表示数据包协议异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.ProtocolException.#ctor">
+        <member name="M:NetworkSocket.Exceptions.ProtocolException.#ctor">
             <summary>
             数据包协议异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.ProtocolException.#ctor(System.String)">
+        <member name="M:NetworkSocket.Exceptions.ProtocolException.#ctor(System.String)">
             <summary>
             数据包协议异常
             </summary>
@@ -1624,45 +1750,6 @@
             获取或设置异常是否已处理
             </summary>
         </member>
-        <member name="T:NetworkSocket.Http.ApiExecuteException">
-            <summary>
-            表示Api执行异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Http.ApiExecuteException.#ctor(NetworkSocket.Http.ActionContext,System.Exception)">
-            <summary>
-            Api执行异常
-            </summary>
-            <param name="actionContext">Api行为上下文</param>
-            <param name="innerException">内部异常</param>
-        </member>
-        <member name="M:NetworkSocket.Http.ApiExecuteException.ToString">
-            <summary>
-            字符串显示
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.Http.ApiExecuteException.ActionContext">
-            <summary>
-            获取Api行为上下文
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Http.ApiNotExistException">
-            <summary>
-            表示Api不存在引发的异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Http.ApiNotExistException.#ctor(System.String)">
-            <summary>
-            Api不存在引发的异常
-            </summary>
-            <param name="name">Api名称</param>
-        </member>
-        <member name="P:NetworkSocket.Http.ApiNotExistException.Name">
-            <summary>
-            获取Api名称
-            </summary>
-        </member>
         <member name="T:NetworkSocket.Http.HttpController">
             <summary>
             表示Http控制器
@@ -2087,7 +2174,7 @@
             <param name="sender">异常产生者</param>
             <param name="exception">异常</param>
         </member>
-        <member name="M:NetworkSocket.TcpServerBase`1.OnReceive(`0,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.TcpServerBase`1.OnReceive(`0,NetworkSocket.ReceiveStream)">
             <summary>
             当接收到会话对象的数据时，将触发此方法             
             </summary>
@@ -2154,7 +2241,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Http.HttpServerBase.OnReceive(NetworkSocket.SessionBase,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.Http.HttpServerBase.OnReceive(NetworkSocket.SessionBase,NetworkSocket.ReceiveStream)">
             <summary>
             收到tcp请求
             </summary>
@@ -2354,7 +2441,7 @@
             <param name="value2"></param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Http.HttpRequest.Parse(NetworkSocket.ReceiveBuffer,System.Net.IPEndPoint,System.Net.IPEndPoint)">
+        <member name="M:NetworkSocket.Http.HttpRequest.Parse(NetworkSocket.ReceiveStream,System.Net.IPEndPoint,System.Net.IPEndPoint)">
             <summary>
             解析连接请求信息
             如果数据未完整则返回null
@@ -2373,7 +2460,7 @@
             <exception cref="T:NetworkSocket.Http.HttpException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Http.HttpRequest.GeneratePostFormAndFiles(NetworkSocket.Http.HttpRequest,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.Http.HttpRequest.GeneratePostFormAndFiles(NetworkSocket.Http.HttpRequest,NetworkSocket.ReceiveStream)">
             <summary>
             生成Post得到的表单和文件
             </summary>
@@ -2386,7 +2473,7 @@
             </summary>
             <param name="request"></param>
         </member>
-        <member name="M:NetworkSocket.Http.HttpRequest.GenerateMultipartFormAndFiles(NetworkSocket.Http.HttpRequest,NetworkSocket.ReceiveBuffer,System.String)">
+        <member name="M:NetworkSocket.Http.HttpRequest.GenerateMultipartFormAndFiles(NetworkSocket.Http.HttpRequest,NetworkSocket.ReceiveStream,System.String)">
             <summary>
             生成表单和文件
             </summary>
@@ -2738,23 +2825,23 @@
             </summary>
             <param name="context">上下文</param>
         </member>
-        <member name="T:NetworkSocket.SessionAcceptExcetion">
+        <member name="T:NetworkSocket.Exceptions.SessionAcceptExcetion">
             <summary>
             表示接收会话异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.SessionAcceptExcetion.#ctor(System.Net.Sockets.SocketException)">
+        <member name="M:NetworkSocket.Exceptions.SessionAcceptExcetion.#ctor(System.Net.Sockets.SocketException)">
             <summary>
             接收会话异常
             </summary>
             <param name="innerException">内部异常</param>
         </member>
-        <member name="T:NetworkSocket.SessionCreateException">
+        <member name="T:NetworkSocket.Exceptions.SessionCreateException">
             <summary>
             表示创建会话异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.SessionCreateException.#ctor(System.Exception)">
+        <member name="M:NetworkSocket.Exceptions.SessionCreateException.#ctor(System.Exception)">
             <summary>
             创建会话异常
             </summary>
@@ -2852,74 +2939,68 @@
             获取或设置异常是否已处理
             </summary>
         </member>
-        <member name="T:NetworkSocket.Fast.ApiExecuteException">
+        <member name="T:NetworkSocket.Exceptions.ApiExecuteException">
             <summary>
             表示Api执行异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.ApiExecuteException.#ctor(NetworkSocket.Fast.ActionContext,System.Exception)">
+        <member name="M:NetworkSocket.Exceptions.ApiExecuteException.#ctor(System.Exception)">
             <summary>
             Api执行异常
-            </summary>
-            <param name="actionContext">Api行为上下文</param>
+            </summary>       
             <param name="innerException">内部异常</param>
         </member>
-        <member name="M:NetworkSocket.Fast.ApiExecuteException.ToString">
+        <member name="M:NetworkSocket.Exceptions.ApiExecuteException.ToString">
             <summary>
             字符串显示
             </summary>
             <returns></returns>
         </member>
-        <member name="P:NetworkSocket.Fast.ApiExecuteException.ActionContext">
-            <summary>
-            获取Api行为上下文
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Fast.ApiNotExistException">
+        <member name="T:NetworkSocket.Exceptions.ApiNotExistException">
             <summary>
             表示Api不存在引发的异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.ApiNotExistException.#ctor(System.String)">
+        <member name="M:NetworkSocket.Exceptions.ApiNotExistException.#ctor(System.String)">
             <summary>
             Api不存在引发的异常
             </summary>
             <param name="name">Api名称</param>
         </member>
-        <member name="P:NetworkSocket.Fast.ApiNotExistException.Name">
+        <member name="P:NetworkSocket.Exceptions.ApiNotExistException.Name">
             <summary>
             获取Api名称
             </summary>
         </member>
-        <member name="T:NetworkSocket.Fast.RemoteException">
+        <member name="T:NetworkSocket.Exceptions.RemoteException">
             <summary>
             表示远程端Api行为异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.RemoteException.#ctor(System.String)">
+        <member name="M:NetworkSocket.Exceptions.RemoteException.#ctor(System.String)">
             <summary>
             远程端Api行为异常
             </summary>       
             <param name="message">异常信息</param>
         </member>
-        <member name="T:NetworkSocket.Fast.ResolveException">
+        <member name="T:NetworkSocket.Exceptions.ResolveException">
             <summary>
             表示依赖反转异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.ResolveException.#ctor(System.Type,System.Exception)">
+        <member name="M:NetworkSocket.Exceptions.ResolveException.#ctor(System.Type,System.Exception)">
             <summary>
             依赖反转异常
             </summary>
             <param name="type">要反转的类型</param>
             <param name="innerException">内部异常</param>
         </member>
-        <member name="T:NetworkSocket.Fast.SerializerException">
+        <member name="T:NetworkSocket.Exceptions.SerializerException">
             <summary>
             表示序列化或反序列化过程中产生的异常
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.SerializerException.#ctor(System.Exception)">
+        <member name="M:NetworkSocket.Exceptions.SerializerException.#ctor(System.Exception)">
             <summary>
             表示序列化或反序列化过程中产生的异常
             </summary>
@@ -3156,11 +3237,6 @@
             用于发送的SocketAsyncEventArgs
             </summary>
         </member>
-        <member name="F:NetworkSocket.SessionBase.queueSync">
-            <summary>
-            byteRangeQueue添加数据的锁
-            </summary>
-        </member>
         <member name="F:NetworkSocket.SessionBase.byteRangeQueue">
             <summary>
             待发送的ByeRange集合
@@ -3171,7 +3247,7 @@
             用于接收的SocketAsyncEventArgs
             </summary>
         </member>
-        <member name="F:NetworkSocket.SessionBase.recvBuffer">
+        <member name="F:NetworkSocket.SessionBase.recvStream">
             <summary>
             接收到的未处理数据
             </summary>      
@@ -3203,11 +3279,13 @@
             </summary>
             <param name="socket">套接字</param>
         </member>
-        <member name="M:NetworkSocket.SessionBase.SetKeepAlive(System.Net.Sockets.Socket)">
+        <member name="M:NetworkSocket.SessionBase.TrySetKeepAlive(System.Net.Sockets.Socket,System.Int32,System.Int32)">
             <summary>
             设置客户端的心跳包
             </summary>
             <param name="socket">客户端</param>
+            <param name="dueTime">延迟的时间量（以毫秒为单位）</param>
+            <param name="period">时间间隔（以毫秒为单位）</param>
         </member>
         <member name="M:NetworkSocket.SessionBase.TryInvoke(System.Action)">
             <summary>
@@ -3216,7 +3294,7 @@
             <param name="action">方法</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.SessionBase.TryReceive">
+        <member name="M:NetworkSocket.SessionBase.TryReceiveAsync">
             <summary>
             尝试开始接收数据
             </summary>
@@ -3236,21 +3314,23 @@
             <exception cref="T:System.ArgumentNullException"></exception>        
             <exception cref="T:System.Net.Sockets.SocketException"></exception>
         </member>
-        <member name="M:NetworkSocket.SessionBase.SplitByteRangeToQueue(NetworkSocket.ByteRange)">
+        <member name="M:NetworkSocket.SessionBase.SendByteRange(NetworkSocket.ByteRange)">
             <summary>
-            分割数据并顺序添加到待发送数据集合
+            发送一个小于缓冲区的数据范围
             </summary>
-            <param name="byteRange">数据</param>
-            <returns>返回拆分数量</returns>
+            <param name="byteRange">数据范围</param>
         </member>
-        <member name="M:NetworkSocket.SessionBase.TrySend">
+        <member name="M:NetworkSocket.SessionBase.TrySendByteRangeAsync(NetworkSocket.ByteRange)">
             <summary>
-            尝试发送开始处的ByteRange
+            尝试异步发送一个ByteRange
+            发送完成将触发SendCompleted方法
+            <param name="byteRange">数据范围，为null则从缓冲中区获取</param>
             </summary>
         </member>
         <member name="M:NetworkSocket.SessionBase.SendCompleted(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
             <summary>
-            发送完成一个ByteRange
+            发送完成时触发
+            将检测是否有缓存的数据要继续发送
             </summary>
             <param name="sender">发送者</param>
             <param name="arg">关联的SocketAsyncEventArgs</param>
@@ -3363,8 +3443,8 @@
             <param name="api">数据包Api名</param>
             <param name="parameters">参数列表</param>      
             <exception cref="T:System.Net.Sockets.SocketException"></exception>     
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>   
-            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>   
+            <exception cref="T:NetworkSocket.Exceptions.ProtocolException"></exception>
         </member>
         <member name="M:NetworkSocket.Fast.FastSession.InvokeApi``1(System.String,System.Object[])">
             <summary>
@@ -3375,8 +3455,8 @@
             <param name="api">数据包Api名</param>
             <param name="parameters">参数</param>       
             <exception cref="T:System.Net.Sockets.SocketException"></exception>      
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
-            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.ProtocolException"></exception>
             <returns>远程数据任务</returns>         
         </member>
         <member name="P:NetworkSocket.Fast.FastSession.Server">
@@ -3403,7 +3483,7 @@
             </summary>
             <param name="serializer">序列化工具</param>
             <param name="parameters">参数</param>
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
         </member>
         <member name="M:NetworkSocket.Fast.FastPacket.GetBodyParameters(NetworkSocket.Fast.ISerializer,System.Type[])">
             <summary>
@@ -3423,16 +3503,16 @@
             <summary>
             转换为ByteRange
             </summary>
-            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.ProtocolException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Fast.FastPacket.From(NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.Fast.FastPacket.From(NetworkSocket.ReceiveStream)">
             <summary>
             解析一个数据包       
             不足一个封包时返回null
             </summary>
             <param name="buffer">接收到的历史数据</param>
-            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.ProtocolException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Fast.FastPacket.ToString">
@@ -3539,7 +3619,7 @@
             <param name="remoteEndPoint">远程ip和端口</param> 
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.TcpClientBase.ConnectArgCompleted(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
+        <member name="M:NetworkSocket.TcpClientBase.ConnectCompleted(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
             <summary>
             连接完成事件
             </summary>
@@ -3548,19 +3628,19 @@
         </member>
         <member name="M:NetworkSocket.TcpClientBase.ReConnect">
             <summary>
-            当前与远程端连接断开之后，进行重新连接   
-            如果还连接，则返回TaskOf(false)
+            连接到最近一次连接的远程端口
+            如果IsConnected为true，则返回TaskOf(false)
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.TcpClientBase.OnReceive(NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.TcpClientBase.OnReceive(NetworkSocket.ReceiveStream)">
             <summary>
             当接收到远程端的数据时，将触发此方法   
             </summary>       
             <param name="buffer">接收到的历史数据</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.TcpClientBase.Disconnect">
+        <member name="M:NetworkSocket.TcpClientBase.OnDisconnectInternal">
             <summary>
             关闭连接并触发关闭事件
             </summary>
@@ -3600,7 +3680,7 @@
             快速构建Tcp服务端
             </summary>
         </member>
-        <member name="M:NetworkSocket.Fast.FastTcpClient.OnReceive(NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.Fast.FastTcpClient.OnReceive(NetworkSocket.ReceiveStream)">
             <summary>
             当接收到远程端的数据时，将触发此方法
             </summary>
@@ -3644,7 +3724,7 @@
             执行Api行为
             </summary>
             <param name="actionContext">上下文</param>   
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
         </member>
         <member name="M:NetworkSocket.Fast.FastTcpClient.ProcessExecutingException(NetworkSocket.Fast.ActionContext,System.Exception)">
             <summary>
@@ -3668,8 +3748,8 @@
             <param name="api">Api行为的api</param>
             <param name="parameters">参数列表</param>          
             <exception cref="T:System.Net.Sockets.SocketException"></exception> 
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception> 
-            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception> 
+            <exception cref="T:NetworkSocket.Exceptions.ProtocolException"></exception>
         </member>
         <member name="M:NetworkSocket.Fast.FastTcpClient.InvokeApi``1(System.String,System.Object[])">
             <summary>
@@ -3680,8 +3760,8 @@
             <param name="api">Api行为的api</param>
             <param name="parameters">参数</param>
             <exception cref="T:System.Net.Sockets.SocketException"></exception>        
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
-            <exception cref="T:NetworkSocket.Fast.ProtocolException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.ProtocolException"></exception>
             <returns>远程数据任务</returns>    
         </member>
         <member name="M:NetworkSocket.Fast.FastTcpClient.OnDisconnect">
@@ -3788,7 +3868,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Fast.FastTcpServer.OnReceive(NetworkSocket.Fast.FastSession,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.Fast.FastTcpServer.OnReceive(NetworkSocket.Fast.FastSession,NetworkSocket.ReceiveStream)">
             <summary>
             当接收到会话对象的数据时，将触发此方法  
             </summary>
@@ -3937,7 +4017,7 @@
             异常时抛出SerializerException
             </summary>
             <param name="model">实体</param>
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Fast.ISerializer.Deserialize(System.Byte[],System.Type)">
@@ -3947,7 +4027,7 @@
             </summary>
             <param name="bytes">数据</param>
             <param name="type">实体类型</param>
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Fast.DefaultSerializer.Serialize(System.Object)">
@@ -3955,7 +4035,7 @@
             序列化为二进制
             </summary>
             <param name="model">实体</param>
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Fast.DefaultSerializer.Deserialize(System.Byte[],System.Type)">
@@ -3964,7 +4044,7 @@
             </summary>
             <param name="bytes">数据</param>
             <param name="type">实体类型</param>
-            <exception cref="T:NetworkSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Fast.DefaultSerializer.ToString">
@@ -4407,23 +4487,14 @@
         </member>
         <member name="T:NetworkSocket.Policies.FlexPolicyServer">
             <summary>
-            Flex通讯策略服务
-            不可继承
+            Flex通讯策略服务   
             </summary>
         </member>
         <member name="M:NetworkSocket.Policies.FlexPolicyServer.StartListen">
             <summary>
-            启动策略服务
-            监听本地843端口       
+            启动策略服务             
             </summary>
             <exception cref="T:System.Net.Sockets.SocketException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Policies.FlexPolicyServer.OnReceive(NetworkSocket.SessionBase,NetworkSocket.ReceiveBuffer)">
-            <summary>
-            接收到策略请求
-            </summary>
-            <param name="session">会话对象</param>
-            <param name="buffer">数据</param>      
         </member>
         <member name="M:NetworkSocket.Policies.FlexPolicyServer.OnCreateSession">
             <summary>
@@ -4431,167 +4502,146 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="P:NetworkSocket.Policies.FlexPolicyServer.Port">
-            <summary>
-            本地843端口
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.Policies.SilverlightPolicyServer">
-            <summary>
-            Siverlight通讯策略服务
-            不可继承
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Policies.SilverlightPolicyServer.StartListen">
-            <summary>
-            启动策略服务
-            监听本地943端口
-            </summary>
-            <exception cref="T:System.Net.Sockets.SocketException"></exception>
-        </member>
-        <member name="M:NetworkSocket.Policies.SilverlightPolicyServer.OnReceive(NetworkSocket.SessionBase,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.Policies.FlexPolicyServer.OnReceive(NetworkSocket.SessionBase,NetworkSocket.ReceiveStream)">
             <summary>
             接收到策略请求
             </summary>
             <param name="session">会话对象</param>
             <param name="buffer">数据</param>      
         </member>
-        <member name="M:NetworkSocket.Policies.SilverlightPolicyServer.OnCreateSession">
+        <member name="M:NetworkSocket.Policies.FlexPolicyServer.GeneratePolicyXml(System.String)">
             <summary>
-            创建新的会话对象
+            生成策略xml
+            返回null则不发送策略文件 
             </summary>
+            <param name="input">请求内容</param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Policies.FlexPolicyServer.Port">
+            <summary>
+            获取策略服务端口
+            843
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Policies.SilverlightPolicyServer">
+            <summary>
+            Siverlight通讯策略服务   
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Policies.SilverlightPolicyServer.GeneratePolicyXml(System.String)">
+            <summary>
+            生成策略xml
+            返回null则不发送策略文件 
+            </summary>
+            <param name="input">请求内容</param>
             <returns></returns>
         </member>
         <member name="P:NetworkSocket.Policies.SilverlightPolicyServer.Port">
             <summary>
-            本地943端口
+            获取策略服务端口
+            943
             </summary>
         </member>
-        <member name="T:NetworkSocket.ReceiveBuffer">
+        <member name="T:NetworkSocket.ReceiveStream">
             <summary>
             表示会话接收到的历史数据
-            非线程安全类型
-            不可继承
+            非线程安全类型  
             </summary>
         </member>
-        <member name="F:NetworkSocket.ReceiveBuffer._position">
+        <member name="M:NetworkSocket.ReceiveStream.#ctor">
             <summary>
-            指针位置
+            会话接收到的历史数据
             </summary>
         </member>
-        <member name="F:NetworkSocket.ReceiveBuffer._capacity">
+        <member name="M:NetworkSocket.ReceiveStream.ReadBoolean">
             <summary>
-            容量
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.ReceiveBuffer._buffer">
-            <summary>
-            当前数据
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.ReceiveBuffer.SyncRoot">
-            <summary>
-            获取同步锁
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.#ctor">
-            <summary>
-            提供二进制数据读取和操作支持
-            </summary>             
-        </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.Add(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            添加指定数据数组
-            </summary>
-            <param name="array">数组</param>
-            <param name="offset">数组的偏移量</param>
-            <param name="count">字节数</param>       
-        </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ExpandCapacity(System.Int32)">
-            <summary>
-            扩容
-            </summary>
-            <param name="newLength">满足的新大小</param>
-        </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadBoolean">
-            <summary>
-            从Position偏移位置读取一个字节并转换为bool类型
+            从流中读取一个字节，并将流内的位置向前推进一个字节，如果已到达流的末尾，则返回 -1
             </summary>       
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadByte">
+        <member name="M:NetworkSocket.ReceiveStream.ReadByte">
             <summary>
-            从Position偏移位置读取一个字节
+            从流中读取一个字节，并将流内的位置向前推进一个字节，如果已到达流的末尾，则返回 -1
             </summary>      
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadInt16">
+        <member name="M:NetworkSocket.ReceiveStream.ReadInt16">
             <summary>
-            从Position偏移位置读取2个字节
+            从流中读取2个字节，并将流内的位置向前推进2个字节，
             返回其Int16表示类型
             </summary>     
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadUInt16">
+        <member name="M:NetworkSocket.ReceiveStream.ReadUInt16">
             <summary>
-            从Position偏移位置读取2个字节
+            从流中读取2个字节，并将流内的位置向前推进2个字节，
             返回其UInt16表示类型
             </summary>      
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadInt32">
+        <member name="M:NetworkSocket.ReceiveStream.ReadInt32">
             <summary>
-            从Position偏移位置读取4个字节
+            从流中读取4个字节，并将流内的位置向前推进4个字节，
             返回其Int32表示类型
             </summary>          
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadUInt32">
+        <member name="M:NetworkSocket.ReceiveStream.ReadUInt32">
             <summary>
-            从Position偏移位置读取4个字节
+            从流中读取4个字节，并将流内的位置向前推进4个字节，
             返回其UInt32表示类型
             </summary>     
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadInt64">
+        <member name="M:NetworkSocket.ReceiveStream.ReadInt64">
             <summary>
-            从Position偏移位置读取8个字节
+            从流中读取8个字节，并将流内的位置向前推进8个字节，
             返回其Int64表示类型
             </summary>         
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadUInt64">
+        <member name="M:NetworkSocket.ReceiveStream.ReadUInt64">
             <summary>
-            从Position偏移位置读取8个字节
+            从流中读取8个字节，并将流内的位置向前推进8个字节，
             返回其UInt64表示类型
             </summary>        
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadArray">
+        <member name="M:NetworkSocket.ReceiveStream.ReadArray">
             <summary>
-            从Position偏移位置读取所有数据
+            从流中读取到末尾的字节，并将流内的位置向前推进相同的字节
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadArray(System.Int32)">
+        <member name="M:NetworkSocket.ReceiveStream.ReadArray(System.Int32)">
             <summary>
-            从Position偏移位置读取指定长度数据
+            从流中读取count字节，并将流内的位置向前推进count字节
             </summary>
             <param name="count">要读取的字节数</param>
             <returns></returns>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.ReadString(System.Int32,System.Text.Encoding)">
+        <member name="M:NetworkSocket.ReceiveStream.ReadString(System.Text.Encoding)">
             <summary>
-            从Position偏移位置读取为字符串
+            从流中读取Position到末尾的所有字节，并将流内的位置推到末尾
+            返回以指定编码转换的字符串
+            </summary>  
+            <param name="encode">编码</param>        
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.ReceiveStream.ReadString(System.Int32,System.Text.Encoding)">
+            <summary>
+            从流中读取count字节，并将流内的位置向前推进count字节
+            返回以指定编码转换的字符串
             </summary>        
             <param name="count">字节数</param>
             <param name="encode">编码</param>
@@ -4599,18 +4649,18 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.CopyTo(System.Byte[],System.Int32)">
+        <member name="M:NetworkSocket.ReceiveStream.CopyTo(System.Byte[],System.Int32)">
             <summary>
-            将指定长度的数据复制到目标数组
+            从开始位置将指定长度的数据复制到目标数组
             </summary>
             <param name="dstArray">目标数组</param>     
             <param name="count">要复制的字节数</param>
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.CopyTo(System.Byte[],System.Int32,System.Int32)">
+        <member name="M:NetworkSocket.ReceiveStream.CopyTo(System.Byte[],System.Int32,System.Int32)">
             <summary>
-            将指定长度的数据复制到目标数组
+            从开始位置将指定长度的数据复制到目标数组
             </summary>
             <param name="dstArray">目标数组</param>
             <param name="dstOffset">目标数组偏移量</param>
@@ -4618,7 +4668,7 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.CopyTo(System.Int32,System.Byte[],System.Int32,System.Int32)">
+        <member name="M:NetworkSocket.ReceiveStream.CopyTo(System.Int32,System.Byte[],System.Int32,System.Int32)">
             <summary>
             从指定偏移位置将数据复制到目标数组
             </summary>
@@ -4629,52 +4679,68 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.Clear">
+        <member name="M:NetworkSocket.ReceiveStream.Clear">
             <summary>
-            清空所有数据        
+            清空所有数据    
+            等同SetLength(0L)
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.Clear(System.Int32)">
+        <member name="M:NetworkSocket.ReceiveStream.Clear(System.Int32)">
             <summary>
-            清除数据        
+            从开始位置清除数据        
             </summary>
             <param name="count">清除的字节数</param>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.IndexOf(System.Byte[])">
+        <member name="M:NetworkSocket.ReceiveStream.IndexOf(System.Byte[])">
             <summary>
-            从Position位置查找第一个匹配的相对Position的偏移量
+            从Position位置开始查找第一个匹配的值
+            返回相对于Position的偏移量
             </summary>
             <param name="binary">要匹配的数据</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.EqualsBinary(System.Int32,System.Byte[])">
+        <member name="M:NetworkSocket.ReceiveStream.SequenceEqual(System.Int32,System.Byte[])">
             <summary>
             是否和目标binary相等
             </summary>
             <param name="index">索引</param>
-            <param name="binary"></param>
+            <param name="binary">要匹配的数据</param>
             <returns></returns>
         </member>
-        <member name="P:NetworkSocket.ReceiveBuffer.Length">
+        <member name="P:NetworkSocket.ReceiveStream.SyncRoot">
             <summary>
-            获取数据长度
+            获取同步锁对象
             </summary>
         </member>
-        <member name="P:NetworkSocket.ReceiveBuffer.Endian">
+        <member name="P:NetworkSocket.ReceiveStream.Endian">
             <summary>
             获取或设置字节存储次序
+            默认为Endians.Big
             </summary>
         </member>
-        <member name="P:NetworkSocket.ReceiveBuffer.Position">
+        <member name="P:NetworkSocket.ReceiveStream.Length">
             <summary>
-            获取或设置指针位置    
-            为[0, Length]之间
+            获取用字节表示的流长度
             </summary>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="P:NetworkSocket.ReceiveBuffer.Item(System.Int32)">
+        <member name="P:NetworkSocket.ReceiveStream.LongLength">
+            <summary>
+            获取用字节表示的流长度
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.ReceiveStream.Position">
+            <summary>
+            获取或设置流中的当前位置
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.ReceiveStream.LongPosition">
+            <summary>
+            获取或设置流中的当前位置
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.ReceiveStream.Item(System.Int32)">
             <summary>
             获取指定位置的字节
             </summary>
@@ -4682,23 +4748,23 @@
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <returns></returns>
         </member>
-        <member name="T:NetworkSocket.ReceiveBuffer.DebugView">
+        <member name="T:NetworkSocket.ReceiveStream.DebugView">
             <summary>
             调试视图
             </summary>
         </member>
-        <member name="F:NetworkSocket.ReceiveBuffer.DebugView.view">
+        <member name="F:NetworkSocket.ReceiveStream.DebugView.view">
             <summary>
             查看的对象
             </summary>
         </member>
-        <member name="M:NetworkSocket.ReceiveBuffer.DebugView.#ctor(NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.ReceiveStream.DebugView.#ctor(NetworkSocket.ReceiveStream)">
             <summary>
             调试视图
             </summary>
             <param name="view">查看的对象</param>
         </member>
-        <member name="P:NetworkSocket.ReceiveBuffer.DebugView.Values">
+        <member name="P:NetworkSocket.ReceiveStream.DebugView.Values">
             <summary>
             查看的内容
             </summary>
@@ -4887,6 +4953,12 @@
             表示端口的占用进程的id
             </summary>
         </member>
+        <member name="M:NetworkSocket.TcpSnapshot.PortOwnerPid.Kill">
+            <summary>
+            杀掉占用端口的进程
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.TcpSnapshot.PortOwnerPid.GetHashCode">
             <summary>
             获取哈希码
@@ -4908,11 +4980,6 @@
         <member name="P:NetworkSocket.TcpSnapshot.PortOwnerPid.OwerPid">
             <summary>
             获取占用端口的进程id
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.TcpSnapshot.PortOwnerPid.OwerProcess">
-            <summary>
-             获取占用端口的进程信息
             </summary>
         </member>
         <member name="T:NetworkSocket.TcpSnapshot.MIB_TCPROW_OWNER_PID">
@@ -5275,6 +5342,13 @@
             <param name="validationContext">上下文</param>
             <returns></returns>
         </member>
+        <member name="M:NetworkSocket.Validation.ValidRuleBase.IsValid(System.Object)">
+            <summary>
+            验证属性的值是否通过
+            </summary>
+            <param name="value">属性的值</param>
+            <returns></returns>
+        </member>
         <member name="M:NetworkSocket.Validation.ValidRuleBase.NetworkSocket#Validation#IValidRule#IsValid(System.Object,NetworkSocket.Validation.ValidContext)">
             <summary>
             验证属性的值是否通过
@@ -5479,11 +5553,6 @@
             支持整型和双精度型验证
             </summary>
         </member>
-        <member name="F:NetworkSocket.Validation.Rules.RangeAttribute.isInteger">
-            <summary>
-            是否为整数
-            </summary>
-        </member>
         <member name="M:NetworkSocket.Validation.Rules.RangeAttribute.#ctor(System.Int32,System.Int32)">
             <summary>
             验值要在一定的区间中
@@ -5657,80 +5726,6 @@
             获取或设置异常是否已处理
             </summary>
         </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.ApiExecuteException">
-            <summary>
-            表示Api执行异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.ApiExecuteException.#ctor(NetworkSocket.WebSocket.Fast.ActionContext,System.Exception)">
-            <summary>
-            Api执行异常
-            </summary>
-            <param name="actionContext">Api行为上下文</param>
-            <param name="innerException">内部异常</param>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.ApiExecuteException.ToString">
-            <summary>
-            字符串显示
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.ApiExecuteException.ActionContext">
-            <summary>
-            获取Api行为上下文
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.ApiNotExistException">
-            <summary>
-            表示Api不存在引发的异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.ApiNotExistException.#ctor(System.String)">
-            <summary>
-            Api不存在引发的异常
-            </summary>
-            <param name="name">Api名称</param>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.ApiNotExistException.Name">
-            <summary>
-            获取Api名称
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.RemoteException">
-            <summary>
-            表示远程端Api行为异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.RemoteException.#ctor(System.String)">
-            <summary>
-            远程端Api行为异常
-            </summary>       
-            <param name="message">异常信息</param>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.ResolveException">
-            <summary>
-            表示依赖反转异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.ResolveException.#ctor(System.Type,System.Exception)">
-            <summary>
-            依赖反转异常
-            </summary>
-            <param name="type">要反转的类型</param>
-            <param name="innerException">内部异常</param>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.SerializerException">
-            <summary>
-            表示序列化或反序列化过程中产生的异常
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.SerializerException.#ctor(System.Exception)">
-            <summary>
-            表示序列化或反序列化过程中产生的异常
-            </summary>
-            <param name="inner">异常内部</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-        </member>
         <member name="T:NetworkSocket.WebSocket.Fast.FastApiService">
             <summary>
             JsonWebSocket的Api服务
@@ -5814,7 +5809,7 @@
             </summary>       
             <param name="actionContext">上下文</param>       
             <param name="filters">过滤器</param>
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="M:NetworkSocket.WebSocket.Fast.FastApiService.OnAuthorization(NetworkSocket.WebSocket.Fast.ActionContext)">
             <summary>
@@ -5975,28 +5970,28 @@
             </summary>
             <typeparam name="T">会话类型</typeparam>
         </member>
-        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnReceive(`0,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.OnReceive(`0,NetworkSocket.ReceiveStream)">
             <summary>
             当接收到会话对象的数据时，将触发此方法  
             </summary>
             <param name="session">会话对象</param>
             <param name="buffer">接收到的历史数据</param>   
         </member>
-        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.ProcessHandshake(`0,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.ProcessHandshake(`0,NetworkSocket.ReceiveStream)">
             <summary>
             处理握手        
             </summary>
             <param name="session">会话对象</param>
             <param name="buffer">接收到的数据</param>
         </member>
-        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.ProcessRequest(`0,NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.ProcessRequest(`0,NetworkSocket.ReceiveStream)">
             <summary>
             处理请求
             </summary>
             <param name="session">会话对象</param>
             <param name="buffer">接收到的历史数据</param>
         </member>
-        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.GetFrameRequestsFromBuffer(NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.WebSocket.WebSocketServerBase`1.GetFrameRequestsFromBuffer(NetworkSocket.ReceiveStream)">
             <summary>
             解析请求帧
             </summary>
@@ -6309,7 +6304,7 @@
             <param name="api">api</param>
             <param name="parameters">参数列表</param>  
             <exception cref="T:System.Net.Sockets.SocketException"></exception>      
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>       
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>       
         </member>
         <member name="M:NetworkSocket.WebSocket.Fast.FastWebSocketSession.InvokeApi``1(System.String,System.Object[])">
             <summary>
@@ -6320,7 +6315,7 @@
             <param name="api">api</param>
             <param name="parameters">参数</param> 
             <exception cref="T:System.Net.Sockets.SocketException"></exception>         
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns>远程数据任务</returns>  
         </member>
         <member name="P:NetworkSocket.WebSocket.Fast.FastWebSocketSession.Server">
@@ -6441,8 +6436,26 @@
             异常时抛出SerializerException
             </summary>
             <param name="model">实体</param>
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IJsonSerializer.Deserialize(System.String)">
+            <summary>
+            反序列化json为动态类型
+            异常时抛出SerializerException
+            </summary>
+            <param name="json">json数据</param>      
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.IJsonSerializer.Convert(System.Object,System.Type)">
+            <summary>
+            将值转换为目标类型
+            这些值有可能是反序列化得到的动态类型的值
+            </summary>       
+            <param name="value">要转换的值，可能</param>
+            <param name="targetType">转换的目标类型</param>   
+            <returns>转换结果</returns>
         </member>
         <member name="T:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer">
             <summary>
@@ -6454,8 +6467,129 @@
             序列化为Json
             </summary>
             <param name="model">实体</param>
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
             <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.Deserialize(System.String)">
+            <summary>
+            反序列化json为动态类型
+            异常时抛出SerializerException
+            </summary>
+            <param name="json">json数据</param>      
+            <exception cref="T:NetworkSocket.Exceptions.SerializerException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.Convert(System.Object,System.Type)">
+            <summary>
+            将值转换为目标类型
+            这些值有可能是反序列化得到的动态类型的值
+            </summary>       
+            <param name="value">要转换的值，可能</param>
+            <param name="targetType">转换的目标类型</param>   
+            <returns>转换结果</returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject">
+            <summary>
+            表示动态Json对象
+            </summary>   
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.Parse(System.String)">
+            <summary>
+            解析Json
+            </summary>
+            <param name="json">json</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.data">
+            <summary>
+            数据字典
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            表示动态Json对象
+            </summary>
+            <param name="data">内容字典</param>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.GetDynamicMemberNames">
+            <summary>
+            获取成员名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            转换为目标类型
+            </summary>
+            <param name="binder"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            获取成员的值
+            </summary>
+            <param name="binder"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.CastToJObject(System.Object)">
+            <summary>
+            转换结果为JObject结构或JArray结构
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DynamicJsonConverter">
+            <summary>
+            Json转换器
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DynamicJsonConverter.Serialize(System.Object,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            不作序列化
+            </summary>
+            <param name="obj"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DynamicJsonConverter.Deserialize(System.Collections.Generic.IDictionary{System.String,System.Object},System.Type,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="dictionary"></param>
+            <param name="type"></param>
+            <param name="serializer"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DynamicJsonConverter.SupportedTypes">
+            <summary>
+            获取支持的类型
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DebugView">
+            <summary>
+            调试视图
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DebugView.view">
+            <summary>
+            查看的对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DebugView.#ctor(NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject)">
+            <summary>
+            调试视图
+            </summary>
+            <param name="view">查看的对象</param>
+        </member>
+        <member name="P:NetworkSocket.WebSocket.Fast.DefaultJsonSerializer.JObject.DebugView.Values">
+            <summary>
+            查看的内容
+            </summary>
         </member>
         <member name="T:NetworkSocket.WebSocket.Fast.FastWebSocketCommon">
             <summary>
@@ -6499,188 +6633,8 @@
             生成Api行为的调用参数
             </summary> 
             <param name="context">上下文</param>        
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
-            <returns></returns>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.JObject">
-            <summary>
-            表示动态Json对象
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.WebSocket.Fast.JObject.dataArray">
-            <summary>
-            数据数组
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.WebSocket.Fast.JObject.dataDic">
-            <summary>
-            数据字典
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.#ctor(System.Object[])">
-            <summary>
-            创建动态Json数组对象
-            </summary>
-            <param name="dataArray">Object对象或JObject对象</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
-            <summary>
-            表示动态Json对象
-            </summary>
-            <param name="dataDic">内容字典</param>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.ToArray">
-            <summary>
-            转换为数组
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.GetEnumerator">
-            <summary>
-            获取迭代器
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            迭代自身的元素
-            而不是字典的元素
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
-            <summary>
-            转换为目标类型
-            </summary>
-            <param name="binder"></param>
-            <param name="result"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
-            <summary>
-            获取成员的值
-            </summary>
-            <param name="binder"></param>
-            <param name="result"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.CastResult(System.Object)">
-            <summary>
-            转换结果为JObject结构或JArray结构
-            </summary>
-            <param name="result"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.Parse(System.String)">
-            <summary>
-            解析Json
-            </summary>
-            <param name="json">json</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
-            <exception cref="T:System.InvalidOperationException"></exception>
             <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.TryCast``1(System.Object)">
-            <summary>
-            尝试将解析出来的动态值转换为目标类型
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <param name="value">值</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.Cast``1(System.Object)">
-            <summary>
-            将解析出来的动态值转换为目标类型
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <param name="value">动态值</param>
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.Cast(System.Object,System.Type)">
-            <summary>
-            将解析出来的动态值转换为目标类型
-            </summary>
-            <param name="value">动态值</param>
-            <param name="targetType">目标类型</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:NetworkSocket.WebSocket.Fast.SerializerException"></exception>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.CastByJavaScriptSerializer(System.Object,System.Type)">
-            <summary>
-            调用JavaScriptSerializer进行类型转换
-            </summary>
-            <param name="value">动态值</param>
-            <param name="targetType">目标类型</param>     
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.JObject.IsArray">
-            <summary>
-            获取是否为数组
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.JObject.Length">
-            <summary>
-            获取数组长度
-            </summary>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.JObject.Item(System.Int32)">
-            <summary>
-            获取指定索引内容
-            </summary>
-            <param name="index">索引</param>
-            <returns></returns>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter">
-            <summary>
-            Json转换器
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter.Serialize(System.Object,System.Web.Script.Serialization.JavaScriptSerializer)">
-            <summary>
-            不作序列化
-            </summary>
-            <param name="obj"></param>
-            <param name="serializer"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter.Deserialize(System.Collections.Generic.IDictionary{System.String,System.Object},System.Type,System.Web.Script.Serialization.JavaScriptSerializer)">
-            <summary>
-            反序列化
-            </summary>
-            <param name="dictionary"></param>
-            <param name="type"></param>
-            <param name="serializer"></param>
-            <returns></returns>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.JObject.DynamicJsonConverter.SupportedTypes">
-            <summary>
-            获取支持的类型
-            </summary>
-        </member>
-        <member name="T:NetworkSocket.WebSocket.Fast.JObject.DebugView">
-            <summary>
-            调试视图
-            </summary>
-        </member>
-        <member name="F:NetworkSocket.WebSocket.Fast.JObject.DebugView.view">
-            <summary>
-            查看的对象
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.JObject.DebugView.#ctor(NetworkSocket.WebSocket.Fast.JObject)">
-            <summary>
-            调试视图
-            </summary>
-            <param name="view">查看的对象</param>
-        </member>
-        <member name="P:NetworkSocket.WebSocket.Fast.JObject.DebugView.Values">
-            <summary>
-            查看的内容
-            </summary>
         </member>
         <member name="T:NetworkSocket.WebSocket.Fast.SetTypes">
             <summary>
@@ -6712,12 +6666,13 @@
             任务设置行为接口
             </summary>
         </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.ITaskSetAction.SetAction(NetworkSocket.WebSocket.Fast.SetTypes,System.Object)">
+        <member name="M:NetworkSocket.WebSocket.Fast.ITaskSetAction.SetAction(NetworkSocket.WebSocket.Fast.SetTypes,System.Object,NetworkSocket.WebSocket.Fast.IJsonSerializer)">
             <summary>
             设置行为
             </summary>
             <param name="setType">行为类型</param>
             <param name="value">数据值</param>
+            <param name="serializer">序列化工具</param>
         </member>
         <member name="P:NetworkSocket.WebSocket.Fast.ITaskSetAction.CreateTime">
             <summary>
@@ -6740,18 +6695,20 @@
             </summary>               
             <param name="taskSource">任务源</param>
         </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.SetAction(NetworkSocket.WebSocket.Fast.SetTypes,System.Object)">
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.SetAction(NetworkSocket.WebSocket.Fast.SetTypes,System.Object,NetworkSocket.WebSocket.Fast.IJsonSerializer)">
             <summary>
             设置行为
             </summary>
             <param name="setType">行为类型</param>
             <param name="value">数据值</param>
+            <param name="serializer">序列化工具</param>
         </member>
-        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.SetResult(System.Object)">
+        <member name="M:NetworkSocket.WebSocket.Fast.TaskSetAction`1.SetResult(System.Object,NetworkSocket.WebSocket.Fast.IJsonSerializer)">
             <summary>
             设置结果
             </summary>
             <param name="value">数据</param>
+            <param name="serializer">序列化工具</param>
         </member>
         <member name="P:NetworkSocket.WebSocket.Fast.TaskSetAction`1.CreateTime">
             <summary>
@@ -6864,7 +6821,7 @@
             表示请求帧
             </summary>
         </member>
-        <member name="M:NetworkSocket.WebSocket.FrameRequest.From(NetworkSocket.ReceiveBuffer)">
+        <member name="M:NetworkSocket.WebSocket.FrameRequest.From(NetworkSocket.ReceiveStream)">
             <summary>
             解析请求的数据
             返回请求数据包
@@ -7052,6 +7009,153 @@
             安全握手
             1015
             </summary>
+        </member>
+        <member name="T:NetworkSocket.LimitedTask">
+            <summary>
+            提供可限制并发任务数  
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.Factory">
+            <summary>
+            提供限制同时工作任务数的任务工厂
+            默认MaxTaskCount为Environment.ProcessorCount * 5
+            可通过LimitTask.SetFactoryMaxTaskCount来调整数量
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.SetFactoryMaxTaskCount(System.Int32)">
+            <summary>
+            设置LimitTask.Factory的最大并发数
+            </summary>
+            <param name="maxTaskCount">最大同事工作的任务数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.NewFactory(System.Int32)">
+            <summary>
+            创建一个可限制并发任务数的任务工厂
+            </summary>
+            <param name="maxTaskCount">最大并发任务数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.LimitedTask.LimitedTaskScheduler">
+            <summary>
+            并发任务限制调度器
+            这里参考了微软提供的源代码
+            https://msdn.microsoft.com/en-us/library/ee789351.aspx
+            </summary>       
+            <summary> 
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.LimitedTaskScheduler.ThreadWorking">
+            <summary>
+            当前线程是否处理任务项
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.LimitedTaskScheduler.maxTaskCount">
+            <summary>
+            允许的最大并发数
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.LimitedTaskScheduler.currentTaskCount">
+            <summary>
+            当前正在运行的任务数
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.LimitedTaskScheduler.scheduledTasks">
+            <summary>
+            排队执行的任务
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.#ctor(System.Int32)">
+            <summary>
+            并发限制任务调度器
+            </summary>
+            <param name="maxTaskCount">最大并发数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.SetMaxTaskCount(System.Int32)">
+            <summary>
+            设置最大并发数
+            </summary>
+            <param name="maxTaskCount">最大并发数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>
+            将Task排队到计划程序中
+            </summary>
+            <param name="task">任务</param>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.ExecutePendingTasks(System.Object)">
+            <summary>
+            在线程池中执行所有待执行的任务
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.TryDequeue(System.Threading.Tasks.Task)">
+            <summary>
+            尝试将以前排队到此计划程序中的Task取消排队
+            </summary>
+            <param name="task">要取消排队的Task</param>
+            <returns>一个布尔值，该值指示是否已成功地将 task 参数取消排队</returns>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.GetScheduledTasks">
+            <summary>
+            生成当前排队到计划程序中等待执行的Task实例的枚举
+            </summary>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns>一个允许遍历当前排队到此计划程序中的任务的枚举</returns>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.LimitedTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>
+            确定是否可以在此调用中同步执行提供的Task，如果可以，将执行该任务 
+            </summary>
+            <param name="task">任务</param>
+            <param name="taskWasPreviouslyQueued">指示任务之前是否已排队。如果此参数为 True，则该任务以前可能已排队（已计划）；如果为 False，则已知该任务尚未排队，此时将执行此调用，以便以内联方式执行该任务，而不用将其排队。</param>
+            <returns>指示是否已以内联方式执行该任务</returns>
+        </member>
+        <member name="P:NetworkSocket.LimitedTask.LimitedTaskScheduler.MaximumConcurrencyLevel">
+            <summary>
+            获取指示能够支持的最大并发级别
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.LimitedTask.ScheduledTasks">
+            <summary>
+            表示排队中未执行的任务
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.ScheduledTasks.linkedList">
+            <summary>
+            排队执行的任务链表
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.LimitedTask.ScheduledTasks.SyncRoot">
+            <summary>
+            获取同步锁
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.ScheduledTasks.Add(System.Threading.Tasks.Task)">
+            <summary>
+            添加一个任务到末尾
+            </summary>
+            <param name="task">任务</param>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.ScheduledTasks.Take">
+            <summary>
+            从头部获取一个任务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.ScheduledTasks.Remove(System.Threading.Tasks.Task)">
+            <summary>
+            删除一个任务
+            </summary>
+            <param name="task">任务</param>
+        </member>
+        <member name="M:NetworkSocket.LimitedTask.ScheduledTasks.ToArray">
+            <summary>
+            转换为数组
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

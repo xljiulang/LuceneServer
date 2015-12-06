@@ -8,6 +8,7 @@ using Topshelf;
 using LuceneServer.Services;
 using LuceneServer.Filters;
 using System.Configuration;
+using NetworkSocket.Exceptions;
 namespace LuceneServer
 {
     /// <summary>
