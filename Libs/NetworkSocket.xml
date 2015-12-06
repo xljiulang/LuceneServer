@@ -498,24 +498,15 @@
             转换器静态实例
             </summary>
         </member>
-        <member name="M:NetworkSocket.Converter.TryCast``1(System.Object)">
-            <summary>       
-            支持基础类型、decimal、guid和枚举相互转换以及这些类型的可空类型和数组类型相互转换
-            支持字典和DynamicObject转换为对象以及字典和DynamicObject的数组转换为对象数组
-            </summary>
-            <typeparam name="T">目标类型</typeparam>
-            <param name="value">值</param>
-            <exception cref="T:System.NotSupportedException"></exception>
-            <returns></returns>
-        </member>
         <member name="M:NetworkSocket.Converter.Cast``1(System.Object)">
             <summary>       
             支持基础类型、decimal、guid和枚举相互转换以及这些类型的可空类型和数组类型相互转换
             支持字典和DynamicObject转换为对象以及字典和DynamicObject的数组转换为对象数组
             </summary>
             <typeparam name="T">目标类型</typeparam>
-            <param name="value">值</param>
+            <param name="value">值</param>      
             <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.Exception"></exception>
             <returns></returns>
         </member>
         <member name="M:NetworkSocket.Converter.Cast(System.Object,System.Type)">
@@ -525,31 +516,24 @@
             </summary>
             <param name="value">值</param>
             <param name="targetType">目标类型</param>       
+            <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.Exception"></exception>
             <returns></returns>
-        </member>
-        <member name="F:NetworkSocket.Converter.converts">
-            <summary>
-            转换执行者
-            </summary>
         </member>
         <member name="M:NetworkSocket.Converter.#ctor">
             <summary>
             类型转换
             </summary>
         </member>
-        <member name="M:NetworkSocket.Converter.#ctor(NetworkSocket.IConvert[])">
-            <summary>
-            类型转换
-            </summary>
-            <param name="customConverts">自定义的转换执行者</param>
-        </member>
         <member name="M:NetworkSocket.Converter.Convert``1(System.Object)">
             <summary>
             转换为目标类型
             </summary>
             <typeparam name="T">要转换的目标类型</typeparam>
-            <param name="value">要转换的值</param>
+            <param name="value">要转换的值</param>    
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.Exception"></exception>
             <returns>转换后的值</returns>
         </member>
         <member name="M:NetworkSocket.Converter.Convert(System.Object,System.Type)">
@@ -558,11 +542,108 @@
             </summary>
             <param name="value">要转换的值</param>
             <param name="targetType">要转换的目标类型</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.Exception"></exception>
             <returns>转换后的值</returns>
         </member>
-        <member name="T:NetworkSocket.Converter.NullConvert">
+        <member name="P:NetworkSocket.Converter.Items">
             <summary>
-            null值转换单元
+            获取转换单元操控对象        
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Converter.ContertItems">
+            <summary>
+            表示转换器的转换单元合集
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Converter.ContertItems.converts">
+            <summary>
+            转换单元列表
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.Insert``1(System.Int32)">
+            <summary>
+            插入到指定位置
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="index">索引</param>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.AddFrist``1">
+            <summary>
+            添加一个转换单元到最前面
+            </summary>
+            <typeparam name="T">转换单元类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.AddBefore``2">
+            <summary>
+            添加到指定转换单元之后
+            </summary>
+            <typeparam name="TSource">要被替换掉的转换单元</typeparam>
+            <typeparam name="TDest">替换后的转换单元</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.AddAfter``2">
+            <summary>
+            添加到指定转换单元之后
+            </summary>
+            <typeparam name="TSource">要被替换掉的转换单元</typeparam>
+            <typeparam name="TDest">替换后的转换单元</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.AddLast``1">
+            <summary>
+            添加一个转换单元到末尾
+            </summary>
+            <typeparam name="T">转换单元类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.Remove``1">
+            <summary>
+            解绑一个转换单元
+            </summary>
+            <typeparam name="T">转换单元类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.Repace``2">
+            <summary>
+            替换转换单元
+            </summary>
+            <typeparam name="TSource">要被替换掉的转换单元</typeparam>
+            <typeparam name="TDest">替换后的转换单元</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Converter.ContertItems.DebugView">
+            <summary>
+            调试视图
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Converter.ContertItems.DebugView.view">
+            <summary>
+            查看的对象
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converter.ContertItems.DebugView.#ctor(NetworkSocket.Converter.ContertItems)">
+            <summary>
+            调试视图
+            </summary>
+            <param name="view">查看的对象</param>
+        </member>
+        <member name="P:NetworkSocket.Converter.ContertItems.DebugView.Values">
+            <summary>
+            查看的内容
+            </summary>
+        </member>
+        <member name="T:NetworkSocket.Converts.ArrayConvert">
+            <summary>
+            表示数组转换单元
             </summary>
         </member>
         <member name="T:NetworkSocket.IConvert">
@@ -582,29 +663,200 @@
             <param name="result">转换结果</param>
             <returns>如果不支持转换，则返回false</returns>
         </member>
-        <member name="T:NetworkSocket.Converter.SippleConvert">
+        <member name="M:NetworkSocket.Converts.ArrayConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
             <summary>
-            简单类型转换单元
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.DictionaryConvert">
+            <summary>
+            表示字典转换单元
             </summary>
         </member>
-        <member name="T:NetworkSocket.Converter.NullableConvert">
+        <member name="M:NetworkSocket.Converts.DictionaryConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
             <summary>
-            可空类型转换单元
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.DynamicObjectConvert">
+            <summary>
+            表示动态类型转换单元
             </summary>
         </member>
-        <member name="T:NetworkSocket.Converter.ArrayConvert">
+        <member name="M:NetworkSocket.Converts.DynamicObjectConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
             <summary>
-            数组转换单元
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="M:NetworkSocket.Converts.DynamicObjectConvert.TryGetValue(System.Dynamic.DynamicObject,System.String,System.Object@)">
+            <summary>
+            获取动态类型的值
+            </summary>
+            <param name="dynamicObject">实例</param>
+            <param name="key">键名</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.DynamicObjectConvert.KeyBinder">
+            <summary>
+            表示键的信息获取绑定
             </summary>
         </member>
-        <member name="T:NetworkSocket.Converter.DictionaryConvert">
+        <member name="M:NetworkSocket.Converts.DynamicObjectConvert.KeyBinder.#ctor(System.String,System.Boolean)">
             <summary>
-            字典转换单元
+            键的信息获取绑定
+            </summary>
+            <param name="key">键名</param>
+            <param name="ignoreCase">是否忽略大小写</param>
+        </member>
+        <member name="M:NetworkSocket.Converts.DynamicObjectConvert.KeyBinder.FallbackGetMember(System.Dynamic.DynamicMetaObject,System.Dynamic.DynamicMetaObject)">
+            <summary>
+            在派生类中重写时，如果无法绑定目标动态对象，则执行动态获取成员操作的绑定
+            </summary>
+            <param name="target"></param>
+            <param name="errorSuggestion"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.NoConvert">
+            <summary>
+            表示不作转换的转换单元
             </summary>
         </member>
-        <member name="T:NetworkSocket.Converter.DynamicObjectConvert">
+        <member name="M:NetworkSocket.Converts.NoConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
             <summary>
-            动态类型转换单元
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.NullableConvert">
+            <summary>
+            表示可空类型转换单元
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converts.NullableConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
+            <summary>
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.NullConvert">
+            <summary>
+            表示null值转换单元
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converts.NullConvert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
+            <summary>
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.PrimitiveContert">
+            <summary>
+            表示简单类型转换单元
+            支持基元类型、guid和枚举相互转换
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converts.PrimitiveContert.Convert(NetworkSocket.Converter,System.Object,System.Type,System.Object@)">
+            <summary>
+            将value转换为目标类型
+            并将转换所得的值放到result
+            如果不支持转换，则返回false
+            </summary>
+            <param name="converter">转换器实例</param>
+            <param name="value">要转换的值</param>
+            <param name="targetType">转换的目标类型</param>
+            <param name="result">转换结果</param>
+            <returns>如果不支持转换，则返回false</returns>
+        </member>
+        <member name="T:NetworkSocket.Converts.PropertySetter">
+            <summary>
+            表示属性的设置器
+            </summary>
+        </member>
+        <member name="F:NetworkSocket.Converts.PropertySetter.cached">
+            <summary>
+            类型属性的Setter缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converts.PropertySetter.GetPropertySetters(System.Type)">
+            <summary>
+            从类型的属性获取Setter
+            </summary>
+            <param name="type">类型</param>
+            <returns></returns>
+        </member>
+        <member name="F:NetworkSocket.Converts.PropertySetter.methodInvoker">
+            <summary>
+            Api行为的方法成员调用委托
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Converts.PropertySetter.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            属性的Setter
+            </summary>       
+            <param name="property">属性</param>        
+        </member>
+        <member name="M:NetworkSocket.Converts.PropertySetter.SetValue(System.Object,System.Object)">
+            <summary>
+            设置属性的值
+            </summary>
+            <param name="instance">实例</param>
+            <param name="value">属性的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetworkSocket.Converts.PropertySetter.ToString">
+            <summary>
+            字符串显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NetworkSocket.Converts.PropertySetter.Name">
+            <summary>
+            获取属性的名称
+            </summary>
+        </member>
+        <member name="P:NetworkSocket.Converts.PropertySetter.Type">
+            <summary>
+            获取属性的类型
             </summary>
         </member>
         <member name="T:NetworkSocket.Core.FilterAttribute">
@@ -2725,29 +2977,22 @@
             <param name="request">请求数据</param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Http.DefaultModelBinder.ConvertToArray(System.Type,System.String,System.Collections.Generic.IList{System.String})">
-            <summary>
-            转换为数组
-            </summary>
-            <param name="type">数组类型</param>
-            <param name="name">名称</param>
-            <param name="values">值</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Http.DefaultModelBinder.ConvertToSimple(System.Type,System.String,System.String,System.Object)">
-            <summary>
-            转换为简单类型
-            </summary>       
-            <param name="type">目标类型</param>
-            <param name="name">名称</param>
-            <param name="value">值</param>
-            <param name="defaultValue">默认值</param>
-            <returns></returns>
-        </member>
         <member name="T:NetworkSocket.Http.PropertySetter">
             <summary>
             表示属性的Setter
             </summary>
+        </member>
+        <member name="F:NetworkSocket.Http.PropertySetter.cached">
+            <summary>
+            类型属性的Setter缓存
+            </summary>
+        </member>
+        <member name="M:NetworkSocket.Http.PropertySetter.GetPropertySetters(System.Type)">
+            <summary>
+            从类型的属性获取Setter
+            </summary>
+            <param name="type">类型</param>
+            <returns></returns>
         </member>
         <member name="F:NetworkSocket.Http.PropertySetter.methodInvoker">
             <summary>
@@ -2774,19 +3019,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="F:NetworkSocket.Http.PropertySetter.cached">
-            <summary>
-            类型属性的Setter缓存
-            </summary>
-        </member>
-        <member name="M:NetworkSocket.Http.PropertySetter.FromPropertiesOf(System.Type)">
-            <summary>
-            从类型的属性获取Setter
-            </summary>
-            <param name="type">类型</param>
-            <returns></returns>
-        </member>
-        <member name="M:NetworkSocket.Http.PropertySetter.IsSimpleType(System.Type)">
+        <member name="M:NetworkSocket.Http.PropertySetter.IsPrimitive(System.Type)">
             <summary>
             类型是否为所支持的简单类型
             </summary>
@@ -5226,7 +5459,7 @@
             <param name="type"></param>
             <returns></returns>
         </member>
-        <member name="M:NetworkSocket.Validation.Property.From(System.Type)">
+        <member name="M:NetworkSocket.Validation.Property.GetProperties(System.Type)">
             <summary>
             获取类型的所有属性的get方法
             </summary>

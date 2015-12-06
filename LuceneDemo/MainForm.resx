@@ -117,8 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox2.Text" xml:space="preserve">
-    <value>这是基于SocketAsyncEventArgs封装TCP通讯协议组件，基础层性能好可扩展性很高；其NetworkSocket.Fast层模仿了Asp.net WebApi开发风格，支持依赖注入、特性过滤器、全局过滤器和WebApi式的服务方法代码书写，可用于实现快速编写通讯服务项目；此外NetworkSocket.WebSocket项目亦实现了WebSocket版本13的服务端功能，并封装了使用JSON文本传输的一个Fast应用层，编写服务方法也类似WebAPi风格。
-           </value>
-  </data>
 </root>

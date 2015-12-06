@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnSet = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -72,7 +71,8 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(249, 129);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = resources.GetString("textBox2.Text");
+            this.textBox2.Text = "这是基于SocketAsyncEventArgs封装TCP通讯协议组件，基础层性能好可扩展性很高。其上层Fast、Http、WebSocket模仿了Asp.net" +
+    " WebApi开发风格，支持依赖注入、特性过滤器、全局过滤器和WebApi式的服务方法代码书写，可用于实现快速编写通讯服务项目。";
             // 
             // label1
             // 

@@ -94,11 +94,11 @@ namespace LuceneLib
                 throw new ArgumentNullException("indexName");
             }
 
-            var supportTypes = new[] { typeof(string), typeof(DateTime), typeof(Guid), typeof(decimal) };
             var properties = typeof(T)
                 .GetProperties()
-                .Where(p => p.GetAccessors().Length == 2 && p.IsDefined(typeof(NoneIndexAttribute), true) == false)
-                .Where(p => p.PropertyType.IsPrimitive || p.PropertyType.IsEnum || supportTypes.Contains(p.PropertyType));
+                .Where(p => p.CanRead && p.CanWrite)
+                .Where(p => this.IsSupportedType(p.PropertyType))
+                .Where(p => p.IsDefined(typeof(NoneIndexAttribute), true) == false);
 
             if (properties.Any(p => string.Equals(p.Name, "Id", StringComparison.OrdinalIgnoreCase)) == false)
             {
@@ -107,6 +107,35 @@ namespace LuceneLib
 
             this.indexName = indexName;
             this.properties = properties.Select(p => new LnProperty(p)).ToArray();
+        }
+
+
+        /// <summary>
+        /// 类型是否为所支持的简单类型
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        private bool IsSupportedType(Type type)
+        {
+            if (typeof(IConvertible).IsAssignableFrom(type) == true)
+            {
+                return true;
+            }
+
+            if (typeof(Guid) == type)
+            {
+                return true;
+            }
+
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                var argTypes = type.GetGenericArguments();
+                if (argTypes.Length == 1)
+                {
+                    return this.IsSupportedType(argTypes.First());
+                }
+            }
+            return false;
         }
 
         /// <summary>

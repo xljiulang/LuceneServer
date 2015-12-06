@@ -41,7 +41,7 @@ namespace LuceneDemo
         {
             var news = new News
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("{B0A0F268-28E3-4151-9DAC-F970C6991C79}"),
                 OrderIndex = Environment.TickCount,
                 CreateTime = DateTime.Now,
                 Title = title,

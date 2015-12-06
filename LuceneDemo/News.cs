@@ -31,7 +31,7 @@ namespace LuceneDemo
         /// </summary>
         [Category("基本信息")]
         [ReadOnlyAttribute(true)]
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
 
         /// <summary>
