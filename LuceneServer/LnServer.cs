@@ -37,7 +37,7 @@ namespace LuceneServer
         /// <returns></returns>
         public bool Start(Topshelf.HostControl hostControl)
         {
-            this.GlobalFilter.Add(new ExceptionFilter());
+            this.GlobalFilters.Add(new ExceptionFilter());
             this.BindService<LnService>().BindService<SystemService>();
             this.StartListen(int.Parse(ConfigurationManager.AppSettings["Port"]));
             return true;

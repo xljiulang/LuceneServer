@@ -4,20 +4,27 @@ using System.Linq;
 using System.Text;
 using NetworkSocket.Fast;
 using System.Configuration;
-using NetworkSocket.Core;
 
 namespace LuceneServer.Filters
 {
     /// <summary>
-    /// 登录状态检测过滤器
+    /// 表示登录状态检测过滤器
     /// </summary>
-    internal class LoginFilter : FilterAttribute, IAuthorizationFilter
+    internal class LoginFilter : FastFilterAttribute
     {
+        /// <summary>
+        /// 登录状态检测过滤器
+        /// </summary>
+        public LoginFilter()
+        {
+            this.Order = -1;
+        }
+
         /// <summary>
         /// 检查是否已登录
         /// </summary>
         /// <param name="filterContext"></param>
-        public void OnAuthorization(ActionContext filterContext)
+        protected override void OnExecuting(ActionContext filterContext)
         {
             var logined = filterContext.Session.TagData.TryGet<bool>("Logined");
             if (logined == false && bool.Parse(ConfigurationManager.AppSettings["NeedLogin"]) == true)
